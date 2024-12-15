@@ -1,14 +1,44 @@
 /* ---------------------------------------------
-        STRUCTURE
+        GENERAL
 ------------------------------------------------ */
 body {
+  /* Forces scroll for now */
   height: 2000px;
 }
 
+/* ---------------------------------------------
+        LAYOUT/POSITIONING PAGE ELEMENTS
+------------------------------------------------ */
 header {
-  margin-top: 70px;
-  position: absolute;
-  max-width: 600px;
+  text-align: center;
+  padding: 70px 20px 0;
+}
+
+h1 {
+  font-weight: normal;
+}
+
+h1 span {
+  font-weight: bold;
+}
+
+.scroll,
+article {
+  margin: 3em;
+}
+
+.scroll a {
+  text-decoration: none;
+  color: black;
+}
+
+.scroll a:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.scroll ul {
+  list-style-type: circle;
 }
 /* ---------------------------------------------
         NAVIGATION
@@ -17,28 +47,27 @@ nav,
 .nav {
   background-color: blanchedalmond;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   z-index: 9999;
   border-radius: 5px;
+  width: 100%;
 }
 
 .nav {
   position: fixed;
-  width: 100%;
 }
 
-ul {
+nav ul {
   display: flex;
   color: black;
-  width: 100%;
 }
 
-li {
+nav li {
   list-style-type: none;
   padding: 5px 2em;
 }
 
-a {
+.nav a {
   color: black;
   text-decoration: none;
 }
