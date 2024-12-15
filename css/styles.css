@@ -5,6 +5,11 @@ body {
   height: 2000px;
 }
 
+header {
+  margin-top: 70px;
+  position: absolute;
+  max-width: 600px;
+}
 /* ---------------------------------------------
         NAVIGATION
 ------------------------------------------------ */
@@ -13,6 +18,8 @@ nav,
   background-color: blanchedalmond;
   display: flex;
   justify-content: space-between;
+  z-index: 9999;
+  border-radius: 5px;
 }
 
 .nav {
