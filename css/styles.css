@@ -24,7 +24,10 @@ h1 span {
 
 .scroll,
 article {
-  margin: 3em;
+  /* margin: 3em; */
+  position: relative;
+  max-width: 700px;
+  margin: 3em auto;
 }
 
 .scroll a {
@@ -39,6 +42,9 @@ article {
 
 .scroll ul {
   list-style-type: circle;
+}
+
+article {
 }
 /* ---------------------------------------------
         NAVIGATION
