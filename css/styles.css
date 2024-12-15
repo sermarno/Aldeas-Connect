@@ -6,6 +6,9 @@ body {
   height: 2000px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 /* ---------------------------------------------
         LAYOUT/POSITIONING PAGE ELEMENTS
 ------------------------------------------------ */
@@ -22,9 +25,15 @@ h1 span {
   font-weight: bold;
 }
 
+article {
+  padding: 50px;
+  border-radius: 15px;
+  background-color: blanchedalmond;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 .scroll,
 article {
-  /* margin: 3em; */
   position: relative;
   max-width: 700px;
   margin: 3em auto;
@@ -44,8 +53,10 @@ article {
   list-style-type: circle;
 }
 
-article {
+li span {
+  text-decoration: underline;
 }
+
 /* ---------------------------------------------
         NAVIGATION
 ------------------------------------------------ */
@@ -61,6 +72,7 @@ nav,
 
 .nav {
   position: fixed;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 nav ul {

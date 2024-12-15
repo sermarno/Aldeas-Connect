@@ -23,7 +23,7 @@
             <ul> 
                 <li><a href="#problem">The Problem ↓</a></li>
                 <li><a href="#goal">Our Goal ↓</a></li>
-                <li><a href="#stakehoders">Stakeholders ↓</a></li>
+                <li><a href="#stakeholders">Stakeholders ↓</a></li>
                 <li><a href="#features">Features & Benefits ↓</a></li>
             </ul>
         </div>
@@ -66,24 +66,42 @@
         <article id="stakeholders">
             <h3>Stakeholders</h3>
             <ul>
-                <li>Rural Community Residents - these individuals are the focus group for this
+                <li><span>Rural Community Residents</span> - these individuals are the focus group for this
                     project.</li>
-                <li>Smart Village Support Staff - this includes administrators, developers, and 
+                <li><span>Administrators/Staff</span> - this includes administrators, developers, and 
                     any other individuals who work behind the scenes to support the residents.</li>
-                <li>Site Visitors - this includes any visitors of the website who are looking at what
+                <li><span>Site Visitors</span> - this includes any visitors of the website who are looking at what
                     the site has to offer.</li>
+                <li><span>Smart Village Affiliates</span> - this website can stand as an inspiration for individuals who 
+                    are working with Smart Villages in other locations to provide connectivity to rural communities.</li>
+                <li><span>Potential Investors</span> - as this website offers transparency of Smart Village operations, 
+                    it may attract individuals who wish to support the residents in other ways. </li>
             </ul>
         </article>
         <article id="features">
             <h3>Features and Benefits</h3>
-            <p>
-                This will be a section that briefly hints at some features that will
-                be included in this website.
-            </p>
+            <ul>
+                <li><span>Project Requests:</span> This website is aimed to provide residents, administrators,
+                    and other users with clear and regular updates on ongoing projects. Our client
+                    highlighted his concern with our initial idea of having admin enter project details 
+                    and maintain updates. We have adjusted accordingly, now allowing residents to submit
+                    a request for managing project information that will be displayed on the website. 
+                </li>
+                <li><span>Messaging System:</span> Administrators shared their main challenges with communicating with 
+                    residents of rural and isolated areas who utilize Smart Villages. One specifically 
+                    reported that his role involves coordinating with local leaders, analyzing project 
+                    progress, and ensuring that resources and support are allocated effectively. As many 
+                    residents often have quick inquiries and problems regarding their community projects, 
+                    it is important to provide a better communication method that doesn’t solely rely on 
+                    ineffective check-ins. This communication tool could facilitate communication between 
+                    community members and administrators, providing more clear feedback and offering responses 
+                    to emerging issues.
+                </li>
+                <li><span>Map of Mexico:</span> This feature provides users with a clear visualization of where the 
+                    communities who are utilizing Smart Villages are in Mexico. Clicking on each map marker will 
+                    direct the users to a page that examines the community further. </li>
+            </ul>
         </article>
-
-        
     </main>
-    
 </body>
 </html>
