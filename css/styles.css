@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .team-container {
     display: flex;
     flex-wrap: wrap;
@@ -50,3 +51,106 @@
     border: 5px solid black;
     border-radius: 8px;
 }
+=======
+/* ---------------------------------------------
+        GENERAL
+------------------------------------------------ */
+body {
+  /* Forces scroll for now */
+  height: 2000px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+/* ---------------------------------------------
+        LAYOUT/POSITIONING PAGE ELEMENTS
+------------------------------------------------ */
+header {
+  text-align: center;
+  padding: 70px 20px 0;
+}
+
+h1 {
+  font-weight: normal;
+}
+
+h1 span {
+  font-weight: bold;
+}
+
+article {
+  padding: 50px;
+  border-radius: 15px;
+  background-color: blanchedalmond;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.scroll,
+article {
+  position: relative;
+  max-width: 700px;
+  margin: 3em auto;
+}
+
+.scroll a {
+  text-decoration: none;
+  color: black;
+}
+
+.scroll a:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.scroll ul {
+  list-style-type: circle;
+}
+
+li span {
+  text-decoration: underline;
+}
+
+/* ---------------------------------------------
+        NAVIGATION
+------------------------------------------------ */
+nav,
+.nav {
+  background-color: blanchedalmond;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 9999;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.nav {
+  position: fixed;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+  display: flex;
+  color: black;
+}
+
+nav li {
+  list-style-type: none;
+  padding: 5px 2em;
+}
+
+.nav a {
+  color: black;
+  text-decoration: none;
+}
+
+.nav h3 a {
+  font-weight: bold;
+  font-size: 20px;
+  padding-left: 20px;
+}
+
+a:hover {
+  font-weight: bold;
+}
+>>>>>>> 7a017d1cd53338874481edf7e32af3aaaa573ec4
