@@ -9,15 +9,15 @@
     <link rel="stylesheet" href="css/normalize.css">
 </head>
 <body>
-    <header>
-        <h1>Project Overview: <br><span>La Conexión y el Futuro de las Aldeas Inteligentes</span></h1>
-    </header>
-
     <!-- Nav Bar -->
     <div class="nav">
             <h3><a href="index.php">Home</a></h3>
             <?php include 'includes/nav.php' ?>
     </div>
+    <header>
+        <h1>Project Overview: <br><span>La Conexión y el Futuro de las Aldeas Inteligentes</span></h1>
+    </header>
+
     <article id="overview">
         <h3>Overview</h3>
         <p>
