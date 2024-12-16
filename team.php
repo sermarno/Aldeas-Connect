@@ -4,10 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team</title>
+    <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h1 class="team-heading">Meet the Team</h1>
+    <!-- Nav Bar -->
+    <div class="nav">
+            <h3><a href="index.php">Title</a></h3>
+            <?php include 'includes/nav.php' ?>
+        </div>
+        <header>
+            <h1 class="team-heading">Meet the Team</h1>
+        </header>
     <div class="team-container">
   
     <div class="team-member">
