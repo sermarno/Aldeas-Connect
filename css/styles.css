@@ -68,6 +68,13 @@ header {
   padding: 70px 20px 0;
 }
 
+.map {
+  border: 2px solid black;
+  margin: 3em auto;
+  padding: 50px;
+  max-width: 700px;
+}
+
 h1 {
   font-weight: normal;
 }
