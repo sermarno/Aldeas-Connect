@@ -17,5 +17,14 @@
     <header>
         <h1>Existing Project Request Form</h1>
     </header>
+    <form action="req_sent.php" method="POST">
+        <input type="hidden" name="request_id" value="<?php echo $row['request_id']; ?>">
+        Project Title: <input type="text" name="title" value="<?php echo htmlspecialchars($row['title']); ?>"><br>
+        Project Description: <input type="text" name="proj_description" value="<?php echo htmlspecialchars($row['req_description']); ?>"><br>
+        Project Start Date: <input type="date" name="proj_start" value="<?php echo $row['proj_start']; ?>"><br>
+        Project End Date: <input type="date" name="proj_end" value="<?php echo $row['proj_end']; ?>"><br>
+        Request Status: <br>
+        Status Message: <br>
+    </form>
 </body>
 </html>

@@ -58,7 +58,8 @@ INSERT INTO communities (comm_name, comm_description, comm_location) VALUES
 ('Community 3', 'Community 3 description', 'Community 3 location');
 
 INSERT INTO projects (title, proj_description, proj_start, proj_end, request_status, admin_comments, user_id, community_id) VALUES
-('Project 1', 'Project 1 description', '2020-11-12', '2025-9-7', 'pending', null, 1, 1);
+('Project 1', 'Project 1 description', '2020-11-12', '2025-09-07', 'pending', null, 1, 1),
+('Project 2', 'Project 2 description', '2022-09-12', '2027-04-07', 'approved', 'I look forward to seeing your progress!', 2, 3);
 
 INSERT INTO users (full_name, username, email, user_password, user_role) VALUES
 ('User 1', 'user1', 'user1@example.com', 'password1', 'resident'),
