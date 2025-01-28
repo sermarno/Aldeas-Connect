@@ -33,7 +33,7 @@ $villages = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aldeas Inteligentes Map of Mexico</title>
 <!-- come back here to add api we decide on (static) -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=GET_API_KEY"></script> 
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDf99Nyj4amTBbILPYjYt0S01h-kuSWqo"></script> 
     <style>
         #map {
             height: 100vh;
