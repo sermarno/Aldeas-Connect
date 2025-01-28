@@ -18,6 +18,15 @@
         <h1>Project Overview: <br><span>La Conexión y el Futuro de las Aldeas Inteligentes</span></h1>
     </header>
 
+    <div class="map">
+        <p>Map</p>
+    </div>
+    
+    <div class="request">
+        <p>Want to see your community's projects here?</p>
+        <a href="request.php">Submit a Request</a>
+    </div>
+
     <article id="overview">
         <h3>Overview</h3>
         <p>
