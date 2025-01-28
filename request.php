@@ -17,17 +17,20 @@
     <header>
         <h1>Project Request</h1>
     </header>
-    <div class="new">
-        <p>Want to see your community's projects?</p>
-        <a href="new_proj.php">New Project</a>
+    <div class="proj_container">
+        <div class="new">
+            <p>Do you want to see your community's projects online?</p>
+            <a href="new_proj.php">New Project</a>
+        </div>
+        <hr>
+        <div class="existing">
+            <p>Already see your project?</p>
+            <a href="exist_proj.php">Update or Remove Project</a>
+        </div>
+        <div class="cancel">
+            <a href="index.php">Cancel</a>
+        </div>
     </div>
-    <hr>
-    <div class="existing">
-        <p>Already see your project?</p>
-        <a href="exist_proj.php">Update or Remove Project</a>
-    </div>
-    <div class="cancel">
-        <a href="index.php">Cancel</a>
-    </div>
+
 </body>
 </html>

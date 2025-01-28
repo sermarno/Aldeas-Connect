@@ -115,6 +115,15 @@ li span {
   text-decoration: underline;
 }
 
+.proj_container,
+.form {
+  border: 2px solid black;
+  max-width: 700px;
+  border-radius: 15px;
+  margin: 3em auto;
+  padding: 50px;
+}
+
 /* ---------------------------------------------
         NAVIGATION
 ------------------------------------------------ */
