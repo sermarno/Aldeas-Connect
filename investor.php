@@ -14,12 +14,11 @@
             <?php include 'includes/nav.php' ?>
     </div>
 <header>
-    <h1>Investor Page:</h1>
+    <h1>Investor Page</h1>
 </header>
 
 <h2>Projects</h2>
 <!--Table to show ongoing projects, projects in progress, etc.-->
-
 
 <h2>Where You Can Help</h2>
 <!--Table to show project title, where the project needs assistance.-->
