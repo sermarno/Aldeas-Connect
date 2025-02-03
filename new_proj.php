@@ -26,6 +26,7 @@
             Project End Date: <input type="date" name="proj_end" value="<?php echo $row['proj_end']; ?>"><br>
             Request Status: <br>
             Status Message: <br>
+            <input type="submit">
         </form>
     </div>
 </body>
