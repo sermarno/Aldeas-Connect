@@ -25,8 +25,9 @@
         $proj_description = $conn->real_escape_string($_POST['proj_description']);
         $proj_start = $conn->real_escape_string($_POST['proj_start']);
         $proj_end = $conn->real_escape_string($_POST['proj_end']);
-        $sql = "INSERT INTO projects (title, proj_description, proj_start, proj_end)
-        VALUES ('$title', '$proj_description', '$proj_start', '$proj_end')";
+        $community_id = $conn->real_escape_string($_POST['community_id']);
+        $sql = "INSERT INTO projects (title, proj_description, proj_start, proj_end, community_id)
+        VALUES ('$title', '$proj_description', '$proj_start', '$proj_end', '$community_id')";
         if ($conn->query($sql) === TRUE) {
             $result = "New project request '$title' has been successfully sent for review!";
         } else {
