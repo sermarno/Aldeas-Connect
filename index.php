@@ -41,9 +41,6 @@ $villages = [
         src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <!-- Map API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDf99Nyj4amTBbILPYjYt0S01h-kuSWqo"></script> 
-    <!-- Login API -->
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <script src="js/google-login.js" defer></script>
 
     <style>
         #map {
@@ -53,13 +50,16 @@ $villages = [
     </style>
 </head>
 <body>
-
-<div class="content">
-        <h1>Welcome to My Website</h1>
-        <p></p>
-        <button onclick="translatePage()">Translate to Spanish</button>
-        <div id="google_translate_element" style="display:none;"></div>
+    <!-- Nav Bar -->
+    <div class="nav">
+            <h3><a href="index.php">Home</a></h3>
+            <?php include 'includes/nav.php' ?>
     </div>
+    <header>
+        <h1>Project Overview: <br><span>La Conexión y el Futuro de las Aldeas Inteligentes</span></h1>
+    </header>
+    <button onclick="translatePage()">Translate to Spanish</button>
+    <div id="google_translate_element" style="display:none;"></div>
     <script>
         function translatePage() {
             var translateElement = document.getElementById('google_translate_element');
@@ -69,57 +69,38 @@ $villages = [
             select.dispatchEvent(new Event('change'));
         }
     </script>
-    <!-- Nav Bar -->
-    <div class="nav">
-            <h3><a href="index.php">Home</a></h3>
-            <?php include 'includes/nav.php' ?>
-    </div>
-    <header>
-        <h1>Project Overview: <br><span>La Conexión y el Futuro de las Aldeas Inteligentes</span></h1>
-    </header>
 
     <div id="map">
         <h1 style="text-align: center;">Aldeas Inteligentes: Village Map</h1>
         <script>
-        const villages = <?php echo json_encode($villages); ?>;
+            const villages = <?php echo json_encode($villages); ?>;
 
-        function initMap() {
-            const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 6,
-                center: { lat: 23.6345, lng: -102.5528 }, // Center of Mexico might change later depending on what villages
-            });
-
-            villages.forEach(village => {
-                const marker = new google.maps.Marker({
-                    position: { lat: village.lat, lng: village.lng },
-                    map: map,
-                    title: village.name,
+            function initMap() {
+                const map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 6,
+                    center: { lat: 23.6345, lng: -102.5528 }, // Center of Mexico might change later depending on what villages
                 });
 
-                const infoWindow = new google.maps.InfoWindow({
-                    content: `<h3>${village.name}</h3><p>${village.info}</p>`,
-                });
+                villages.forEach(village => {
+                    const marker = new google.maps.Marker({
+                        position: { lat: village.lat, lng: village.lng },
+                        map: map,
+                        title: village.name,
+                    });
 
-                marker.addListener("click", () => {
-                    infoWindow.open(map, marker);
-                });
-            });
-        }
+                    const infoWindow = new google.maps.InfoWindow({
+                        content: `<h3>${village.name}</h3><p>${village.info}</p>`,
+                    });
 
-        window.onload = initMap;
-    </script>
+                    marker.addListener("click", () => {
+                        infoWindow.open(map, marker);
+                    });
+                });
+            }
+
+            window.onload = initMap;
+        </script>
     </div>
-
-    <div id="g_id_onload"
-     data-client_id="425696034712-7ns8jm05qgakn29cmkfvmaffv6bpnvp9.apps.googleusercontent.com"
-     data-context="signin"
-     data-ux_mode="popup"
-     data-callback="handleCredentialResponse"
-     data-auto_prompt="false">
-    </div>
-
-<div class="g_id_signin" data-type="standard"></div>
-
     
     <div class="request">
         <p>Want to see your community's projects here?</p>
