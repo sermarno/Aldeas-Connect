@@ -31,6 +31,14 @@ $villages = [
     <!-- Linking CSS Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <!-- Map API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDf99Nyj4amTBbILPYjYt0S01h-kuSWqo"></script> 
     <!-- Login API -->
@@ -45,6 +53,22 @@ $villages = [
     </style>
 </head>
 <body>
+
+<div class="content">
+        <h1>Welcome to My Website</h1>
+        <p></p>
+        <button onclick="translatePage()">Translate to Spanish</button>
+        <div id="google_translate_element" style="display:none;"></div>
+    </div>
+    <script>
+        function translatePage() {
+            var translateElement = document.getElementById('google_translate_element');
+            translateElement.style.display = 'block';
+            var select = translateElement.querySelector('select');
+            select.value = 'es';
+            select.dispatchEvent(new Event('change'));
+        }
+    </script>
     <!-- Nav Bar -->
     <div class="nav">
             <h3><a href="index.php">Home</a></h3>
