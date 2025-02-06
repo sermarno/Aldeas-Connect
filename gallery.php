@@ -1,5 +1,6 @@
  <?php
     session_start();
+    
 
     $hostname = 'db.luddy.indiana.edu';
     $username = 'i494f24_team61';
@@ -9,10 +10,11 @@
     if ($conn->connect_error) {
       die("Connection failed.". $conn->connect_error);}
 
-    $comm_sql = "SELECT id, name, info, image  FROM communities";
+    $comm_sql = "SELECT comm_name, comm_description FROM communities";
     $comm_result = $conn->query($comm_sql);
     $conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,9 +32,9 @@
         if ($comm_result->num_rows > 0) {
             while($row = $comm_result->fetch_assoc()) {
                 echo '<div class="gallery-item" id="community-' . $row["id"] . '">';
-                echo '<h2>' . $row["name"] . '</h2>';
-                echo '<img src="' . $row["image"] . '" alt="' . $row["name"] . '">';
-                echo '<p>' . $row["info"] . '</p>';
+                echo '<h2>' . $row["comm_name"] . '</h2>';
+                echo '<img src="' . $row["image"] . '" alt="' . $row["comm_name"] . '">';
+                echo '<p>' . $row["comm_description"] . '</p>';
                 echo '</div>';
             }
         } else {
