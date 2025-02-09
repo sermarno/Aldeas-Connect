@@ -78,7 +78,7 @@ INSERT INTO project_requests (title, req_description, proj_start, proj_end, res_
 ('Project Req 1', 'Project Req 1 description', '2022-11-09', '2026-01-03', 'Resident Comments 1', 'pending', 1, 1);
 
 INSERT INTO required_help (community, req_resources) VALUES
-('Yokdzonot-Hu, Yaxkabá', 'More carving tools.')
-('Tikum, Tekax', 'More containers.')
-('Hunukú, Temozón', 'More computers for online resources.')
-('Cazumá, Cazumá', 'More wifi routers for intenet.')
+('Yokdzonot-Hu, Yaxkabá', 'More carving tools.'),
+('Tikum, Tekax', 'More containers.'),
+('Hunukú, Temozón', 'More computers for online resources.'),
+('Cazumá, Cazumá', 'More wifi routers for intenet.');
