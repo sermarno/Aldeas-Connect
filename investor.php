@@ -19,8 +19,36 @@
 
 <h2>Projects</h2>
 <!--Table to show ongoing projects, projects in progress, etc.-->
-
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Project Timeline</th>
+        <th>Project Percentage</th>
+    </tr>
+</table>
 <h2>Where You Can Help</h2>
-<!--Table to show project title, where the project needs assistance.-->
+<table>
+    <tr>
+        <th>Community</th>
+        <th>Required Resources</th>
+    </tr>
+    <tr>
+        <td>Yokdzonot-Hu, Yaxkabá</td>
+        <td>More carving tools.</td>
+    </tr>
+    <tr>
+        <td>Tikum, Tekax</td>
+        <td>More containers.</td>
+    </tr>
+    <tr>
+        <td>Hunukú, Temozón</td>
+        <td>More computers for online resources.</td>
+    </tr>
+    <tr>
+        <td>Cazumá, Cazumá</td>
+        <td>More wifi routers for intenet.</td>
+    </tr>
+</table>
 </body>
 </html>
