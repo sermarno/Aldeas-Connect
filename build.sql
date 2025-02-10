@@ -1,7 +1,15 @@
+
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS communities CASCADE;
+DROP TABLE IF EXISTS projects CASCADE;
+DROP TABLE IF EXISTS project_requests CASCADE;
+
 DROP TABLE IF EXISTS project_requests;
 DROP TABLE IF EXISTS projects;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS communities;
+
+DROP TABLE IF EXISTS required_help;
 
 -- user
 CREATE TABLE users (
@@ -51,6 +59,14 @@ CREATE TABLE project_requests (
     FOREIGN KEY (community_id) REFERENCES communities(community_id)
 ) ENGINE=INNODB;
 
+-- community help needed
+CREATE TABLE required_help (
+    help_id INT AUTO_INCREMENT,
+    community VARCHAR(255) NOT NULL,
+    req_resources VARCHAR(255),
+    PRIMARY KEY (help_id)
+) ENGINE=INNODB;
+
 -- insert statements with test data
 INSERT INTO communities (comm_name, comm_description, comm_location) VALUES
 ('Community 1', 'Community 1 description', 'Community 1 location'), 
@@ -67,3 +83,13 @@ INSERT INTO users (full_name, username, email, user_password, user_role) VALUES
 
 INSERT INTO project_requests (title, req_description, proj_start, proj_end, res_comments, req_status, user_id, community_id) VALUES
 ('Project Req 1', 'Project Req 1 description', '2022-11-09', '2026-01-03', 'Resident Comments 1', 'pending', 1, 1);
+
+INSERT INTO required_help (community, req_resources) VALUES
+('Yokdzonot-Hu, Yaxkabá', 'More carving tools.'),
+('Tikum, Tekax', 'More containers.'),
+('Hunukú, Temozón', 'More computers for online resources.'),
+
+('Cazumá, Cazumá', 'More wifi routers for intenet.');
+
+('Cazumá, Cazumá', 'More wifi routers for intenet.');
+
