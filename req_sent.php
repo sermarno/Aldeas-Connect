@@ -11,14 +11,7 @@
 <body>
     <?php
     session_start();
-
-    $hostname = 'db.luddy.indiana.edu';
-    $username = 'i494f24_team61';
-    $password = 'zuzim9344peery';
-    $database = 'i494f24_team61';
-    $conn = new mysqli($hostname, $username, $password, $database);
-    if ($conn->connect_error) {
-      die("Connection failed.". $conn->connect_error);}
+    include "includes/db.php";
     // collecting form data
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $title = $conn->real_escape_string($_POST['title']);
@@ -33,7 +26,6 @@
         } else {
             $result = "Error: " . $sql . "<br>" . $conn->error;
         }
-        $conn->close();
     }
     ?>
     <!-- Nav Bar -->
@@ -53,5 +45,6 @@
             <a href="index.php">Back to home page</a>
     </div>
     <?php include 'includes/footer.php' ?>
+    <?php $conn->close();?>
 </body>
 </html>

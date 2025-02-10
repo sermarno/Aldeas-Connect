@@ -1,17 +1,8 @@
 <?php
     session_start();
-
-    $hostname = 'db.luddy.indiana.edu';
-    $username = 'i494f24_team61';
-    $password = 'zuzim9344peery';
-    $database = 'i494f24_team61';
-    $conn = new mysqli($hostname, $username, $password, $database);
-    if ($conn->connect_error) {
-      die("Connection failed.". $conn->connect_error);}
-
+    include "includes/db.php";
     $comm_sql = "SELECT * FROM communities";
     $comm_result = $conn->query($comm_sql);
-    $conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,5 +44,6 @@
         </form>
     </div>
     <?php include 'includes/footer.php' ?>
+    <?php $conn->close(); ?>
 </body>
 </html>

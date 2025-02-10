@@ -1,17 +1,5 @@
 <?php
-    // Credentials
-    $hostname = 'db.luddy.indiana.edu';
-    $username = 'i494f24_team61';
-    $password = 'zuzim9344peery';
-    $database = 'i494f24_team61';
-    // Create Connection
-    $conn = mysqli($hostname, $username, $password, $database);
-
-    if (!$conn) {
-        die("Failed to connect to MySQL: " . mysqli_connect_error());
-    } else {
-        echo "Established Database Connection";
-    }
+    include "includes/db.php";
     // Database Query
     $query = "SELECT * FROM required_help";
     $result_set = mysqli_query($conn, $query);
