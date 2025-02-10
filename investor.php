@@ -1,3 +1,38 @@
+<?php
+    // Credentials
+    $hostname = 'db.luddy.indiana.edu';
+    $username = 'i494f24_team61';
+    $password = 'zuzim9344peery';
+    $database = 'i494f24_team61';
+    // Create Connection
+    $conn = mysqli($hostname, $username, $password, $database);
+
+    if (!$conn) {
+        die("Failed to connect to MySQL: " . mysqli_connect_error());
+    } else {
+        echo "Established Database Connection";
+    }
+    // Database Query
+    $query = "SELECT * FROM required_help"
+    $result_set = mysqli_query($conn, $query):
+    if ($result_set){
+        echo "<h2>Required Help</h2>";
+        echo "<table border='1'>";
+        echo "<tr><th>Community</th><th>Required Resources</th></tr>";
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<tr>";
+            echo "<td>" . $row['community'] . "</td>"
+            echo "<td>" . $row['req_resources'] . "</td>"
+            echo "</tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "No dish records found.<br>";
+    }
+    // Close the Connection
+    mysqli_close($conn)
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +53,9 @@
 </header>
 
 <h2>Projects</h2>
+
 <!--Table to show ongoing projects, projects in progress, etc.-->
+
 <table>
     <tr>
         <th>Title</th>

@@ -1,7 +1,14 @@
+
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS communities CASCADE;
+DROP TABLE IF EXISTS projects CASCADE;
+DROP TABLE IF EXISTS project_requests CASCADE;
+
 DROP TABLE IF EXISTS project_requests;
 DROP TABLE IF EXISTS projects;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS communities;
+
 DROP TABLE IF EXISTS required_help;
 
 -- user
@@ -81,4 +88,8 @@ INSERT INTO required_help (community, req_resources) VALUES
 ('Yokdzonot-Hu, Yaxkabá', 'More carving tools.'),
 ('Tikum, Tekax', 'More containers.'),
 ('Hunukú, Temozón', 'More computers for online resources.'),
+
 ('Cazumá, Cazumá', 'More wifi routers for intenet.');
+
+('Cazumá, Cazumá', 'More wifi routers for intenet.');
+
