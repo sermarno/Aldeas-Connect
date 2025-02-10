@@ -91,6 +91,5 @@
         <td>More wifi routers for intenet.</td>
     </tr>
 </table>
->>>>>>> 79fdf58de872d6ecc7b385f93119030199112b4d
 </body>
 </html>
