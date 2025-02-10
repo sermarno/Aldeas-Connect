@@ -53,6 +53,9 @@
 </header>
 
 <h2>Projects</h2>
+
+<!--Table to show ongoing projects, projects in progress, etc.-->
+
 <table>
     <tr>
         <th>Title</th>
