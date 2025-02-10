@@ -13,8 +13,8 @@
         echo "Established Database Connection";
     }
     // Database Query
-    $query = "SELECT * FROM required_help"
-    $result_set = mysqli_query($conn, $query):
+    $query = "SELECT * FROM required_help";
+    $result_set = mysqli_query($conn, $query);
     if ($result_set){
         echo "<h2>Required Help</h2>";
         echo "<table border='1'>";
@@ -22,8 +22,8 @@
 
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
-            echo "<td>" . $row['community'] . "</td>"
-            echo "<td>" . $row['req_resources'] . "</td>"
+            echo "<td>" . $row['community'] . "</td>";
+            echo "<td>" . $row['req_resources'] . "</td>";
             echo "</tr>";
         }
         echo "</table>";
@@ -65,10 +65,8 @@
     </tr>
 </table>
 <h2>Where You Can Help</h2>
-<<<<<<< HEAD
 <!--Table to show project title, where the project needs assistance.-->
 <?php include 'includes/footer.php' ?>
-=======
 <table>
     <tr>
         <th>Community</th>
@@ -91,5 +89,6 @@
         <td>More wifi routers for intenet.</td>
     </tr>
 </table>
+
 </body>
 </html>
