@@ -44,9 +44,12 @@
     <link rel="stylesheet" href="css/normalize.css">
 </head>
 <body>
-<div class="nav">
-            <h3><a href="investor.php">Funding</a></h3>
-            <?php include 'includes/nav.php' ?>
+    <!-- Nav Bar -->
+    <div class="nav">
+        <a href="index.php">
+            <img src="img/logo.jpg" alt="home">
+        </a>
+        <?php include 'includes/nav.php' ?>
     </div>
 <header>
     <h1>Investor Page</h1>

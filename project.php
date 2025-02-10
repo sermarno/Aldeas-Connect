@@ -10,11 +10,13 @@
 </head>
 <body>
     <main>
-        <!-- Nav Bar -->
-        <div class="nav">
-            <h3><a href="index.php">Title</a></h3>
-            <?php include 'includes/nav.php' ?>
-        </div>
+    <!-- Nav Bar -->
+    <div class="nav">
+        <a href="index.php">
+            <img src="img/logo.jpg" alt="home">
+        </a>
+        <?php include 'includes/nav.php' ?>
+    </div>
         <header>
             <h1>Project Overview: <br><span>La Conexión y el Futuro de las Aldeas Inteligentes</span></h1>
         </header>

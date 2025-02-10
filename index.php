@@ -52,8 +52,10 @@ $villages = [
 <body>
     <!-- Nav Bar -->
     <div class="nav">
-            <h3><a href="index.php">Home</a></h3>
-            <?php include 'includes/nav.php' ?>
+        <a href="index.php">
+            <img src="img/logo.jpg" alt="home">
+        </a>
+        <?php include 'includes/nav.php' ?>
     </div>
     <header>
         <h1>Project Overview: <br><span>La Conexión y el Futuro de las Aldeas Inteligentes</span></h1>
