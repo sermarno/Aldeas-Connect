@@ -28,5 +28,6 @@
     </div>
 
     <div class="g_id_signin" data-type="standard"></div>
+    <?php include 'includes/footer.php' ?>
 </body>
 </html>

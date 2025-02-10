@@ -49,5 +49,6 @@
     <div class="cancel">
             <a href="index.php">Back to home page</a>
     </div>
+    <?php include 'includes/footer.php' ?>
 </body>
 </html>

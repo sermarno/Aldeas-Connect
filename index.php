@@ -116,5 +116,6 @@ $villages = [
             From improving education and healthcare to boosting local commerce, we're creating a platform that helps amplify the voices and aspirations of Mexico's underrated regions.
         </p>
     </article>
+    <?php include 'includes/footer.php' ?>
 </body>
 </html>

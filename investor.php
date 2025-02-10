@@ -22,5 +22,6 @@
 
 <h2>Where You Can Help</h2>
 <!--Table to show project title, where the project needs assistance.-->
+<?php include 'includes/footer.php' ?>
 </body>
 </html>

@@ -31,6 +31,7 @@
             <a href="index.php">Cancel</a>
         </div>
     </div>
+    <?php include 'includes/footer.php' ?>
 
 </body>
 </html>

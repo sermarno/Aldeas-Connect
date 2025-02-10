@@ -50,5 +50,6 @@
             <input type="submit">
         </form>
     </div>
+    <?php include 'includes/footer.php' ?>
 </body>
 </html>
