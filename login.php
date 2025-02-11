@@ -11,15 +11,16 @@
 <body>
     <!-- Nav Bar -->
     <div class="nav">
-            <h3><a href="index.php">Home</a></h3>
-            <?php include 'includes/nav.php' ?>
+        <a href="index.php">
+            <img src="img/logo.jpg" alt="home">
+        </a>
+        <?php include 'includes/nav.php' ?>
     </div>
     <header>
         <h1>Login</h1>
     </header>
-    Login API
     <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <script src="js/google-login.js" defer></script> -->
+    <script src="js/google-login.js" defer></script>
     <div id="g_id_onload"
         data-client_id="425696034712-7ns8jm05qgakn29cmkfvmaffv6bpnvp9.apps.googleusercontent.com"
         data-context="signin"
@@ -29,5 +30,6 @@
     </div>
 
     <div class="g_id_signin" data-type="standard"></div>
+    <?php include 'includes/footer.php' ?>
 </body>
 </html>

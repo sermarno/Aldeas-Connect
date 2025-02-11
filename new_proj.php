@@ -1,17 +1,8 @@
 <?php
     session_start();
-
-    $hostname = 'db.luddy.indiana.edu';
-    $username = 'i494f24_team61';
-    $password = 'zuzim9344peery';
-    $database = 'i494f24_team61';
-    $conn = new mysqli($hostname, $username, $password, $database);
-    if ($conn->connect_error) {
-      die("Connection failed.". $conn->connect_error);}
-
+    include 'includes/db.php';
     $comm_sql = "SELECT * FROM communities";
     $comm_result = $conn->query($comm_sql);
-    $conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,8 +19,10 @@
 <body>
     <!-- Nav Bar -->
     <div class="nav">
-            <h3><a href="index.php">Home</a></h3>
-            <?php include 'includes/nav.php' ?>
+        <a href="index.php">
+            <img src="img/logo.jpg" alt="home">
+        </a>
+        <?php include 'includes/nav.php' ?>
     </div>
     <header>
         <h1>New Project Request Form</h1>
@@ -55,5 +48,7 @@
             <input type="submit">
         </form>
     </div>
+    <?php include 'includes/footer.php' ?>
+    <?php $conn->close(); ?>
 </body>
 </html>
