@@ -10,12 +10,14 @@
 <body>
     <!-- Nav Bar -->
     <div class="nav">
-            <h3><a href="index.php">Title</a></h3>
-            <?php include 'includes/nav.php' ?>
-        </div>
-        <header>
-            <h1 class="team-heading">Meet the Team</h1>
-        </header>
+        <a href="index.php">
+            <img src="img/logo.jpg" alt="home">
+        </a>
+        <?php include 'includes/nav.php' ?>
+    </div>
+    <header>
+        <h1 class="team-heading">Meet the Team</h1>
+    </header>
     <div class="team-container">
   
     <div class="team-member">
@@ -57,6 +59,7 @@
     </p>
   </div>
 </div>
+<?php include 'includes/footer.php' ?>
 
 
     

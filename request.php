@@ -11,8 +11,10 @@
 <body>
     <!-- Nav Bar -->
     <div class="nav">
-            <h3><a href="index.php">Home</a></h3>
-            <?php include 'includes/nav.php' ?>
+        <a href="index.php">
+            <img src="img/logo.jpg" alt="home">
+        </a>
+        <?php include 'includes/nav.php' ?>
     </div>
     <header>
         <h1>Project Request</h1>
@@ -31,6 +33,7 @@
             <a href="index.php">Cancel</a>
         </div>
     </div>
+    <?php include 'includes/footer.php' ?>
 
 </body>
 </html>
