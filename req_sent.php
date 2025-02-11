@@ -1,3 +1,21 @@
+<?php
+session_start();
+include "includes/db.php";
+// collecting form data
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['project_id'])) {
+    $project_id = $conn->real_escape_string($_POST['project_id']);
+    $sql = "SELECT * FROM projects WHERE project_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $project_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $project = $result->fetch_assoc();
+    $stmt->close();
+} else {
+    echo "Invalid request.";
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,45 +27,38 @@
     <link rel="stylesheet" href="css/normalize.css">
 </head>
 <body>
-    <?php
-    session_start();
-
-    $hostname = 'db.luddy.indiana.edu';
-    $username = 'i494f24_team61';
-    $password = 'zuzim9344peery';
-    $database = 'i494f24_team61';
-    $conn = new mysqli($hostname, $username, $password, $database);
-    if ($conn->connect_error) {
-      die("Connection failed.". $conn->connect_error);}
-    // collecting form data
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $title = $conn->real_escape_string($_POST['title']);
-        $proj_description = $conn->real_escape_string($_POST['proj_description']);
-        $proj_start = $conn->real_escape_string($_POST['proj_start']);
-        $proj_end = $conn->real_escape_string($_POST['proj_end']);
-        $community_id = $conn->real_escape_string($_POST['community_id']);
-        $sql = "INSERT INTO projects (title, proj_description, proj_start, proj_end, community_id)
-        VALUES ('$title', '$proj_description', '$proj_start', '$proj_end', '$community_id')";
-        if ($conn->query($sql) === TRUE) {
-            $result = "New project request '$title' has been successfully sent for review!";
-        } else {
-            $result = "Error: " . $sql . "<br>" . $conn->error;
-        }
-        $conn->close();
-    }
-    ?>
+    <!-- Nav Bar -->
     <div class="nav">
-                <h3><a href="index.php">Home</a></h3>
-                <?php include 'includes/nav.php' ?>
+        <a href="index.php">
+            <img src="img/logo.jpg" alt="home">
+        </a>
+        <?php include 'includes/nav.php' ?>
     </div>
     <header>
-        <h1>New Project Request Form</h1>
+        <h1>Edit Project</h1>
     </header>
-    <?php if (isset($result)) { ?>
-        <p><?php echo $result; ?> </p>
-    <?php } ?>
+    <div class="form">
+        <form action="update_project.php" method="POST">
+            <input type="hidden" name="project_id" value="<?php echo $project['project_id']; ?>">
+            <label for="title">Project Title:</label>
+            <input type="text" name="title" id="title" required value="<?php echo htmlspecialchars($project['title']); ?>">
+
+            <label for="proj_description">Description:</label>
+            <textarea name="proj_description" id="proj_description" required><?php echo htmlspecialchars($project['proj_description']); ?></textarea>
+
+            <label for="proj_start">Start Date:</label>
+            <input type="date" name="proj_start" id="proj_start" required value="<?php echo $project['proj_start']; ?>">
+
+            <label for="proj_end">End Date:</label>
+            <input type="date" name="proj_end" id="proj_end" required value="<?php echo $project['proj_end']; ?>">
+
+            <input type="submit" value="Update Project">
+        </form>
+    </div>
     <div class="cancel">
             <a href="index.php">Back to home page</a>
     </div>
+    <?php include 'includes/footer.php' ?>
+    <?php $conn->close();?>
 </body>
 </html>
