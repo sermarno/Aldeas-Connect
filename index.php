@@ -1,4 +1,15 @@
 <?php
+session_start();
+include "includes/db.php";
+$sql = "SELECT * FROM projects";
+$result = $conn->query($sql);
+$projects = [];
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $projects[] = $row;
+    }
+}
+
 //array of village data placeholders still need to pull info to village
 $villages = [
     [
@@ -58,7 +69,7 @@ $villages = [
         <?php include 'includes/nav.php' ?>
     </div>
     <header>
-        <h1>Project Overview: <br><span>La Conexión y el Futuro de las Aldeas Inteligentes</span></h1>
+        <h1><span>La Conexión y el Futuro de las Aldeas Inteligentes</span></h1>
     </header>
     <button onclick="translatePage()">Translate to Spanish</button>
     <div id="google_translate_element" style="display:none;"></div>
@@ -71,9 +82,7 @@ $villages = [
             select.dispatchEvent(new Event('change'));
         }
     </script>
-
     <div id="map">
-        <h1 style="text-align: center;">Aldeas Inteligentes: Village Map</h1>
         <script>
             const villages = <?php echo json_encode($villages); ?>;
 
@@ -103,12 +112,25 @@ $villages = [
             window.onload = initMap;
         </script>
     </div>
-    
+    <div class="projects-container">
+        <h3>Community Projects</h3>
+        <div class="proj-grid">
+            <?php
+                if (count($projects) > 0 ) {
+                    foreach ($projects as $project) {
+                        echo "<div class='proj-card'>";
+                        echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
+                        echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
+                        echo "</div>";
+                    }
+                }
+             ?>
+        </div>
+    </div>
     <div class="request">
         <p>Want to see your community's projects here?</p>
         <a href="request.php">Submit a Request</a>
     </div>
-
     <article id="overview">
         <h3>Overview</h3>
         <p>

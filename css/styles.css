@@ -53,7 +53,7 @@
 /* ---------------------------------------------
         GENERAL
 ------------------------------------------------ */
-*/ html {
+html {
   scroll-behavior: smooth;
 }
 
@@ -122,6 +122,27 @@ li span {
   padding: 50px;
 }
 
+/* ---------------------------------------------
+        PROJECT CARDS
+------------------------------------------------ */
+.projects-container {
+  border-top: 1px solid rgba(128, 128, 128, 0.335);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.335);
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 10px;
+  margin-top: 30px;
+}
+
+.proj-grid {
+  display: flex;
+}
+
+.proj-card {
+  border: 3px solid black;
+  padding: 30px;
+  margin: 1em;
+}
 /* ---------------------------------------------
         NAVIGATION / FOOTER
 ------------------------------------------------ */
