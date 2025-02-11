@@ -22,10 +22,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery</title>
-    <link rel="stylesheet" href="styles.css">
-
+    <!-- Linking CSS Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/normalize.css">
 </head>
 <body>
+    <!-- Nav Bar -->
+    <div class="nav">
+        <h3><a href="index.php">Home</a></h3>
+        <?php include 'includes/nav.php' ?>
+    </div>
     <h1>Village Gallery</h1>
     <div class="gallery">
     <?php
