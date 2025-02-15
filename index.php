@@ -126,6 +126,7 @@ $villages = [
                         echo "<div class='proj-card'>";
                         echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
                         echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
+                        // button "see how you can help": a href? or button? 
                         echo "</div>";
                     }
                 }
