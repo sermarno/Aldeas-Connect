@@ -27,7 +27,7 @@
         <hr>
         <div class="existing">
             <p>Already see your project?</p>
-            <a href="exist_proj.php">Update or Remove Project</a>
+            <a href="edit_proj.php">Update or Remove Project</a>
         </div>
         <div class="cancel">
             <a href="index.php">Cancel</a>
