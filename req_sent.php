@@ -1,53 +1,62 @@
+<?php
+session_start();
+include "includes/db.php";
+
+if (isset($_GET['project_id'])) {
+    $project_id = $conn->real_escape_string($_GET['project_id']);
+    $sql = "SELECT * FROM projects WHERE project_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $project_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $project = $result->fetch_assoc();
+    } else {
+        echo "Project not found.";
+        exit();
+    }
+
+    $stmt->close();
+} else {
+    echo "No project provided.";
+    exit();
+}
+
+$conn->close();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Request Sent</title>
-    <!-- Linking CSS Stylesheet -->
+    <title>Project Details</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/normalize.css">
+    <!-- GOOGLE FONTS: Menu Icon -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
 </head>
 <body>
-    <?php
-    session_start();
+    <!-- Nav Bar -->
+    <?php include 'includes/nav.php' ?>
+    <?php include 'includes/side_nav.php' ?>
 
-    $hostname = 'db.luddy.indiana.edu';
-    $username = 'i494f24_team61';
-    $password = 'zuzim9344peery';
-    $database = 'i494f24_team61';
-    $conn = new mysqli($hostname, $username, $password, $database);
-    if ($conn->connect_error) {
-      die("Connection failed.". $conn->connect_error);}
-    // collecting form data
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $title = $conn->real_escape_string($_POST['title']);
-        $proj_description = $conn->real_escape_string($_POST['proj_description']);
-        $proj_start = $conn->real_escape_string($_POST['proj_start']);
-        $proj_end = $conn->real_escape_string($_POST['proj_end']);
-        $community_id = $conn->real_escape_string($_POST['community_id']);
-        $sql = "INSERT INTO projects (title, proj_description, proj_start, proj_end, community_id)
-        VALUES ('$title', '$proj_description', '$proj_start', '$proj_end', '$community_id')";
-        if ($conn->query($sql) === TRUE) {
-            $result = "New project request '$title' has been successfully sent for review!";
-        } else {
-            $result = "Error: " . $sql . "<br>" . $conn->error;
-        }
-        $conn->close();
-    }
-    ?>
-    <div class="nav">
-                <h3><a href="index.php">Home</a></h3>
-                <?php include 'includes/nav.php' ?>
-    </div>
     <header>
-        <h1>New Project Request Form</h1>
+        <h1>Project Changes</h1>
     </header>
-    <?php if (isset($result)) { ?>
-        <p><?php echo $result; ?> </p>
-    <?php } ?>
-    <div class="cancel">
+    <div class="form">
+        <h2><?php echo htmlspecialchars($project['title']); ?></h2>
+        <p><strong>Description:</strong> <?php echo nl2br(htmlspecialchars($project['proj_description'])); ?></p>
+        <p><strong>Start Date:</strong> <?php echo $project['proj_start']; ?></p>
+        <p><strong>End Date:</strong> <?php echo $project['proj_end']; ?></p>
+        <div class="cancel">
             <a href="index.php">Back to home page</a>
+        </div>
     </div>
+    <?php include 'includes/footer.php'; ?>
+    <script src="js/nav.js"></script>
 </body>
 </html>

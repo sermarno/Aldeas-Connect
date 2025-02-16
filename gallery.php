@@ -1,18 +1,8 @@
  <?php
     session_start();
-    
-
-    $hostname = 'db.luddy.indiana.edu';
-    $username = 'i494f24_team61';
-    $password = 'zuzim9344peery';
-    $database = 'i494f24_team61';
-    $conn = new mysqli($hostname, $username, $password, $database);
-    if ($conn->connect_error) {
-      die("Connection failed.". $conn->connect_error);}
-
+    include "includes/db.php";
     $comm_sql = "SELECT comm_name, comm_description FROM communities";
     $comm_result = $conn->query($comm_sql);
-    $conn->close();
 ?>
 
 
@@ -25,13 +15,17 @@
     <!-- Linking CSS Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/normalize.css">
+    <!-- GOOGLE FONTS: Menu Icon -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
 </head>
 <body>
     <!-- Nav Bar -->
-    <div class="nav">
-        <h3><a href="index.php">Home</a></h3>
-        <?php include 'includes/nav.php' ?>
-    </div>
+    <?php include 'includes/nav.php' ?>
+    <?php include 'includes/side_nav.php' ?>
+
     <h1>Village Gallery</h1>
     <div class="gallery">
     <?php
@@ -68,6 +62,9 @@
             lightbox.style.display = 'none';
         });
     </script>
+    <?php include 'includes/footer.php' ?>
+    <script src="js/nav.js"></script>
+    <?php $conn->close(); ?>
     
 </body>
 </html>

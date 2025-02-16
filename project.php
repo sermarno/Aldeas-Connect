@@ -7,14 +7,18 @@
     <!-- Linking CSS Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/normalize.css">
+    <!-- GOOGLE FONTS: Menu Icon -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
 </head>
 <body>
     <main>
-        <!-- Nav Bar -->
-        <div class="nav">
-            <h3><a href="index.php">Title</a></h3>
-            <?php include 'includes/nav.php' ?>
-        </div>
+    <!-- Nav Bar -->
+    <?php include 'includes/nav.php' ?>
+    <?php include 'includes/side_nav.php' ?>
+
         <header>
             <h1>Project Overview: <br><span>La Conexión y el Futuro de las Aldeas Inteligentes</span></h1>
         </header>
@@ -103,5 +107,7 @@
             </ul>
         </article>
     </main>
+    <?php include 'includes/footer.php' ?>
+    <script src="js/nav.js"></script>
 </body>
 </html>

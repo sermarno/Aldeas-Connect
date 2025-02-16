@@ -10,10 +10,9 @@
 </head>
 <body>
     <!-- Nav Bar -->
-    <div class="nav">
-        <h3><a href="index.php">Home</a></h3>
-        <?php include 'includes/nav.php' ?>
-    </div>
+    <?php include 'includes/nav.php' ?>
+    <?php include 'includes/side_nav.php' ?>
+
     <header>
         <h1>Login</h1>
     </header>
@@ -28,5 +27,7 @@
     </div>
 
     <div class="g_id_signin" data-type="standard"></div>
+    <?php include 'includes/footer.php' ?>
+    <script src="js/nav.js"></script>
 </body>
 </html>
