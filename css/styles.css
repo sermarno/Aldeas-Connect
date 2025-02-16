@@ -1,3 +1,6 @@
+/* ---------------------------------------------
+        TEAM PAGE
+------------------------------------------------ */
 .team-container {
   display: flex;
   flex-wrap: wrap;
@@ -144,32 +147,110 @@ li span {
   margin: 1em;
 }
 /* ---------------------------------------------
-        NAVIGATION / FOOTER
+        NAVIGATION
 ------------------------------------------------ */
-nav,
-.nav {
+nav {
   background-color: blanchedalmond;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   z-index: 9999;
-  border-radius: 5px;
   width: 100%;
-}
-
-.nav img {
-  width: 100px;
-  border-radius: 5px;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.nav {
   position: fixed;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+nav img {
+  width: 80px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.all-over-bkg {
+  display: none;
+}
+
+.is-visible {
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: 9999;
+  display: block;
+}
+
+#side_nav {
+  z-index: 10000;
+}
+
+.side_nav {
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.5s;
+  background-color: burlywood;
+  width: 0;
+}
+
+#side_nav ul {
+  display: block;
+}
+
+.open {
+  width: 50px;
+}
+
 nav ul {
   display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 48;
+}
+
+.openbtn {
+  position: fixed;
+  left: 20px;
+  top: 20px;
   color: black;
+  cursor: pointer; /* making cursor more visible when hovering over menu */
+}
+
+.openbtn:hover {
+  color: darkgray;
+}
+
+.menu-button {
+  font-size: 30px !important;
+  position: relative;
+  top: 0;
+  left: -4px;
+}
+
+.closebtn {
+  position: absolute;
+  top: 30px;
+  right: 5px;
+  font-size: 30px;
+  margin-left: 50px;
+  cursor: pointer;
+}
+
+nav .logo {
+  flex-grow: 1;
+  text-align: center;
+}
+
+nav .login {
+  text-align: right;
 }
 
 nav li {
@@ -177,20 +258,23 @@ nav li {
   padding: 5px 2em;
 }
 
-.nav a {
-  color: black;
-  text-decoration: none;
+#side_nav li {
+  padding: 10px;
+  margin: 0;
 }
 
-.nav h3 a {
-  font-weight: bold;
-  font-size: 20px;
-  padding-left: 20px;
+nav a {
+  color: black;
+  text-decoration: none;
 }
 
 a:hover {
   font-weight: bold;
 }
+
+/* ---------------------------------------------
+        FOOTER
+------------------------------------------------ */
 
 footer {
   background-color: gray;

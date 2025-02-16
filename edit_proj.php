@@ -66,15 +66,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_project'])) {
     <title>Edit/Remove Project Request</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/normalize.css">
+    <!-- GOOGLE FONTS: Menu Icon -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
 </head>
 <body>
     <!-- Nav Bar -->
-    <div class="nav">
-        <a href="index.php">
-            <img src="img/logo.jpg" alt="home">
-        </a>
-        <?php include 'includes/nav.php' ?>
-    </div>
+    <?php include 'includes/nav.php' ?>
+    <?php include 'includes/side_nav.php' ?>
+
     <header>
         <h1>Edit Project Request Form</h1>
     </header>
@@ -144,6 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_project'])) {
     </div>
     
     <?php include 'includes/footer.php'; ?>
+    <script src="js/nav.js"></script>
     <?php $conn->close(); ?>
 </body>
 </html>

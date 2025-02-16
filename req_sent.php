@@ -33,14 +33,17 @@ $conn->close();
     <title>Project Details</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/normalize.css">
+    <!-- GOOGLE FONTS: Menu Icon -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
 </head>
 <body>
-    <div class="nav">
-        <a href="index.php">
-            <img src="img/logo.jpg" alt="home">
-        </a>
-        <?php include 'includes/nav.php' ?>
-    </div>
+    <!-- Nav Bar -->
+    <?php include 'includes/nav.php' ?>
+    <?php include 'includes/side_nav.php' ?>
+
     <header>
         <h1>Project Changes</h1>
     </header>
@@ -54,5 +57,6 @@ $conn->close();
         </div>
     </div>
     <?php include 'includes/footer.php'; ?>
+    <script src="js/nav.js"></script>
 </body>
 </html>

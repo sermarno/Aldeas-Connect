@@ -6,15 +6,17 @@
     <title>Messages</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/styles.css">
+    <!-- GOOGLE FONTS: Menu Icon -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
 </head>
 <body>
     <!-- Nav Bar -->
-    <div class="nav">
-        <a href="index.php">
-            <img src="img/logo.jpg" alt="home">
-        </a>
-        <?php include 'includes/nav.php' ?>
-    </div>
+    <?php include 'includes/nav.php' ?>
+    <?php include 'includes/side_nav.php' ?>
+
     <header>
         <h1>Messenger</h1>
     </header>
@@ -27,6 +29,7 @@
     </form>
 
 <?php include 'includes/footer.php' ?>
+<script src="js/nav.js"></script>
     
 </body>
 </html>

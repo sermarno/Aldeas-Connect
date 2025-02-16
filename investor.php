@@ -30,15 +30,17 @@
     <!-- Linking CSS Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/normalize.css">
+    <!-- GOOGLE FONTS: Menu Icon -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
 </head>
 <body>
     <!-- Nav Bar -->
-    <div class="nav">
-        <a href="index.php">
-            <img src="img/logo.jpg" alt="home">
-        </a>
-        <?php include 'includes/nav.php' ?>
-    </div>
+    <?php include 'includes/nav.php' ?>
+    <?php include 'includes/side_nav.php' ?>
+
 <header>
     <h1>Investor Page</h1>
 </header>
@@ -57,7 +59,6 @@
 </table>
 <h2>Where You Can Help</h2>
 <!--Table to show project title, where the project needs assistance.-->
-<?php include 'includes/footer.php' ?>
 <table>
     <tr>
         <th>Community</th>
@@ -80,6 +81,9 @@
         <td>More wifi routers for intenet.</td>
     </tr>
 </table>
+
+<?php include 'includes/footer.php' ?>
+<script src="js/nav.js"></script>
 
 </body>
 </html>
