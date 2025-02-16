@@ -36,6 +36,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['project_id'])) {
     $stmt->close();
 }
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_project'])) {
+    $project_id = $_POST['project_id'];
+    $title = $conn->real_escape_string($_POST['title']);
+    $proj_description = $conn->real_escape_string($_POST['proj_description']);
+    $proj_start = $conn->real_escape_string($_POST['proj_start']);
+    $proj_end = $conn->real_escape_string($_POST['proj_end']);
+
+    $sql = "UPDATE projects SET title = ?, proj_description = ?, proj_start = ?, proj_end = ? WHERE project_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssssi", $title, $proj_description, $proj_start, $proj_end, $project_id);
+
+    if ($stmt->execute()) {
+        header('Location: req_sent.php?project_id=' . $project_id);
+        exit();
+    } else {
+        echo "Could not update project: " . $conn->error;
+    }
+
+    $stmt->close(); 
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -97,20 +118,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['project_id'])) {
 
         <!-- If a project is selected, display the edit form with pre-populated details -->
         <?php if ($project): ?>
-            <form action="update_project.php" method="POST">
+            <form action="edit_proj.php" method="POST">
                 <input type="hidden" name="project_id" value="<?php echo $project['project_id']; ?>">
+                <input type="hidden" name="update_project" value="1">
                 
                 <label for="title">Project Title:</label>
-                <input type="text" name="title" id="title" required value="<?php echo htmlspecialchars($project['title']); ?>">
+                <input type="text" name="title" id="title" required value="<?php echo htmlspecialchars($project['title']); ?>"><br>
 
                 <label for="proj_description">Description:</label>
-                <textarea name="proj_description" id="proj_description" required><?php echo htmlspecialchars($project['proj_description']); ?></textarea>
+                <textarea name="proj_description" id="proj_description" required><?php echo htmlspecialchars($project['proj_description']); ?></textarea><br>
 
                 <label for="proj_start">Start Date:</label>
-                <input type="date" name="proj_start" id="proj_start" required value="<?php echo $project['proj_start']; ?>">
+                <input type="date" name="proj_start" id="proj_start" required value="<?php echo $project['proj_start']; ?>"><br>
 
                 <label for="proj_end">End Date:</label>
-                <input type="date" name="proj_end" id="proj_end" required value="<?php echo $project['proj_end']; ?>">
+                <input type="date" name="proj_end" id="proj_end" required value="<?php echo $project['proj_end']; ?>"><br>
 
                 <input type="submit" value="Update Project">
             </form>
