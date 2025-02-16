@@ -11,8 +11,10 @@
 <body>
     <!-- Nav Bar -->
     <div class="nav">
-            <h3><a href="index.php">Home</a></h3>
-            <?php include 'includes/nav.php' ?>
+        <a href="index.php">
+            <img src="img/logo.jpg" alt="home">
+        </a>
+        <?php include 'includes/nav.php' ?>
     </div>
     <header>
         <h1>Project Request</h1>
@@ -25,12 +27,13 @@
         <hr>
         <div class="existing">
             <p>Already see your project?</p>
-            <a href="exist_proj.php">Update or Remove Project</a>
+            <a href="edit_proj.php">Update or Remove Project</a>
         </div>
         <div class="cancel">
             <a href="index.php">Cancel</a>
         </div>
     </div>
+    <?php include 'includes/footer.php' ?>
 
 </body>
 </html>

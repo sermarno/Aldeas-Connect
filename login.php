@@ -11,7 +11,9 @@
 <body>
     <!-- Nav Bar -->
     <div class="nav">
-        <h3><a href="index.php">Home</a></h3>
+        <a href="index.php">
+            <img src="img/logo.jpg" alt="home">
+        </a>
         <?php include 'includes/nav.php' ?>
     </div>
     <header>
@@ -28,5 +30,6 @@
     </div>
 
     <div class="g_id_signin" data-type="standard"></div>
+    <?php include 'includes/footer.php' ?>
 </body>
 </html>
