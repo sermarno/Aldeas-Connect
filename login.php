@@ -7,6 +7,11 @@
     <!-- Linking CSS Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/normalize.css">
+    <!-- GOOGLE FONTS: Menu Icon -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
 </head>
 <body>
     <!-- Nav Bar -->
