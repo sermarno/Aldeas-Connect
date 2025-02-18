@@ -1,5 +1,4 @@
 <?php
-    session_start();
     include 'includes/db.php';
     $comm_sql = "SELECT * FROM communities";
     $comm_result = $conn->query($comm_sql);
@@ -31,11 +30,11 @@
     </header>
     <div class="form">
         <form action="req_sent.php" method="POST">
-            <input type="hidden" name="request_id" value="<?php echo $row['request_id']; ?>">
-            Project Title: <input type="text" name="title" value="<?php echo htmlspecialchars($row['title']); ?>"><br>
-            Project Description: <input type="text" name="proj_description" value="<?php echo htmlspecialchars($row['req_description']); ?>"><br>
-            Project Start Date: <input type="date" name="proj_start" value="<?php echo $row['proj_start']; ?>"><br>
-            Project End Date: <input type="date" name="proj_end" value="<?php echo $row['proj_end']; ?>"><br>
+            <input type="hidden" name="request_id">
+            Project Title: <input type="text" name="title"><br>
+            Project Description: <input type="text" name="proj_description"><br>
+            Project Start Date: <input type="date" name="proj_start"><br>
+            Project End Date: <input type="date" name="proj_end"><br>
             What community are you a part of?
             <select name="community_id" id="community" required>
                 <option value="">Select a community</option>
@@ -47,7 +46,7 @@
                 }
                 ?>
             </select> <br>
-            <input type="submit">
+            <input type="submit" value="Send Request">
         </form>
     </div>
     <?php include 'includes/footer.php' ?>

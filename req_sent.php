@@ -1,8 +1,34 @@
 <?php
-session_start();
+ini_set('display_errors', 1); // Enable error reporting
+error_reporting(E_ALL); // Show all errors
+
 include "includes/db.php";
 
-if (isset($_GET['project_id'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $title = $conn->real_escape_string($_POST['title']);
+    $proj_description = $conn->real_escape_string($_POST['proj_description']);
+    $proj_start = $conn->real_escape_string($_POST['proj_start']);
+    $proj_end = $conn->real_escape_string($_POST['proj_end']);
+    $community_id = $conn->real_escape_string($_POST['community_id']);
+
+    $sql = "INSERT INTO projects (title, proj_description, proj_start, proj_end, community_id) VALUES (?, ?, ?, ?, ?)";
+    
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssssi", $title, $proj_description, $proj_start, $proj_end, $community_id);
+    if ($stmt->execute()) {
+        $new_project_id = $conn->insert_id;
+        $query = "SELECT * FROM projects WHERE project_id = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $new_project_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $project = $result->fetch_assoc();
+        $stmt->close();
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+
+} else if (isset($_GET['project_id'])) {
     $project_id = $conn->real_escape_string($_GET['project_id']);
     $sql = "SELECT * FROM projects WHERE project_id = ?";
     $stmt = $conn->prepare($sql);
@@ -17,7 +43,6 @@ if (isset($_GET['project_id'])) {
         exit();
     }
 
-    $stmt->close();
 } else {
     echo "No project provided.";
     exit();
@@ -30,7 +55,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Details</title>
+    <title>Request Summary</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/normalize.css">
     <!-- GOOGLE FONTS: Menu Icon -->
@@ -45,11 +70,11 @@ $conn->close();
     <?php include 'includes/side_nav.php' ?>
 
     <header>
-        <h1>Project Changes</h1>
+        <h1>Request Summary</h1>
     </header>
     <div class="form">
         <h2><?php echo htmlspecialchars($project['title']); ?></h2>
-        <p><strong>Description:</strong> <?php echo nl2br(htmlspecialchars($project['proj_description'])); ?></p>
+        <p><strong>Description:</strong> <?php echo htmlspecialchars(($project['proj_description'])); ?></p>
         <p><strong>Start Date:</strong> <?php echo $project['proj_start']; ?></p>
         <p><strong>End Date:</strong> <?php echo $project['proj_end']; ?></p>
         <div class="cancel">
