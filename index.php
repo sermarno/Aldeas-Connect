@@ -124,9 +124,11 @@ $villages = [
                 if (count($projects) > 0 ) {
                     foreach ($projects as $project) {
                         echo "<div class='proj-card'>";
+                        echo "<div class='card-body'>"; //Adding card body
                         echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
                         echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
                         echo "</div>";
+                        echo "</div>"
                     }
                 }
              ?>
