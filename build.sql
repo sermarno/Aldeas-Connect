@@ -51,12 +51,13 @@ CREATE TABLE projects (
 -- project requests
 CREATE TABLE project_requests (
     request_id INT PRIMARY KEY AUTO_INCREMENT,
+    project_id INT,
     title VARCHAR(255),
-    req_description TEXT,
+    proj_description TEXT,
     proj_start DATE,
     proj_end DATE,
-    res_comments TEXT, -- for any additional information (questions, comments, concerns, help needed)
-    req_status ENUM('approved', 'denied', 'pending'),
+    request_status ENUM('approved', 'denied', 'pending') DEFAULT 'pending',
+    admin_comments TEXT,
     user_id INT,
     community_id INT,
     FOREIGN KEY (user_id) REFERENCES users(user_id),
@@ -82,11 +83,13 @@ INSERT INTO communities (comm_name, comm_description, comm_location) VALUES
 ('Community 3', 'Community 3 description', 'Community 3 location');
 
 INSERT INTO projects (title, proj_description, proj_start, proj_end, request_status, admin_comments, user_id, community_id) VALUES
-('Project 1', 'Project 1 description', '2020-11-12', '2025-09-07', 'pending', null, 1, 1),
-('Project 2', 'Project 2 description', '2022-09-12', '2027-04-07', 'approved', 'I look forward to seeing your progress!', 2, 3);
+('Project 1', 'Project 1 description', '2020-11-12', '2025-09-07', 'approved', 'Looks great! Let us know if you need any help.', 1, 1),
+('Project 2', 'Project 2 description', '2022-09-12', '2027-04-07', 'approved', 'I look forward to seeing your progress!', 2, 3),
+('Project 5', 'Project 5 description', '2025-09-12', '2026-10-15', 'approved', 'Your project has been approved!', 1, 3);
 
-INSERT INTO project_requests (title, req_description, proj_start, proj_end, res_comments, req_status, user_id, community_id) VALUES
-('Project Req 1', 'Project Req 1 description', '2022-11-09', '2026-01-03', 'Resident Comments 1', 'pending', 1, 1);
+INSERT INTO project_requests (title, proj_description, proj_start, proj_end, request_status, admin_comments, user_id, community_id) VALUES
+('Project 3', 'Project 3 description', '2025-04-09', '2026-01-03', 'pending', null, 1, 1),
+('Project 4', 'Project 4 description', '2025-11-09', '2028-11-04', 'approved', "This is a really great project to work on!", 2, 2);
 
 INSERT INTO required_help (community, req_resources) VALUES
 ('Yokdzonot-Hu, Yaxkabá', 'More carving tools.'),
