@@ -127,8 +127,9 @@ $villages = [
                         echo "<div class='card-body'>"; //Adding card body
                         echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
                         echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
+                        echo "<a href='investor.php?project_id=" . $project['id'] . "' class='donate-btn'>Donate</a>";
                         echo "</div>";
-                        echo "</div>"
+                        echo "</div>";
                     }
                 }
              ?>
@@ -147,6 +148,6 @@ $villages = [
             From improving education and healthcare to boosting local commerce, we're creating a platform that helps amplify the voices and aspirations of Mexico's underrated regions.
         </p>
     </article>
-    <?php include 'includes/footer.php' ?>
+    <?php include 'includes/footer.php'; ?>
 </body>
 </html>
