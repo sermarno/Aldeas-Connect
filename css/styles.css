@@ -146,6 +146,7 @@ li span {
   padding: 30px;
   margin: 1em;
 }
+
 /* ---------------------------------------------
         NAVIGATION
 ------------------------------------------------ */
@@ -221,7 +222,8 @@ nav ul {
   left: 20px;
   top: 20px;
   color: black;
-  cursor: pointer; /* making cursor more visible when hovering over menu */
+  cursor: pointer;
+  /* making cursor more visible when hovering over menu */
 }
 
 .openbtn:hover {
@@ -345,4 +347,27 @@ footer a:hover {
 .lightbox img {
   max-width: 90%;
   max-height: 90%;
+}
+
+/* ---------------------------------------------
+        ABOUT PAGE
+------------------------------------------------ */
+
+.about-container img {
+  width: 500px;
+  align-self: center;
+  border: 2px solid black;
+  border-radius: 8px;
+}
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  padding: 50px;
+  width: 1000px;
+  margin: 0 auto;
+  background-color: antiquewhite;
+  border: 1px solid black;
 }
