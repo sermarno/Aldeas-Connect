@@ -43,11 +43,16 @@ $villages = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
+    <title>Aldeas Inteligentes IU</title>
     <!-- Linking CSS Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- GOOGLE FONTS: Menu Icon -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
@@ -65,14 +70,10 @@ $villages = [
         }
     </style>
 </head>
-<body>
     <!-- Nav Bar -->
-    <div class="nav">
-        <a href="index.php">
-            <img src="img/logo.jpg" alt="home">
-        </a>
-        <?php include 'includes/nav.php' ?>
-    </div>
+    <?php include 'includes/nav.php' ?>
+    <?php include 'includes/side_nav.php' ?>
+
     <header>
         <h1><span>La Conexión y el Futuro de las Aldeas Inteligentes</span></h1>
     </header>
@@ -127,8 +128,12 @@ $villages = [
                         echo "<div class='card-body'>"; //Adding card body
                         echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
                         echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
+<<<<<<< HEAD
                         echo "<a href='investor.php?project_id=" . $project['id'] . "' class='donate-btn'>Donate</a>";
                         echo "</div>";
+=======
+                        // button "see how you can help": a href? or button? 
+>>>>>>> 89037c0025dfe5e2f83eaa67a5ec9d6129b50eb1
                         echo "</div>";
                     }
                 }
@@ -148,6 +153,11 @@ $villages = [
             From improving education and healthcare to boosting local commerce, we're creating a platform that helps amplify the voices and aspirations of Mexico's underrated regions.
         </p>
     </article>
+<<<<<<< HEAD
     <?php include 'includes/footer.php'; ?>
+=======
+    <?php include 'includes/footer.php' ?>
+    <script src="js/nav.js"></script>
+>>>>>>> 89037c0025dfe5e2f83eaa67a5ec9d6129b50eb1
 </body>
 </html>
