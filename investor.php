@@ -12,30 +12,16 @@
     <!-- Linking CSS Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/normalize.css">
-    <!-- GOOGLE FONTS: Menu Icon -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    />
 </head>
 
 <body>
     <!-- Nav Bar -->
-<<<<<<< HEAD
     <div class="nav">
         <a href="index.php">
             <img src="img/logo.jpg" alt="home">
         </a>
         <?php include 'includes/nav.php'; ?>
     </div>
-=======
-    <?php include 'includes/nav.php' ?>
-    <?php include 'includes/side_nav.php' ?>
-
-<header>
-    <h1>Investor Page</h1>
-</header>
->>>>>>> 89037c0025dfe5e2f83eaa67a5ec9d6129b50eb1
 
     <header>
         <h1>Investor Page</h1>
@@ -43,7 +29,6 @@
 
     <h2>Projects</h2>
 
-<<<<<<< HEAD
     <!-- Table to show ongoing projects, projects in progress, etc. -->
     <div class="projects-container">
         <h3>Community Projects</h3>
@@ -89,43 +74,6 @@
         // Close database connection
         mysqli_close($conn);
     ?>
-=======
-<table>
-    <tr>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Project Timeline</th>
-        <th>Project Percentage</th>
-    </tr>
-</table>
-<h2>Where You Can Help</h2>
-<!--Table to show project title, where the project needs assistance.-->
-<table>
-    <tr>
-        <th>Community</th>
-        <th>Required Resources</th>
-    </tr>
-    <tr>
-        <td>Yokdzonot-Hu, Yaxkabá</td>
-        <td>More carving tools.</td>
-    </tr>
-    <tr>
-        <td>Tikum, Tekax</td>
-        <td>More containers.</td>
-    </tr>
-    <tr>
-        <td>Hunukú, Temozón</td>
-        <td>More computers for online resources.</td>
-    </tr>
-    <tr>
-        <td>Cazumá, Cazumá</td>
-        <td>More wifi routers for intenet.</td>
-    </tr>
-</table>
->>>>>>> 89037c0025dfe5e2f83eaa67a5ec9d6129b50eb1
-
-<?php include 'includes/footer.php' ?>
-<script src="js/nav.js"></script>
 
 </body>
 </html>
