@@ -1,6 +1,7 @@
 <nav id="side_nav" class="side_nav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     <ul>
+        <li><a href="requests.php">Project Requests</a></li>
         <li><a href="messages.php">Messenger</a></li>
         <li><a href="investor.php">Investors</a></li>
         <li><a href="gallery.php">Gallery</a></li>
