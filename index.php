@@ -75,7 +75,7 @@ $villages = [
     <?php include 'includes/side_nav.php' ?>
 
     <header>
-        <h1><span>Hello</span></h1>
+        <h1><span>La Conexión y el Futuro de las Aldeas Inteligentes</span></h1>
     </header>
     <button onclick="translatePage()">Translate to Spanish</button>
     <div id="google_translate_element" style="display:none;"></div>
