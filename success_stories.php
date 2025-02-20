@@ -25,7 +25,25 @@
     <?php include 'includes/nav.php'; ?>
     <?php include 'includes/side_nav.php'; ?>
 
-    <header><h1>Success Stories</h1></header>
+
+
+    <hr>
+    <div class="testimonials">
+        <h1>Read Stories From the Villages</h1>
+        <?php foreach ($testimonials as $t) { ?>
+            <div class="testimonial">
+                <h3><?= htmlspecialchars($t['user_id']) ?> (Community: <?= htmlspecialchars($t['community_id']) ?>)</h3>
+                <p><?= htmlspecialchars($t['story_text']) ?></p>
+                <?php if (!empty($t['video_url'])) { ?>
+                    <video width="300" controls>
+                        <source src="<?= htmlspecialchars($t['video_url']) ?>" type="video/mp4">
+                    </video>
+                <?php } ?>
+                <p class="category">Category: <?= htmlspecialchars($t['category']) ?></p>
+            </div>
+        <?php } ?>
+    </div>
+    <header><h2>Add Your Story</h2></header>
 
     <div class="form">
         <form action="story_sent.php" method="POST" enctype="multipart/form-data">
@@ -57,24 +75,6 @@
             <input type="submit" value="Share Your Story">
         </form>
     </div>
-
-    <hr>
-    <div class="testimonials">
-        <h2>Read Success Stories</h2>
-        <?php foreach ($testimonials as $t) { ?>
-            <div class="testimonial">
-                <h3><?= htmlspecialchars($t['user_id']) ?> (Community: <?= htmlspecialchars($t['community_id']) ?>)</h3>
-                <p><?= htmlspecialchars($t['story_text']) ?></p>
-                <?php if (!empty($t['video_url'])) { ?>
-                    <video width="300" controls>
-                        <source src="<?= htmlspecialchars($t['video_url']) ?>" type="video/mp4">
-                    </video>
-                <?php } ?>
-                <p class="category">Category: <?= htmlspecialchars($t['category']) ?></p>
-            </div>
-        <?php } ?>
-    </div>
-
     <?php include 'includes/footer.php'; ?>
     <script src="js/nav.js"></script>
 </body>
