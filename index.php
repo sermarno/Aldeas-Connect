@@ -72,7 +72,6 @@ $villages = [
 </head>
     <!-- Nav Bar -->
     <?php include 'includes/nav.php' ?>
-    <?php include 'includes/side_nav.php' ?>
 
     <header>
         <h1><span>La Conexión y el Futuro de las Aldeas Inteligentes</span></h1>

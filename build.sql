@@ -67,6 +67,7 @@ CREATE TABLE project_requests (
     FOREIGN KEY (community_id) REFERENCES communities(community_id)
 ) ENGINE=INNODB;
 
+-- Testimonial/Connectivity
 -- Tetimonial/Connectivity
 CREATE TABLE testimonials (
     testimonial_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -80,7 +81,8 @@ CREATE TABLE testimonials (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
     FOREIGN KEY (community_id) REFERENCES communities(community_id) ON DELETE CASCADE
-) ENGINE=INNODB;
+    ) ENGINE=INNODB;
+
 -- community help needed
 CREATE TABLE required_help (
     help_id INT AUTO_INCREMENT,
@@ -114,8 +116,9 @@ INSERT INTO project_requests (title, req_description, proj_start, proj_end, res_
 INSERT INTO testimonials (user_id, community_id, story_text, video_url, category, status)
 VALUES
 (1, 1, 'My name is Elisa Cercanche, I live in the community of Tiunca, municipality of Yaxcabá, I am a community educator in the community of San Marcos. Preschool level, for me the smart villages project is one, it is a support that has served us in the Community, in rural communities such as the Community of Tiuncá, since it has been used educationally.', 'uploads/sample_video.mp4', 'Education', 'approved'),
-(2, 3, 'My name is Juanita Atzuk Heredia, I am from the community of Santa Cruz Chemax, Yucatán. It has been of many benefits to all of us in this Community because through them many community projects have been worked on, within which women's rights are covered, because in communities like these is where violence is suffered the most, because women You don't know all your rights. Of course, with programs like these smart villages, the risk of violence in the home can be minimized.
-', 'uploads/sample_video.mp4', 'Education', 'approved');
+(2, 3, "My name is Juanita Atzuk Heredia, I am from the community of Santa Cruz Chemax, Yucatán. It has been of many benefits to all of us in this Community because through them many community projects have been worked on, within which women's rights are covered, because in communities like these is where violence is suffered the most, because women You don't know all your rights. Of course, with programs like these smart villages, the risk of violence in the home can be minimized.
+", 'uploads/sample_video.mp4', 'Education', 'approved');
+
 INSERT INTO required_help (community, req_resources) VALUES
 ('Yokdzonot-Hu, Yaxkabá', 'More carving tools.'),
 ('Tikum, Tekax', 'More containers.'),
@@ -125,3 +128,4 @@ INSERT INTO required_help (community, req_resources) VALUES
 INSERT INTO messages (message_text, sender_id, receiver_id) VALUES
 ("hello", 2, 1),
 ("hi", 1, 2);
+
