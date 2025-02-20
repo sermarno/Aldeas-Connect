@@ -125,9 +125,15 @@ $villages = [
                 if (count($projects) > 0 ) {
                     foreach ($projects as $project) {
                         echo "<div class='proj-card'>";
+                        echo "<div class='card-body'>"; //Adding card body
                         echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
                         echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
+<<<<<<< HEAD
+                        echo "<a href='investor.php?project_id=" . $project['id'] . "' class='donate-btn'>Donate</a>";
+                        echo "</div>";
+=======
                         // button "see how you can help": a href? or button? 
+>>>>>>> 89037c0025dfe5e2f83eaa67a5ec9d6129b50eb1
                         echo "</div>";
                     }
                 }
@@ -147,7 +153,11 @@ $villages = [
             From improving education and healthcare to boosting local commerce, we're creating a platform that helps amplify the voices and aspirations of Mexico's underrated regions.
         </p>
     </article>
+<<<<<<< HEAD
+    <?php include 'includes/footer.php'; ?>
+=======
     <?php include 'includes/footer.php' ?>
     <script src="js/nav.js"></script>
+>>>>>>> 89037c0025dfe5e2f83eaa67a5ec9d6129b50eb1
 </body>
 </html>
