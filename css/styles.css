@@ -181,9 +181,7 @@ nav {
 }
 
 nav img {
-  width: 80px;
-  border-radius: 5px;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  width: 100px;
 }
 
 .all-over-bkg {
@@ -264,11 +262,6 @@ nav ul {
   font-size: 30px;
   margin-left: 50px;
   cursor: pointer;
-}
-
-nav .logo {
-  flex-grow: 1;
-  text-align: center;
 }
 
 nav .login {

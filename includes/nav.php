@@ -1,13 +1,13 @@
 <nav>
     <ul>
         <li><?php include "includes/side_nav.php" ?></li>
-        <li class="logo">
-            <a href="index.php">
-                <img src="img/logo.jpg" alt="home">
-            </a>
-        </li>
+        <a href="index.php">
+            <img src="img/logo.png" alt="home">
+        </a>
         <li class="login">
-            <a href="login.php">Login/Sign Up</a>
+            <a href="login.php">
+                <a href="img/account_icon.png"></a>
+            </a>
         </li>
     </ul>
 </nav>
