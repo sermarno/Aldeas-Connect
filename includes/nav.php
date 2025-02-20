@@ -6,7 +6,7 @@
         </a>
         <li class="login">
             <a href="login.php">
-                <a href="img/account_icon.png"></a>
+                <img src="img/account.png" alt="account"></img>
             </a>
         </li>
     </ul>
