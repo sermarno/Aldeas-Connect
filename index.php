@@ -150,5 +150,6 @@ $villages = [
         </p>
     </article>
     <?php include 'includes/footer.php'; ?>
+    <script src="js/nav.js"></script>
 </body>
 </html>
