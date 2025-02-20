@@ -1,6 +1,5 @@
 <?php
     include "includes/db.php"; // Moved this to the top before queries
-    include 'includes/footer.php'; // Corrected semicolon
 ?>
 
 <!DOCTYPE html>
@@ -74,6 +73,8 @@
         // Close database connection
         mysqli_close($conn);
     ?>
-
+<?php
+    include 'includes/footer.php';
+?>
 </body>
 </html>
