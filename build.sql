@@ -68,6 +68,7 @@ CREATE TABLE project_requests (
 ) ENGINE=INNODB;
 
 -- Testimonial/Connectivity
+-- Tetimonial/Connectivity
 CREATE TABLE testimonials (
     testimonial_id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT NOT NULL,
@@ -88,7 +89,6 @@ CREATE TABLE required_help (
     community VARCHAR(255) NOT NULL,
     req_resources VARCHAR(255),
     PRIMARY KEY (help_id)
->>>>>>> origin
 ) ENGINE=INNODB;
 
 -- insert statements with test data
