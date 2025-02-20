@@ -72,7 +72,6 @@ $villages = [
 </head>
     <!-- Nav Bar -->
     <?php include 'includes/nav.php' ?>
-    <?php include 'includes/side_nav.php' ?>
 
     <header>
         <h1><span>Hello</span></h1>
