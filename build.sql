@@ -70,7 +70,6 @@ CREATE TABLE project_requests (
     FOREIGN KEY (community_id) REFERENCES communities(community_id)
 ) ENGINE=INNODB;
 
-<<<<<<< HEAD
 -- Tetimonial/Connectivity
 CREATE TABLE testimonials (
     testimonial_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -84,14 +83,13 @@ CREATE TABLE testimonials (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
     FOREIGN KEY (community_id) REFERENCES communities(community_id) ON DELETE CASCADE
-=======
+) ENGINE=INNODB;
 -- community help needed
 CREATE TABLE required_help (
     help_id INT AUTO_INCREMENT,
     community VARCHAR(255) NOT NULL,
     req_resources VARCHAR(255),
     PRIMARY KEY (help_id)
->>>>>>> origin
 ) ENGINE=INNODB;
 
 -- insert statements with test data
