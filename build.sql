@@ -4,13 +4,10 @@ DROP TABLE IF EXISTS projects CASCADE;
 DROP TABLE IF EXISTS required_help;
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS communities CASCADE;
-<<<<<<< HEAD
 DROP TABLE IF EXISTS projects CASCADE;
 DROP TABLE IF EXISTS project_requests CASCADE;
 DROP TABLE IF EXISTS testimonials CASCADE;
-=======
 
->>>>>>> origin
 -- user
 CREATE TABLE users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
