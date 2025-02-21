@@ -92,7 +92,7 @@ $villages = [
                                 echo "<div class='proj-card'>";
                                 echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
                                 echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
-                                echo "<a href='investor.php?project_id=" . $project['id'] . "' class='donate-btn'>Donate</a>";
+                                echo "<a href='investor.php?project_id=" . $project['id'] . "class='donate-btn'>Donate</a>";
                                 echo "</div>";
                             }
                         }
@@ -142,9 +142,7 @@ $villages = [
                         echo "</div>";
                     }
                 }
-
-                window.onload = initMap;
-            </script>
+            ?>
         </div>
     </div>
     <div class="request">
