@@ -1,5 +1,14 @@
 <?php
-    include "includes/db.php"; // Moved this to the top before queries
+    session_start();
+    include "includes/db.php";
+    $sql = "SELECT * FROM projects";
+    $result = $conn->query($sql);
+    $projects = [];
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            $projects[] = $row;
+        }
+    } // Moved this to the top before queries
 ?>
 
 <!DOCTYPE html>
@@ -11,23 +20,20 @@
     <!-- Linking CSS Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/normalize.css">
-</head>
 
-<body>
     <!-- Nav Bar -->
     <div class="nav">
         <a href="index.php">
             <img src="img/logo.jpg" alt="home">
         </a>
-        <?php include 'includes/nav.php'; ?>
+        <?php include 'includes/nav.php'; 
+         include 'includes/side_nav.php';?>
     </div>
-
     <header>
         <h1>Investor Page</h1>
     </header>
-
-    <h2>Projects</h2>
-
+</head>
+<body>
     <!-- Table to show ongoing projects, projects in progress, etc. -->
     <div class="projects-container">
         <h3>Community Projects</h3>
@@ -40,7 +46,7 @@
                         echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
                         echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
                         echo "</div>";
-                        echo "</div>"; // Missing semicolon was added
+                        echo "</div>";
                     }
                 }
             ?>
