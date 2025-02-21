@@ -31,11 +31,12 @@
         <?php include 'includes/nav.php'; 
          include 'includes/side_nav.php';?>
     </div>
+    <!-- Header -->
     <header>
         <h1>Investor Page</h1>
     </header>
 
-    <!-- Table to show ongoing projects, projects in progress, etc. -->
+    <!-- Community Projects Section -->
     <div class="projects-container">
         <h3>Community Projects</h3>
         <div class="proj-grid">
@@ -54,32 +55,36 @@
         </div>
     </div>
 
-    <!-- Table to show project title, where the project needs assistance. -->
-    <?php
-        // Database Query
-        $query = "SELECT * FROM required_help";
-        $result_set = mysqli_query($conn, $query);
-        if ($result_set) {
-            echo "<h3>Required Help</h3>";
-            echo "<table border='1'>";
-            echo "<tr><th>Community</th><th>Required Resources</th></tr>";
+    <!-- Requred Help Section -->
+    <div class="requests-container">
+        <?php
+            // Database Query
+            $query = "SELECT * FROM required_help";
+            $result_set = mysqli_query($conn, $query);
+            if ($result_set) {
+                echo "<h3>Required Help</h3>";
+                echo "<table>";
+                echo "<tr><th>Community</th><th>Required Resources</th></tr>";
 
-            while ($row = mysqli_fetch_assoc($result_set)) {
-                echo "<tr>";
-                echo "<td>" . htmlspecialchars($row['community']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['req_resources']) . "</td>";
-                echo "</tr>";
+                while ($row = mysqli_fetch_assoc($result_set)) {
+                    echo "<tr>";
+                    echo "<td>" . htmlspecialchars($row['community']) . "</td>";
+                    echo "<td>" . htmlspecialchars($row['req_resources']) . "</td>";
+                    echo "</tr>";
+                }
+                echo "</table>";
+            } else {
+                echo "No records found.<br>";
             }
-            echo "</table>";
-        } else {
-            echo "No records found.<br>";
-        }
 
-        // Close database connection
-        mysqli_close($conn);
-    ?>
-<?php
+            // Close database connection
+            mysqli_close($conn);
+        ?>
+    </div>
+
+    <!--- Footer --->
+    <?php
     include 'includes/footer.php';
-?>
+    ?>
 </body>
 </html>
