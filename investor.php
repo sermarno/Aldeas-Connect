@@ -20,7 +20,9 @@
     <!-- Linking CSS Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/normalize.css">
+</head>
 
+<body>
     <!-- Nav Bar -->
     <div class="nav">
         <a href="index.php">
@@ -32,8 +34,7 @@
     <header>
         <h1>Investor Page</h1>
     </header>
-</head>
-<body>
+
     <!-- Table to show ongoing projects, projects in progress, etc. -->
     <div class="projects-container">
         <h3>Community Projects</h3>
@@ -53,7 +54,6 @@
         </div>
     </div>
 
-    <h2>Where You Can Help</h2>
 
     <!-- Table to show project title, where the project needs assistance. -->
     <?php
@@ -61,7 +61,7 @@
         $query = "SELECT * FROM required_help";
         $result_set = mysqli_query($conn, $query);
         if ($result_set) {
-            echo "<h2>Required Help</h2>";
+            echo "<h3>Required Help</h3>";
             echo "<table border='1'>";
             echo "<tr><th>Community</th><th>Required Resources</th></tr>";
 
