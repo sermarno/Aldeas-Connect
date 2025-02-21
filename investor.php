@@ -54,7 +54,6 @@
         </div>
     </div>
 
-
     <!-- Table to show project title, where the project needs assistance. -->
     <?php
         // Database Query
