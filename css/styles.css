@@ -1,4 +1,70 @@
 /* ---------------------------------------------
+        GENERAL
+------------------------------------------------ */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ---------------------------------------------
+        LAYOUT/POSITIONING PAGE ELEMENTS
+------------------------------------------------ */
+
+header {
+  text-align: center;
+  padding-top: 100px;
+}
+
+h1 {
+  font-weight: normal;
+}
+
+h1 span {
+  font-weight: bold;
+}
+
+article {
+  padding: 50px;
+  border-radius: 15px;
+  background-color: blanchedalmond;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.scroll,
+article {
+  position: relative;
+  max-width: 700px;
+  margin: 3em auto;
+}
+
+.scroll a {
+  text-decoration: none;
+  color: black;
+}
+
+.scroll a:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.scroll ul {
+  list-style-type: circle;
+}
+
+li span {
+  text-decoration: underline;
+}
+
+.proj_container,
+.form,
+.request {
+  border: 2px solid black;
+  max-width: 700px;
+  border-radius: 15px;
+  margin: 3em auto;
+  padding: 50px;
+}
+
+/* ---------------------------------------------
         TEAM PAGE
 ------------------------------------------------ */
 .team-container {
@@ -54,77 +120,67 @@
 }
 
 /* ---------------------------------------------
-        GENERAL
+        INDEX CARD SHUFFLE AND MAP
 ------------------------------------------------ */
-html {
-  scroll-behavior: smooth;
+#map {
+  height: 400px;
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 10px;
 }
 
-/* ---------------------------------------------
-        LAYOUT/POSITIONING PAGE ELEMENTS
------------------------------------------------- */
-header {
+.header {
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  margin: 0 auto;
+  border: 1px solid rgb(175, 175, 175);
+  border-radius: 10px;
+  padding: 10px;
   text-align: center;
-  padding-top: 100px;
 }
 
-.map {
-  border: 2px solid black;
-  margin: 3em auto;
-  padding: 50px;
-  max-width: 700px;
+.projects-container {
+  padding: 10px;
+  margin-top: 30px;
 }
 
-h1 {
-  font-weight: normal;
-}
-
-h1 span {
-  font-weight: bold;
-}
-
-article {
-  padding: 50px;
-  border-radius: 15px;
-  background-color: blanchedalmond;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.scroll,
-article {
+.proj-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  width: 300px;
+  height: auto;
   position: relative;
-  max-width: 700px;
-  margin: 3em auto;
+  transition: transform 0.3s ease-in-out;
 }
 
-.scroll a {
-  text-decoration: none;
-  color: black;
+.proj-card {
+  border: 2px solid blanchedalmond;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  padding: 5px;
+  min-width: 100%;
+  flex-shrink: 0;
 }
 
-.scroll a:hover {
-  font-weight: bold;
+.cycle-cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+#backbtn,
+#nextbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 24px;
   cursor: pointer;
 }
-
-.scroll ul {
-  list-style-type: circle;
-}
-
-li span {
-  text-decoration: underline;
-}
-
-.proj_container,
-.form,
-.request {
-  border: 2px solid black;
-  max-width: 700px;
-  border-radius: 15px;
-  margin: 3em auto;
-  padding: 50px;
-}
-
 /* ---------------------------------------------
         PROJECT CARDS
 ------------------------------------------------ */
@@ -139,32 +195,6 @@ li span {
 .req-grid {
   display: flex;
   flex-direction: column;
-}
-
-.projects-container {
-  border-top: 1px solid rgba(128, 128, 128, 0.335);
-  border-bottom: 1px solid rgba(128, 128, 128, 0.335);
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 10px;
-  margin-top: 30px;
-}
-
-.proj-grid {
-  display: flex;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-.proj-card {
-  border: 3px solid black;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
-  overflow: hidden;
-  margin: 1em;
 }
 
 /* ---------------------------------------------
@@ -380,4 +410,14 @@ footer a:hover {
   margin: 0 auto;
   background-color: antiquewhite;
   border: 1px solid black;
+}
+
+/* ---------------------------------------------
+        MEDIA QUERIES
+------------------------------------------------ */
+@media (min-width: 992px) {
+  .header {
+    display: flex;
+    flex-direction: row;
+  }
 }
