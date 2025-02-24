@@ -64,6 +64,15 @@ li span {
   padding: 50px;
 }
 
+.google_login {
+  border: 2px solid rgb(214, 214, 214);
+  border-radius: 10px;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 30px;
+  text-align: center;
+}
+
 /* ---------------------------------------------
         TEAM PAGE
 ------------------------------------------------ */
