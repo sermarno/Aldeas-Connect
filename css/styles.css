@@ -403,7 +403,7 @@ table th, td {
   border: 1px solid #ddd;
 }
 table th {
-  color: white;
+  color: black;
 }
 table tr:nth-child(even) {
   background: #f2f2f2;
