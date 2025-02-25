@@ -1,5 +1,6 @@
 <?php
-require 'vendor/autoload.php'; // If using Composer for Google's client library
+require 'vendor/autoload.php';
+require 'includes/db.php'; // Database connection
 
 use Google\Client;
 
@@ -10,7 +11,31 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $payload = $client->verifyIdToken($token);
 
     if ($payload) {
-        echo json_encode(['success' => true, 'user' => $payload]);
+        $google_id = $payload['sub']; // Google user ID
+        $email = $payload['email']; // Email from Google
+
+        // Check if the user already exists
+        $stmt = $conn->prepare("SELECT user_id, username, user_role FROM users WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $user = $result->fetch_assoc();
+
+        if ($user) {
+            // User exists, log them in
+            session_start();
+            $_SESSION['user_id'] = $user['user_id'];
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['user_role'] = $user['user_role'];
+
+            echo json_encode(['success' => true, 'redirect' => 'index.php']);
+        } else {
+            // User does not exist, redirect to registration form
+            session_start();
+            $_SESSION['google_email'] = $email;
+
+            echo json_encode(['success' => true, 'redirect' => 'register.php']);
+        }
     } else {
         echo json_encode(['success' => false, 'error' => 'Invalid token']);
     }

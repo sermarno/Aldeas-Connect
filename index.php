@@ -62,23 +62,13 @@ $villages = [
         src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <!-- Map API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDf99Nyj4amTBbILPYjYt0S01h-kuSWqo"></script> 
-
-    <style>
-        #map {
-            height: 500px;
-            width: 100%;
-        }
-    </style>
 </head>
     <!-- Nav Bar -->
     <?php include 'includes/nav.php' ?>
-    <?php include 'includes/side_nav.php' ?>
 
     <header>
-        <h1><span>La Conexión y el Futuro de las Aldeas Inteligentes</span></h1>
+        <h1><span>The Connection and Future of Smart Villages</span></h1>
     </header>
-    <button onclick="translatePage()">Translate to Spanish</button>
-    <div id="google_translate_element" style="display:none;"></div>
     <script>
         function translatePage() {
             var translateElement = document.getElementById('google_translate_element');
@@ -88,50 +78,60 @@ $villages = [
             select.dispatchEvent(new Event('change'));
         }
     </script>
-    <div id="map">
-        <script>
-            const villages = <?php echo json_encode($villages); ?>;
+    <div class="header">
+        <div class="projects-container">
+            <h3>Project Highlights</h3>
+            
+            <!-- cycle through project highlight cards (left/right arrows) -->
+            <div class="cycle-cards">
+                <button id="backbtn">&#9665;</button>
+                <div class="proj-grid">
+                    <?php
+                        if (count($projects) > 0 ) {
+                            foreach ($projects as $project) {
+                                echo "<div class='proj-card'>";
+                                echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
+                                echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
+                                echo "<a href='investor.php?project_id=" . $project['id'] . "' class='donate-btn'>Donate</a>";
+                                echo "</div>";
+                            }
+                        }
+                    ?>
+                </div>
+                <button id="nextbtn">&#9655;</button>
+            </div>
 
-            function initMap() {
-                const map = new google.maps.Map(document.getElementById("map"), {
-                    zoom: 6,
-                    center: { lat: 23.6345, lng: -102.5528 }, // Center of Mexico might change later depending on what villages
-                });
+        </div>
 
-                villages.forEach(village => {
-                    const marker = new google.maps.Marker({
-                        position: { lat: village.lat, lng: village.lng },
-                        map: map,
-                        title: village.name,
+        <div id="map">
+            <script>
+                const villages = <?php echo json_encode($villages); ?>;
+
+                function initMap() {
+                    const map = new google.maps.Map(document.getElementById("map"), {
+                        zoom: 5,
+                        center: { lat: 20.6345, lng: -95.5528 }, // Center of Mexico might change later depending on what villages
                     });
 
-                    const infoWindow = new google.maps.InfoWindow({
-                        content: `<h3>${village.name}</h3><p>${village.info}</p>`,
-                    });
+                    villages.forEach(village => {
+                        const marker = new google.maps.Marker({
+                            position: { lat: village.lat, lng: village.lng },
+                            map: map,
+                            title: village.name,
+                        });
 
-                    marker.addListener("click", () => {
-                        infoWindow.open(map, marker);
-                    });
-                });
-            }
+                        const infoWindow = new google.maps.InfoWindow({
+                            content: `<h3>${village.name}</h3><p>${village.info}</p>`,
+                        });
 
-            window.onload = initMap;
-        </script>
-    </div>
-    <div class="projects-container">
-        <h3>Community Projects</h3>
-        <div class="proj-grid">
-            <?php
-                if (count($projects) > 0 ) {
-                    foreach ($projects as $project) {
-                        echo "<div class='proj-card'>";
-                        echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
-                        echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
-                        // button "see how you can help": a href? or button? 
-                        echo "</div>";
-                    }
+                        marker.addListener("click", () => {
+                            infoWindow.open(map, marker);
+                        });
+                    });
                 }
-             ?>
+
+                window.onload = initMap;
+            </script>
         </div>
     </div>
     <div class="request">
@@ -147,7 +147,8 @@ $villages = [
             From improving education and healthcare to boosting local commerce, we're creating a platform that helps amplify the voices and aspirations of Mexico's underrated regions.
         </p>
     </article>
-    <?php include 'includes/footer.php' ?>
+    <?php include 'includes/footer.php'; ?>
     <script src="js/nav.js"></script>
+    <script src="js/card_cycle.js"></script>
 </body>
 </html>
