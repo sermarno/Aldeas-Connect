@@ -63,6 +63,7 @@ $villages = [
     <!-- Map API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDf99Nyj4amTBbILPYjYt0S01h-kuSWqo"></script> 
 </head>
+<body>
     <!-- Nav Bar -->
     <?php include 'includes/nav.php' ?>
 
