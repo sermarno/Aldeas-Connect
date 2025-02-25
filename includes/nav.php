@@ -9,7 +9,6 @@
             <button onclick="translatePage()">Translate to Spanish</button>
             <div id="google_translate_element" style="display:none;"></div>
         </li>
-        <li><a href="about.php">About</a></li>
         <li class="login">
             <a href="login.php">
                 <img src="img/account.png" alt="account"></img>

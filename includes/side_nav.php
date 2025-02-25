@@ -7,6 +7,7 @@
         <li><a href="gallery.php">Gallery</a></li>
         <li><a href="team.php">Meet the Team</a></li>
         <li><a href="project.php">Our Goal</a></li>
+        <li><a href="about.php">About</a></li>
         <li><a href="success_stories.php">Success Stories</a></li>
     </ul>
 </nav>
