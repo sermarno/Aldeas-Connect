@@ -1,4 +1,79 @@
 /* ---------------------------------------------
+        GENERAL
+------------------------------------------------ */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ---------------------------------------------
+        LAYOUT/POSITIONING PAGE ELEMENTS
+------------------------------------------------ */
+
+header {
+  text-align: center;
+  padding-top: 100px;
+}
+
+h1 {
+  font-weight: normal;
+}
+
+h1 span {
+  font-weight: bold;
+}
+
+article {
+  padding: 50px;
+  border-radius: 15px;
+  background-color: blanchedalmond;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.scroll,
+article {
+  position: relative;
+  max-width: 700px;
+  margin: 3em auto;
+}
+
+.scroll a {
+  text-decoration: none;
+  color: black;
+}
+
+.scroll a:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.scroll ul {
+  list-style-type: circle;
+}
+
+li span {
+  text-decoration: underline;
+}
+
+.proj_container,
+.form,
+.request {
+  border: 2px solid black;
+  max-width: 700px;
+  border-radius: 15px;
+  margin: 3em auto;
+  padding: 50px;
+}
+
+.google_login {
+  border: 2px solid rgb(214, 214, 214);
+  border-radius: 10px;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 30px;
+  text-align: center;
+}
+
+/* ---------------------------------------------
         TEAM PAGE
 ------------------------------------------------ */
 .team-container {
@@ -54,77 +129,67 @@
 }
 
 /* ---------------------------------------------
-        GENERAL
+        INDEX CARD SHUFFLE AND MAP
 ------------------------------------------------ */
-html {
-  scroll-behavior: smooth;
+#map {
+  height: 400px;
+  width: 80%;
+  margin: 0 auto;
+  border-radius: 10px;
 }
 
-/* ---------------------------------------------
-        LAYOUT/POSITIONING PAGE ELEMENTS
------------------------------------------------- */
-header {
+.header {
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  margin: 0 auto;
+  border: 1px solid rgb(175, 175, 175);
+  border-radius: 10px;
+  padding: 10px;
   text-align: center;
-  padding-top: 100px;
 }
 
-.map {
-  border: 2px solid black;
-  margin: 3em auto;
-  padding: 50px;
-  max-width: 700px;
+.projects-container {
+  padding: 10px;
+  margin-top: 30px;
 }
 
-h1 {
-  font-weight: normal;
-}
-
-h1 span {
-  font-weight: bold;
-}
-
-article {
-  padding: 50px;
-  border-radius: 15px;
-  background-color: blanchedalmond;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.scroll,
-article {
+.proj-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  width: 300px;
+  height: auto;
   position: relative;
-  max-width: 700px;
-  margin: 3em auto;
+  transition: transform 0.3s ease-in-out;
 }
 
-.scroll a {
-  text-decoration: none;
-  color: black;
+.proj-card {
+  border: 2px solid blanchedalmond;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  padding: 5px;
+  min-width: 100%;
+  flex-shrink: 0;
 }
 
-.scroll a:hover {
-  font-weight: bold;
+.cycle-cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+#backbtn,
+#nextbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 24px;
   cursor: pointer;
 }
-
-.scroll ul {
-  list-style-type: circle;
-}
-
-li span {
-  text-decoration: underline;
-}
-
-.proj_container,
-.form,
-.request {
-  border: 2px solid black;
-  max-width: 700px;
-  border-radius: 15px;
-  margin: 3em auto;
-  padding: 50px;
-}
-
 /* ---------------------------------------------
         PROJECT CARDS
 ------------------------------------------------ */
@@ -141,47 +206,47 @@ li span {
   flex-direction: column;
 }
 
-.projects-container {
-  border-top: 1px solid rgba(128, 128, 128, 0.335);
-  border-bottom: 1px solid rgba(128, 128, 128, 0.335);
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 10px;
-  margin-top: 30px;
-}
-
-.proj-grid {
-  display: flex;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-.proj-card {
-  border: 3px solid black;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
-  overflow: hidden;
-  margin: 1em;
-}
-
 /* ---------------------------------------------
         NAVIGATION
 ------------------------------------------------ */
 nav {
   background-color: blanchedalmond;
   display: flex;
-  justify-content: space-between;
   z-index: 9999;
   width: 100%;
   position: fixed;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-nav img {
-  width: 100px;
+nav ul {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+nav li {
+  list-style-type: none;
+  padding: 5px 1em;
+}
+
+nav a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  font-weight: bold;
+}
+
+nav .logo img {
+  width: 190px;
+  position: absolute;
+  top: 9px;
+  left: 15px;
+}
+
+.login img {
+  width: 60px;
 }
 
 .all-over-bkg {
@@ -208,7 +273,7 @@ nav img {
   position: fixed;
   z-index: 1;
   top: 0;
-  left: 0;
+  right: 0;
   overflow-x: hidden;
   padding-top: 60px;
   transition: 0.5s;
@@ -221,38 +286,27 @@ nav img {
 }
 
 .open {
-  width: 50px;
-}
-
-nav ul {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.material-symbols-outlined {
-  font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 48;
+  width: 80px;
 }
 
 .openbtn {
   position: fixed;
-  left: 20px;
+  right: 20px;
   top: 20px;
   color: black;
   cursor: pointer;
-  /* making cursor more visible when hovering over menu */
-}
-
-.openbtn:hover {
-  color: darkgray;
 }
 
 .menu-button {
   font-size: 30px !important;
   position: relative;
   top: 0;
-  left: -4px;
+  right: -4px;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 48;
+  text-decoration: none;
 }
 
 .closebtn {
@@ -260,31 +314,13 @@ nav ul {
   top: 30px;
   right: 5px;
   font-size: 30px;
-  margin-left: 50px;
+  margin-right: 50px;
   cursor: pointer;
-}
-
-nav .login {
-  text-align: right;
-}
-
-nav li {
-  list-style-type: none;
-  padding: 5px 2em;
 }
 
 #side_nav li {
   padding: 10px;
   margin: 0;
-}
-
-nav a {
-  color: black;
-  text-decoration: none;
-}
-
-a:hover {
-  font-weight: bold;
 }
 
 /* ---------------------------------------------
@@ -383,4 +419,14 @@ footer a:hover {
   margin: 0 auto;
   background-color: antiquewhite;
   border: 1px solid black;
+}
+
+/* ---------------------------------------------
+        MEDIA QUERIES
+------------------------------------------------ */
+@media (min-width: 992px) {
+  .header {
+    display: flex;
+    flex-direction: row;
+  }
 }
