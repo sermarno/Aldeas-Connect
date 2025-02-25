@@ -26,7 +26,9 @@
     <?php include 'includes/nav.php' ?>
     <?php include 'includes/side_nav.php' ?>
 
-    <h1>Village Gallery</h1>
+    <header>
+        <h1>Village Gallery</h1>
+    </header>
     <div class="gallery">
     <?php
         if ($comm_result->num_rows > 0) {
