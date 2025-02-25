@@ -20,17 +20,16 @@
     <!-- Linking CSS Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/normalize.css">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    /> 
 </head>
 
 <body>
     <!-- Nav Bar -->
-    <div class="nav">
-        <a href="index.php">
-            <img src="img/logo.jpg" alt="home">
-        </a>
-        <?php include 'includes/nav.php'; 
-         include 'includes/side_nav.php';?>
-    </div>
+    <?php include 'includes/nav.php'; 
+        include 'includes/side_nav.php';?>
     <!-- Header -->
     <header>
         <h1>Investor Page</h1>
