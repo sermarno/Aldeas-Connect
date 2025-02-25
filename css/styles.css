@@ -401,16 +401,15 @@ table {
 table th, td {
   padding: 12px;
   border: 1px solid #ddd;
-}
-table th {
   color: black;
 }
+
 table tr:nth-child(even) {
   background: #f2f2f2;
 }
 /* ---------------------------------------------
         Button
------------------------------------------------- */
+
 .donate-btn {
   background: #ff4500;
   color: white;
@@ -423,3 +422,4 @@ table tr:nth-child(even) {
 .donate-btn:hover {
   background: #cc3700;
 }
+-------------------------------------------------*/
