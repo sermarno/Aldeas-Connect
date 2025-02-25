@@ -63,6 +63,7 @@ $villages = [
     <!-- Map API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDf99Nyj4amTBbILPYjYt0S01h-kuSWqo"></script> 
 </head>
+<body>
     <!-- Nav Bar -->
     <?php include 'includes/nav.php' ?>
 
@@ -92,7 +93,7 @@ $villages = [
                                 echo "<div class='proj-card'>";
                                 echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
                                 echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
-                                echo "<a href='investor.php?project_id=" . $project['id'] . "class='donate-btn'>Donate</a>";
+                                echo "<a href='investor.php?project_id=" . $project['id'] . "'class='donate-btn'>Donate</a>";
                                 echo "</div>";
                             }
                         }
