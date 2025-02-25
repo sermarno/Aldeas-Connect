@@ -23,10 +23,8 @@
     <div>
     </div>
 
-    <form action="send_message.php" method="POST">
-        <input type="text" name="message_content" placeholder="Message..." required>
-        <button type="submit">Send</button>
-    </form>
+    <a href="https://wa.me/8125664226" target="_blank">Chat with us on WhatsApp</a>
+
 
 <?php include 'includes/footer.php' ?>
 <script src="js/nav.js"></script>
