@@ -131,24 +131,6 @@ $villages = [
             </script>
         </div>
     </div>
-    <div class="projects-container">
-        <h3>Community Projects</h3>
-        <div class="proj-grid">
-            <?php
-                if (count($projects) > 0 ) {
-                    foreach ($projects as $project) {
-                        echo "<div class='proj-card'>";
-                        //echo "<div class='card-body'>"; //Adding card body //
-                        echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
-                        echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
-                        echo "<a href='investor.php?project_id=" . $project['id'] . "' class='donate-btn'>Donate</a>";
-                        //echo "</div>";//
-                        echo "</div>";                                                                                                                                                                                                                                                                                                                                                                                                                                         
-                    }
-                }
-            ?>
-        </div>
-    </div>
     <div class="chat">
         <a href="https://web.whatsapp.com/" target="_blank">
             <img src="img/chat.png" alt="whatsapp">
