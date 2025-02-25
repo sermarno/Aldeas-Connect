@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS testimonials CASCADE;
 DROP TABLE IF EXISTS project_requests CASCADE;
 DROP TABLE IF EXISTS projects CASCADE;
 DROP TABLE IF EXISTS communities CASCADE;
+DROP TABLE IF EXISTS about_content CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
 
 -- user
@@ -77,6 +78,15 @@ CREATE TABLE required_help (
     PRIMARY KEY (help_id)
 ) ENGINE=INNODB;
 
+--about page editing
+CREATE TABLE about_content (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    section VARCHAR(255),
+    content TEXT,
+    image_path VARCHAR(255)
+) ENGINE=INNODB;
+
+
 -- insert statements with test data
 INSERT INTO users (fname, lname, username, email, user_role) VALUES
 ('fname', 'lname', 'user1', 'user1@example.com', 'resident');
@@ -107,4 +117,24 @@ INSERT INTO required_help (community, req_resources) VALUES
 ('Hunukú, Temozón', 'More computers for online resources.'),
 ('Cazumá, Cazumá', 'More wifi routers for intenet.');
 
+INSERT INTO messages (message_text, sender_id, receiver_id) VALUES
+("hello", 2, 1),
+("hi", 1, 2);
 
+-- insert initial data for about content
+INSERT INTO about_content (section, content, image_path) VALUES
+('Our Mission', 'Our main goal is to provide free internet access to rural communities around the country of Mexico. So far,
+    we
+    have been able to provide free internet access to over 80 communities in various states throughout the
+    country.
+    Each community works together on a project ranging from health, education, and tourism to name a few. Giving
+    these communities the tools to improve their surroundings builds their confidence and allows them to tap
+    into
+    their full potential as people.', 'img/smartvillages.jpg'),
+('Why?', 'We believe that internet access is a human right. As technology progresses, internet access has become
+    essential
+    if an individual wants to participate in society. Providing free internet access to these communities in
+    need
+    allows them to learn valuable technical skills as well as build a strong bond with their peers as they work
+    on
+    projects together that will benefit their community for years to come.', '');

@@ -63,6 +63,7 @@ $villages = [
     <!-- Map API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDf99Nyj4amTBbILPYjYt0S01h-kuSWqo"></script> 
 </head>
+<body>
     <!-- Nav Bar -->
     <?php include 'includes/nav.php' ?>
 
@@ -92,7 +93,7 @@ $villages = [
                                 echo "<div class='proj-card'>";
                                 echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
                                 echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
-                                echo "<a href='investor.php?project_id=" . $project['id'] . "' class='donate-btn'>Donate</a>";
+                                echo "<a href='investor.php?project_id=" . $project['id'] . "'class='donate-btn'>Donate</a>";
                                 echo "</div>";
                             }
                         }
@@ -124,14 +125,25 @@ $villages = [
                             content: `<h3>${village.name}</h3><p>${village.info}</p>`,
                         });
 
-                        marker.addListener("click", () => {
-                            infoWindow.open(map, marker);
-                        });
-                    });
+            window.onload = initMap;
+        </script>
+    </div>
+    <div class="projects-container">
+        <h3>Community Projects</h3>
+        <div class="proj-grid">
+            <?php
+                if (count($projects) > 0 ) {
+                    foreach ($projects as $project) {
+                        echo "<div class='proj-card'>";
+                        echo "<div class='card-body'>"; //Adding card body
+                        echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
+                        echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
+                        echo "<a href='investor.php?project_id=" . $project['id'] . "' class='donate-btn'>Donate</a>";
+                        echo "</div>";
+                        echo "</div>";
+                    }
                 }
-
-                window.onload = initMap;
-            </script>
+            ?>
         </div>
     </div>
     <div class="chat">
@@ -153,7 +165,5 @@ $villages = [
         </p>
     </article>
     <?php include 'includes/footer.php'; ?>
-    <script src="js/nav.js"></script>
-    <script src="js/card_cycle.js"></script>
 </body>
 </html>
