@@ -5,10 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
 </head>
 <body>
         
-     <?php include 'includes/nav.php' ?>
+    <?php include 'includes/nav.php' ?>
     <?php include 'includes/side_nav.php' ?> 
     
     <div class="about-container">
@@ -102,5 +107,7 @@
             <input type="submit" value="Update">
         </form>
     </div>
+    <?php include 'includes/footer.php'; ?>
+    <script src="js/nav.js"></script>
 </body>
 </html>
