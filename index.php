@@ -93,7 +93,7 @@ $villages = [
                                 echo "<div class='proj-card'>";
                                 echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
                                 echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
-                                echo "<a href='investor.php?project_id=" . $project['id'] . "'class='donate-btn'>Donate</a>";
+                                echo "<a href='investor.php?project_id=" . $project['id'] . "' class='donate-btn'>Donate</a>";
                                 echo "</div>";
                             }
                         }
@@ -136,12 +136,12 @@ $villages = [
                 if (count($projects) > 0 ) {
                     foreach ($projects as $project) {
                         echo "<div class='proj-card'>";
-                        echo "<div class='card-body'>"; //Adding card body
+                        //echo "<div class='card-body'>"; //Adding card body //
                         echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
                         echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
                         echo "<a href='investor.php?project_id=" . $project['id'] . "' class='donate-btn'>Donate</a>";
-                        echo "</div>";
-                        echo "</div>";
+                        //echo "</div>";//
+                        echo "</div>";                                                                                                                                                                                                                                                                                                                                                                                                                                         
                     }
                 }
             ?>
