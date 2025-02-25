@@ -6,6 +6,11 @@
     <title>About</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/normalize.css">
+    <!-- GOOGLE FONTS: Menu Icon -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
 </head>
 
     <!-- Nav Bar -->
@@ -38,7 +43,8 @@
     on
     projects together that will benefit their community for years to come.</p>
 </div>
-
+    <?php include 'includes/footer.php'; ?>
+    <script src="js/nav.js"></script>
 </body>
 
 </html>
