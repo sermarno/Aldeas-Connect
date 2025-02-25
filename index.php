@@ -66,6 +66,7 @@ $villages = [
 <body>
     <!-- Nav Bar -->
     <?php include 'includes/nav.php' ?>
+    <?php include 'includes/side_nav.php' ?>
 
     <header>
         <h1><span>The Connection and Future of Smart Villages</span></h1>
@@ -127,7 +128,8 @@ $villages = [
                         });
                     })
             window.onload = initMap;
-        </script>
+            </script>
+        </div>
     </div>
     <div class="projects-container">
         <h3>Community Projects</h3>
@@ -166,5 +168,7 @@ $villages = [
         </p>
     </article>
     <?php include 'includes/footer.php'; ?>
+    <script src="js/nav.js"></script>
+    <script src="js/card_cycle.js"></script>
 </body>
 </html>
