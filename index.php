@@ -63,6 +63,7 @@ $villages = [
     <!-- Map API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDf99Nyj4amTBbILPYjYt0S01h-kuSWqo"></script> 
 </head>
+<body>
     <!-- Nav Bar -->
     <?php include 'includes/nav.php' ?>
 
@@ -145,6 +146,11 @@ $villages = [
                 }
             ?>
         </div>
+    </div>
+    <div class="chat">
+        <a href="https://web.whatsapp.com/" target="_blank">
+            <img src="img/chat.png" alt="whatsapp">
+        </a>
     </div>
     <div class="request">
         <p>Want to see your community's projects here?</p>

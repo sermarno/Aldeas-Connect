@@ -73,6 +73,24 @@ li span {
   text-align: center;
 }
 
+.chat {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.chat img {
+  width: 100px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.chat img:hover {
+  transform: scale(1.1);
+}
+
 /* ---------------------------------------------
         TEAM PAGE
 ------------------------------------------------ */
@@ -191,6 +209,7 @@ li span {
   font-size: 24px;
   cursor: pointer;
 }
+
 /* ---------------------------------------------
         PROJECT CARDS
 ------------------------------------------------ */
@@ -398,6 +417,29 @@ footer a:hover {
   max-width: 90%;
   max-height: 90%;
 }
+
+/* ---------------------------------------------
+        About Page
+------------------------------------------------ */
+.about-container img {
+  width: 500px;
+  align-self: center;
+  border: 2px solid black;
+  border-radius: 8px;
+}
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  padding: 50px;
+  width: 1000px;
+  margin: 0 auto;
+  background-color: antiquewhite;
+  border: 1px solid black;
+}
+
 /* ---------------------------------------------
         Table
 ------------------------------------------------ */
@@ -408,15 +450,22 @@ table {
   font-size: 18px;
   text-align: left;
 }
-table th, td {
+
+table th,
+td {
   padding: 12px;
   border: 1px solid #ddd;
+}
+
+table th {
   color: black;
 }
+
 
 table tr:nth-child(even) {
   background: #f2f2f2;
 }
+
 /* ---------------------------------------------
         Button
 
@@ -429,7 +478,7 @@ table tr:nth-child(even) {
   font-weight: bold;
   transition: background 0.3s ease;
 }
+
 .donate-btn:hover {
   background: #cc3700;
 }
--------------------------------------------------*/
