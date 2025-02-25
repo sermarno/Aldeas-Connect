@@ -73,6 +73,24 @@ li span {
   text-align: center;
 }
 
+.chat {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.chat img {
+  width: 100px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.chat img:hover {
+  transform: scale(1.1);
+}
+
 /* ---------------------------------------------
         TEAM PAGE
 ------------------------------------------------ */

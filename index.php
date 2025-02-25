@@ -146,6 +146,11 @@ $villages = [
             ?>
         </div>
     </div>
+    <div class="chat">
+        <a href="https://web.whatsapp.com/" target="_blank">
+            <img src="img/chat.png" alt="whatsapp">
+        </a>
+    </div>
     <div class="request">
         <p>Want to see your community's projects here?</p>
         <a href="request.php">Submit a Request</a>
