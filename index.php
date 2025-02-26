@@ -63,8 +63,10 @@ $villages = [
     <!-- Map API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDf99Nyj4amTBbILPYjYt0S01h-kuSWqo"></script> 
 </head>
+<body>
     <!-- Nav Bar -->
     <?php include 'includes/nav.php' ?>
+    <?php include 'includes/side_nav.php' ?>
 
     <header>
         <h1><span>The Connection and Future of Smart Villages</span></h1>
@@ -92,7 +94,7 @@ $villages = [
                                 echo "<div class='proj-card'>";
                                 echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
                                 echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
-                                echo "<a href='investor.php?project_id=" . $project['id'] . "' class='donate-btn'>Donate</a>";
+                                echo "<a href='investor.php?project_id=" . $project['id'] . "'class='donate-btn'>Donate</a>";
                                 echo "</div>";
                             }
                         }
@@ -112,6 +114,7 @@ $villages = [
                         zoom: 5,
                         center: { lat: 20.6345, lng: -95.5528 }, // Center of Mexico might change later depending on what villages
                     });
+                }
 
                     villages.forEach(village => {
                         const marker = new google.maps.Marker({
@@ -123,16 +126,33 @@ $villages = [
                         const infoWindow = new google.maps.InfoWindow({
                             content: `<h3>${village.name}</h3><p>${village.info}</p>`,
                         });
-
-                        marker.addListener("click", () => {
-                            infoWindow.open(map, marker);
-                        });
-                    });
-                }
-
-                window.onload = initMap;
+                    })
+            window.onload = initMap;
             </script>
         </div>
+    </div>
+    <div class="projects-container">
+        <h3>Community Projects</h3>
+        <div class="proj-grid">
+            <?php
+                if (count($projects) > 0 ) {
+                    foreach ($projects as $project) {
+                        echo "<div class='proj-card'>";
+                        echo "<div class='card-body'>"; //Adding card body
+                        echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
+                        echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
+                        echo "<a href='investor.php?project_id=" . $project['id'] . "' class='donate-btn'>Donate</a>";
+                        echo "</div>";
+                        echo "</div>";
+                    }
+                }
+            ?>
+        </div>
+    </div>
+    <div class="chat">
+        <a href="https://web.whatsapp.com/" target="_blank">
+            <img src="img/chat.png" alt="whatsapp">
+        </a>
     </div>
     <div class="request">
         <p>Want to see your community's projects here?</p>
