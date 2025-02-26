@@ -21,17 +21,21 @@
     <header>
         <h1>Login</h1>
     </header>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <script src="js/google-login.js" defer></script>
-    <div id="g_id_onload"
-        data-client_id="425696034712-7ns8jm05qgakn29cmkfvmaffv6bpnvp9.apps.googleusercontent.com"
-        data-context="signin"
-        data-ux_mode="popup"
-        data-callback="handleCredentialResponse"
-        data-auto_prompt="false">
-    </div>
 
-    <div class="g_id_signin" data-type="standard"></div>
+    <div class="google_login">
+        <p>Login with Google</p>
+        <script src="https://accounts.google.com/gsi/client" async defer></script>
+        <script src="js/google-login.js" defer></script>
+        <div id="g_id_onload"
+            data-client_id="425696034712-7ns8jm05qgakn29cmkfvmaffv6bpnvp9.apps.googleusercontent.com"
+            data-context="signin"
+            data-ux_mode="popup"
+            data-callback="handleCredentialResponse"
+            data-auto_prompt="false">
+        </div>
+
+        <div class="g_id_signin" data-type="standard"></div>
+    </div>
     <?php include 'includes/footer.php' ?>
     <script src="js/nav.js"></script>
 </body>
