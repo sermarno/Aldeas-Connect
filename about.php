@@ -70,9 +70,11 @@
 
         <!-- Display content -->
         <?php if (isset($content['Our Mission'])): ?>
-            <h2>Our Mission</h2>
-            <p><?php echo $content['Our Mission']['content']; ?></p>
-            <img src="<?php echo $content['Our Mission']['image_path']; ?>" alt="Our Mission Image">
+            <header>
+                <h2>Our Mission</h2>
+                <p><?php echo $content['Our Mission']['content']; ?></p>
+                <img src="<?php echo $content['Our Mission']['image_path']; ?>" alt="Our Mission Image">
+            </header>
         <?php else: ?>
             <h2>Our Mission</h2>
             <p>Content not available.</p>

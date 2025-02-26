@@ -94,7 +94,7 @@ $villages = [
                                 echo "<div class='proj-card'>";
                                 echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
                                 echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
-                                echo "<a href='investor.php?project_id=" . $project['id'] . "'class='donate-btn'>Donate</a>";
+                                echo "<a href='investor.php?project_id=" . $project['id'] . "' class='donate-btn'>Donate</a>";
                                 echo "</div>";
                             }
                         }
@@ -114,8 +114,6 @@ $villages = [
                         zoom: 5,
                         center: { lat: 20.6345, lng: -95.5528 }, // Center of Mexico might change later depending on what villages
                     });
-                }
-
                     villages.forEach(village => {
                         const marker = new google.maps.Marker({
                             position: { lat: village.lat, lng: village.lng },
@@ -127,26 +125,11 @@ $villages = [
                             content: `<h3>${village.name}</h3><p>${village.info}</p>`,
                         });
                     })
+                }
+
+                    
             window.onload = initMap;
             </script>
-        </div>
-    </div>
-    <div class="projects-container">
-        <h3>Community Projects</h3>
-        <div class="proj-grid">
-            <?php
-                if (count($projects) > 0 ) {
-                    foreach ($projects as $project) {
-                        echo "<div class='proj-card'>";
-                        echo "<div class='card-body'>"; //Adding card body
-                        echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
-                        echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
-                        echo "<a href='investor.php?project_id=" . $project['id'] . "' class='donate-btn'>Donate</a>";
-                        echo "</div>";
-                        echo "</div>";
-                    }
-                }
-            ?>
         </div>
     </div>
     <div class="chat">

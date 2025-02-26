@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', 1); // Enable error reporting
-error_reporting(E_ALL); // Show all errors
-
 include "includes/db.php";
 
 // getting form input from new_proj.php form

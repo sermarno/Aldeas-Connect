@@ -175,9 +175,11 @@ li span {
 
 .proj-grid {
   display: flex;
-  flex-wrap: nowrap;
-  overflow: hidden;
-  width: 300px;
+  flex-wrap: wrap;
+  overflow: visible;
+  gap: 10px;
+  justify-content: center;
+  width: 100%;
   height: auto;
   position: relative;
   transition: transform 0.3s ease-in-out;
@@ -187,10 +189,11 @@ li span {
   border: 2px solid blanchedalmond;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 0;
   padding: 5px;
-  min-width: 100%;
+  min-width: 250px;
+  max-width: 300px;
   flex-shrink: 0;
+  flex-grow: 1;
 }
 
 .cycle-cards {
