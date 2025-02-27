@@ -112,7 +112,7 @@ $villages = [
                 function initMap() {
                     const map = new google.maps.Map(document.getElementById("map"), {
                         zoom: 5,
-                        center: { lat: 20.4229, lng: -88.1653 }, // Center of Yucatan
+                        center: { lat: 19.4326, lng: -99.1332 }, // Center of Yucatan (Mexico City)
                     });
                     villages.forEach(village => {
                         const marker = new google.maps.Marker({
