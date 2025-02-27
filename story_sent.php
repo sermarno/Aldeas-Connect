@@ -1,8 +1,7 @@
 <?php
 include 'includes/db.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $user_id = $_POST["user_id"];
+if ($_SERVER["REQUEST_METHOD"] == "POST") { 
     $community_id = $_POST["community_id"];
     $story_text = $_POST["story_text"];
     $category = $_POST["category"];
@@ -18,9 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Testimonial
-    $stmt = $conn->prepare("INSERT INTO testimonials (user_id, community_id, story_text, video_url, category, status) 
-                            VALUES (?, ?, ?, ?, ?, 'pending')");
-    $stmt->bind_param("iisss", $user_id, $community_id, $story_text, $video_url, $category);
+    $stmt = $conn->prepare("INSERT INTO testimonials (community_id, story_text, video_url, category, status) 
+                            VALUES (?, ?, ?, ?, 'pending')");
+    $stmt->bind_param("iisss", $community_id, $story_text, $video_url, $category);
 
     if ($stmt->execute()) {
         echo "<script>alert('Story submitted! Awaiting admin approval.'); window.location.href='success_stories.php';</script>";

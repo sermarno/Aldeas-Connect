@@ -52,6 +52,7 @@
     <div class="form">
         <form action="story_sent.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="request_id">
+          
 
             <label>Your Story:</label>
             <input type="text" name="story_text" required><br>

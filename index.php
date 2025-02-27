@@ -112,7 +112,7 @@ $villages = [
                 function initMap() {
                     const map = new google.maps.Map(document.getElementById("map"), {
                         zoom: 5,
-                        center: { lat: 20.6345, lng: -95.5528 }, // Center of Mexico might change later depending on what villages
+                        center: { lat: 20.4229, lng: -88.1653 }, // Center of Yucatan
                     });
                     villages.forEach(village => {
                         const marker = new google.maps.Marker({
@@ -124,10 +124,13 @@ $villages = [
                         const infoWindow = new google.maps.InfoWindow({
                             content: `<h3>${village.name}</h3><p>${village.info}</p>`,
                         });
+                        //Testing
+                        marker.addListener("click", () => {
+                            infoWindow.open(map, marker);
+                        });
                     })
                 }
 
-                    
             window.onload = initMap;
             </script>
         </div>
