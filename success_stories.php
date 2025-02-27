@@ -39,19 +39,20 @@
         }
 
         .testimonials {
-            width: 80%;
+            width: 90%;
+            max-width: 1200px; /* Prevents stretching too wide */
             margin: 20px auto;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
         }
-
         .testimonial {
             background: white;
             border-radius: 8px;
             padding: 20px;
             width: 45%;
+            max-width: 500px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease-in-out;
         }
@@ -61,9 +62,9 @@
         }
 
         .testimonial h3 {
-            margin-top: 0;
             font-size: 18px;
             color: #444;
+            margin-bottom: 10px;
         }
 
         .testimonial p {
