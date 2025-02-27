@@ -25,6 +25,108 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
 </head>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .testimonials {
+            width: 80%;
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .testimonial {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            width: 45%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial h3 {
+            margin-top: 0;
+            font-size: 18px;
+            color: #444;
+        }
+
+        .testimonial p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .category {
+            font-weight: bold;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .category[data-category="Education"] { background-color: #4CAF50; }
+        .category[data-category="Economic"] { background-color: #2196F3; }
+        .category[data-category="Health"] { background-color: #FF9800; }
+        .category[data-category="Other"] { background-color: #9E9E9E; }
+
+        video {
+            width: 100%;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .form {
+            width: 60%;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .form input, .form select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form input[type="submit"] {
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .form input[type="submit"]:hover {
+            background: #0056b3;
+        }
+    </style>
 <body>
     <?php include 'includes/nav.php'; ?>
     <?php include 'includes/side_nav.php'; ?>
@@ -43,7 +145,10 @@
                         <source src="<?= htmlspecialchars($t['video_url']) ?>" type="video/mp4">
                     </video>
                 <?php } ?>
-                <p class="category">Category: <?= htmlspecialchars($t['category']) ?></p>
+                <p class="category" data-category="<?= htmlspecialchars($t['category']) ?>">
+                    <?= htmlspecialchars($t['category']) ?>
+                </p>
+
             </div>
         <?php } ?>
     </div>
@@ -55,7 +160,7 @@
           
 
             <label>Your Story:</label>
-            <input type="text" name="story_text" required><br>
+            <textarea name="story_text" required rows="5"></textarea><br>
 
             <label>Category:</label>
             <select name="category" required>
