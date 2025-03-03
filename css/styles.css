@@ -56,7 +56,10 @@ li span {
 
 .proj_container,
 .form {
-  border: 2px solid black;
+  text-align: center;
+  border: 2px solid rgba(128, 128, 128, 0.577);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: blanchedalmond;
   max-width: 700px;
   border-radius: 15px;
   margin: 3em auto;
@@ -88,6 +91,76 @@ li span {
 
 .chat img:hover {
   transform: scale(1.1);
+}
+
+/* ---------------------------------------------
+        FORM/INPUT
+------------------------------------------------ */
+.request_type {
+  margin: 1em;
+  padding: 20px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+select {
+  width: 100%;
+  padding: 16px 20px;
+  border: 1px solid rgba(64, 64, 64, 0.629);
+  background-color: white;
+}
+
+.select_date {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.project_details h2 {
+  text-align: center;
+}
+.large_input {
+  height: 100px;
+}
+
+.details_container {
+  border-top: 1px solid grey;
+  margin: 1em;
+  padding: 30px 0;
+}
+
+.date_input {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border: 3px solid #555;
+}
+
+input[type="date"] {
+  padding: 8px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  max-width: 200px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form {
+  text-align: left;
+}
+
+.form_container {
+  padding: 10px;
+  margin: 30px auto;
+  max-width: 700px;
 }
 
 /* ---------------------------------------------
@@ -174,9 +247,47 @@ li span {
   padding: 10px;
 }
 
+.project_details {
+  border: 2px solid grey;
+  border-radius: 3px;
+  padding: 10px;
+}
+
 .req-grid {
   display: flex;
   flex-direction: column;
+}
+
+.button,
+.back {
+  text-decoration: none;
+  color: black;
+}
+
+.goback {
+  position: relative;
+  text-align: left;
+}
+
+.back:hover {
+  text-decoration: underline;
+}
+
+.button,
+input[type="submit"] {
+  border: 1px solid grey;
+  background-color: rgba(128, 128, 128, 0.156);
+  border-radius: 5px;
+  padding: 10px;
+  display: inline-block;
+  transition: transform 0.3s ease-in-out;
+}
+
+.button:hover,
+input[type="submit"]:hover {
+  transform: scale(1.1);
+  font-weight: normal;
+  cursor: pointer;
 }
 
 /* ---------------------------------------------
@@ -191,6 +302,12 @@ li span {
 
 p.italic {
   font-style: italic;
+  margin-top: 4px;
+}
+
+p.underline {
+  text-decoration: underline;
+  margin-bottom: 2px;
 }
 
 .proj-grid {
@@ -457,5 +574,14 @@ table tr:nth-child(even) {
 
   .proj-card {
     padding: 50px;
+  }
+
+  .select_date {
+    flex-direction: row;
+  }
+
+  input[type="date"] {
+    width: 400px;
+    margin: 0 1em 0 0;
   }
 }

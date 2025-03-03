@@ -97,7 +97,7 @@ $villages = [
                     ?>
                 </div>
                 <p class="italic">Want to see your community's projects here?</p>
-                <a class="request" href="request.php">Submit a Request</a>
+                <a class="button" href="request.php">Submit a Request</a>
             </div>
 
         </div>

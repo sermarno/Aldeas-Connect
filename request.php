@@ -22,17 +22,15 @@
         <h1>Project Request</h1>
     </header>
     <div class="proj_container">
-        <div class="new">
-            <p>Do you want to see your community's projects online?</p>
-            <a href="new_proj.php">New Project</a>
+        <div class="goback">
+            <a class="back" href="index.php"> ← Go Back</a>
         </div>
-        <hr>
-        <div class="existing">
+        <div class="request_type">
+            <p>Do you want to see your community's projects online and don't see them already?</p>
+            <a class="button" href="new_proj.php">New Project</a>
+            <hr>
             <p>Already see your project?</p>
-            <a href="edit_proj.php">Update or Remove Project</a>
-        </div>
-        <div class="cancel">
-            <a href="index.php">Cancel</a>
+            <a class="button" href="edit_proj.php">Update Project Details</a><br>
         </div>
     </div>
     <?php include 'includes/footer.php' ?>

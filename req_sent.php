@@ -73,6 +73,13 @@ $conn->close();
 
     <header>
         <h1>Request Summary</h1>
+        <p class="italic">
+            Requests will be reviewed within 24-48 hours after submission. 
+            If approved, your project will be published on the website, and 
+            you will be able to make changes to your project 
+            details. You will receive a notification by administrators
+            regarding the approval or denial of your request.
+        </p>
     </header>
     <div class="form">
         <h2><?php echo htmlspecialchars($project_request['title']); ?></h2>
