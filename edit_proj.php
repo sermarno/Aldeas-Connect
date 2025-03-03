@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_project'])) {
     </header>
     <div class="form">
         <div class="goback">
-            <a class="back" href="index.php"> ← Go Back</a>
+            <a class="back" href="request.php"> ← Go Back</a>
         </div>
         <div class="form_container">
             <form action="edit_proj.php" method="POST">

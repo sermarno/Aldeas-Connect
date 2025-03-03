@@ -89,7 +89,9 @@ CREATE TABLE about_content (
 
 -- insert statements with test data
 INSERT INTO users (fname, lname, username, email, user_role) VALUES
-('fname', 'lname', 'user1', 'user1@example.com', 'resident');
+('fname', 'lname', 'user1', 'user1@example.com', 'resident'),
+('fname2', 'lname2', 'user2', 'user2@example.com', 'resident'),
+('fname3', 'lname3', 'user3', 'user3@example.com', 'visitor');
 
 INSERT INTO communities (comm_name, comm_description, comm_location) VALUES
 ('Community 1', 'Community 1 description', 'Community 1 location'), 
@@ -116,10 +118,6 @@ INSERT INTO required_help (community, req_resources) VALUES
 ('Tikum, Tekax', 'More containers.'),
 ('Hunukú, Temozón', 'More computers for online resources.'),
 ('Cazumá, Cazumá', 'More wifi routers for intenet.');
-
-INSERT INTO messages (message_text, sender_id, receiver_id) VALUES
-("hello", 2, 1),
-("hi", 1, 2);
 
 -- insert initial data for about content
 INSERT INTO about_content (section, content, image_path) VALUES

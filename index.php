@@ -53,6 +53,9 @@ $villages = [
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
+    <!-- Map API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDf99Nyj4amTBbILPYjYt0S01h-kuSWqo"></script> 
+    <!-- Translate API -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
@@ -60,17 +63,6 @@ $villages = [
     </script>
     <script type="text/javascript"
         src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <!-- Map API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDf99Nyj4amTBbILPYjYt0S01h-kuSWqo"></script> 
-</head>
-<body>
-    <!-- Nav Bar -->
-    <?php include 'includes/nav.php' ?>
-    <?php include 'includes/side_nav.php' ?>
-
-    <header>
-        <h1><span>The Connection and Future of Smart Villages</span></h1>
-    </header>
     <script>
         function translatePage() {
             var translateElement = document.getElementById('google_translate_element');
@@ -80,7 +72,30 @@ $villages = [
             select.dispatchEvent(new Event('change'));
         }
     </script>
-    <div class="header">
+</head>
+<body>
+    <!-- Nav Bar -->
+    <?php include 'includes/nav.php' ?>
+    <?php include 'includes/side_nav.php' ?>
+    <header id="home">
+        <h1>
+            Aldeas Inteligentes IU <br>
+            <span>
+                The Connection and Future of Smart Villages
+            </span>
+        </h1>
+        <a class="button_home" href="project.php">Learn More About Aldeas Inteligentes IU</a>
+    </header>
+
+    <main>
+        <div class="intro">
+            <p>
+                Aldeas Inteligentes is a transformative initiative by the Mexican Federal Government aimed at providing digital access to rural and isolated communities across Mexico. 
+                By connecting 83 communities with wireless internet, offering STEM training, and supporting community development projects, Aldeas Inteligentes is enhancing education, commerce, health, and overall welfare.
+                Our information system will change how rural communities track progress, showcase their achievements, and connect with supporters.
+                From improving education and healthcare to boosting local commerce, we're creating a platform that helps amplify the voices and aspirations of Mexico's underrated regions.
+            </p>
+        </div>
         <div class="projects-container">
             <h3>Project Highlights</h3>
                 <div class="proj-grid">
@@ -96,8 +111,7 @@ $villages = [
                         }
                     ?>
                 </div>
-                <p class="italic">Want to see your community's projects here?</p>
-                <a class="button" href="request.php">Submit a Request</a>
+                <a class="button" href="investor.php">See More</a>
             </div>
 
         </div>
@@ -131,22 +145,13 @@ $villages = [
             window.onload = initMap;
             </script>
         </div>
-    </div>
-    <div class="chat">
-        <a href="https://web.whatsapp.com/" target="_blank">
-            <img src="img/chat.png" alt="whatsapp">
-        </a>
-    </div>
-    <article id="overview">
-        <h3>Overview</h3>
-        <p>
-            Aldeas Inteligentes is a transformative initiative by the Mexican Federal Government aimed at providing digital access to rural and isolated communities across Mexico. 
-            By connecting 83 communities with wireless internet, offering STEM training, and supporting community development projects, Aldeas Inteligentes is enhancing education, commerce, health, and overall welfare.
-            Our information system will change how rural communities track progress, showcase their achievements, and connect with supporters.
-            From improving education and healthcare to boosting local commerce, we're creating a platform that helps amplify the voices and aspirations of Mexico's underrated regions.
-        </p>
-    </article>]
+        <div class="chat">
+            <a href="https://web.whatsapp.com/" target="_blank">
+                <img src="img/chat.png" alt="whatsapp">
+            </a>
+        </div>
+        <script src="js/nav.js"></script>
+    </main>
     <?php include 'includes/footer.php'; ?>
-    <script src="js/nav.js"></script>
 </body>
 </html>

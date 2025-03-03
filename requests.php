@@ -31,12 +31,12 @@
     <!-- Nav Bar -->
     <?php include 'includes/nav.php' ?>
     <?php include 'includes/side_nav.php' ?>
-
-    <div class="requests-container">
-        <header>
-            <h1>Project Requests</h1>
-        </header>
+    <header>
+        <h1></h1>
+    </header>
+    <div class="projects-container">
         <div class="req-grid">
+            <h2>Pending Requests</h2>
             <?php
                 if (count($project_requests) > 0 ) {
                     foreach ($project_requests as $project_request) {
@@ -51,11 +51,11 @@
                     }
                 }
                 ?>
-        </div>
+         </div>
     </div>
 
-<?php include 'includes/footer.php' ?>
-<script src="js/nav.js"></script>
-<?php $conn->close(); ?>
+    <?php include 'includes/footer.php' ?>
+    <script src="js/nav.js"></script>
+    <?php $conn->close(); ?>
 </body>
 </html>

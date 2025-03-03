@@ -23,7 +23,7 @@
     </header>
     <div class="proj_container">
         <div class="goback">
-            <a class="back" href="index.php"> ← Go Back</a>
+            <a class="back" href="investor.php"> ← Go Back</a>
         </div>
         <div class="request_type">
             <p>Do you want to see your community's projects online and don't see them already?</p>
