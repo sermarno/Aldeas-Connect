@@ -55,8 +55,7 @@ li span {
 }
 
 .proj_container,
-.form,
-.request {
+.form {
   border: 2px solid black;
   max-width: 700px;
   border-radius: 15px;
@@ -167,55 +166,6 @@ li span {
   text-align: center;
 }
 
-.projects-container {
-  padding: 10px;
-  margin-top: 30px;
-  overflow: auto;
-}
-
-.proj-grid {
-  display: flex;
-  flex-wrap: wrap;
-  overflow: visible;
-  gap: 10px;
-  justify-content: center;
-  width: 100%;
-  height: auto;
-  position: relative;
-  transition: transform 0.3s ease-in-out;
-}
-
-.proj-card {
-  border: 2px solid blanchedalmond;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 5px;
-  min-width: 250px;
-  max-width: 300px;
-  flex-shrink: 0;
-  flex-grow: 1;
-}
-
-.cycle-cards {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-#backbtn,
-#nextbtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-/* ---------------------------------------------
-        PROJECT CARDS
------------------------------------------------- */
 .requests-container {
   border: 1px solid rgb(175, 175, 175);
   border-radius: 10px;
@@ -227,6 +177,35 @@ li span {
 .req-grid {
   display: flex;
   flex-direction: column;
+}
+
+/* ---------------------------------------------
+        PROJECT CARDS
+------------------------------------------------ */
+
+.projects-container {
+  padding: 10px;
+  margin: 30px auto;
+  max-width: 700px;
+}
+
+p.italic {
+  font-style: italic;
+}
+
+.proj-grid {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.proj-card {
+  border: 2px solid blanchedalmond;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  max-width: 400px;
+  margin: 1em;
 }
 
 /* ---------------------------------------------
@@ -464,24 +443,19 @@ table th {
   color: black;
 }
 
-
 table tr:nth-child(even) {
   background: #f2f2f2;
 }
 
 /* ---------------------------------------------
-        Button
+      MEDIA QUERIES
+------------------------------------------------ */
+@media (min-width: 768px) {
+  .proj-grid {
+    flex-direction: row;
+  }
 
-.donate-btn {
-  background: #ff4500;
-  color: white;
-  padding: 12px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s ease;
-}
-
-.donate-btn:hover {
-  background: #cc3700;
+  .proj-card {
+    padding: 50px;
+  }
 }

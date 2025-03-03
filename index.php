@@ -83,10 +83,6 @@ $villages = [
     <div class="header">
         <div class="projects-container">
             <h3>Project Highlights</h3>
-            
-            <!-- cycle through project highlight cards (left/right arrows) -->
-            <div class="cycle-cards">
-                <button id="backbtn">&#9665;</button>
                 <div class="proj-grid">
                     <?php
                         if (count($projects) > 0 ) {
@@ -100,7 +96,8 @@ $villages = [
                         }
                     ?>
                 </div>
-                <button id="nextbtn">&#9655;</button>
+                <p class="italic">Want to see your community's projects here?</p>
+                <a class="request" href="request.php">Submit a Request</a>
             </div>
 
         </div>
@@ -140,10 +137,6 @@ $villages = [
             <img src="img/chat.png" alt="whatsapp">
         </a>
     </div>
-    <div class="request">
-        <p>Want to see your community's projects here?</p>
-        <a href="request.php">Submit a Request</a>
-    </div>
     <article id="overview">
         <h3>Overview</h3>
         <p>
@@ -152,9 +145,8 @@ $villages = [
             Our information system will change how rural communities track progress, showcase their achievements, and connect with supporters.
             From improving education and healthcare to boosting local commerce, we're creating a platform that helps amplify the voices and aspirations of Mexico's underrated regions.
         </p>
-    </article>
+    </article>]
     <?php include 'includes/footer.php'; ?>
     <script src="js/nav.js"></script>
-    <script src="js/card_cycle.js"></script>
 </body>
 </html>
