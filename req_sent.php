@@ -10,12 +10,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $proj_end = $conn->real_escape_string($_POST['proj_end']);
     $community_id = $conn->real_escape_string($_POST['community_id']);
 
+    // handling image uploads
+    $image_path = NULL;
+    if (isset($_FILES['proj_image']) && $_FILES['proj_image']['error'] == 0) {
+        $upload_dir = 'uploads/';
+        $image_name = basename($_FILES['proj_image']['name']);
+        $image_path = $upload_dir . $image_name;
+
+        if (move_uploaded_file($_FILES['proj_image']['tmp_name'], $image_path)) {
+
+        } else {
+            echo "Sorry, there was a problem uploading your image.";
+            exit;
+        }
+    }
     // inserting data into projects table
-    $sql = "INSERT INTO project_requests (title, proj_description, proj_start, proj_end, community_id) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO project_requests (title, proj_description, proj_image, proj_start, proj_end, community_id) VALUES (?, ?, ?, ?, ?, ?)";
     
     // preparing and running the query
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssi", $title, $proj_description, $proj_start, $proj_end, $community_id);
+    $stmt->bind_param("sssssi", $title, $proj_description, $image_path, $proj_start, $proj_end, $community_id);
     if ($stmt->execute()) {
         // retrieving the inserted project
         $new_project_id = $conn->insert_id;

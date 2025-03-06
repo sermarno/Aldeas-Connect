@@ -1,11 +1,11 @@
-DROP TABLE IF EXISTS required_help;
 DROP TABLE IF EXISTS testimonials CASCADE;
 DROP TABLE IF EXISTS project_requests CASCADE;
 DROP TABLE IF EXISTS projects CASCADE;
+DROP TABLE IF EXISTS project_highlights CASCADE;
 DROP TABLE IF EXISTS communities CASCADE;
 DROP TABLE IF EXISTS about_content CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
-DROP TABLE IF EXISTS project_highlights;
+DROP TABLE IF EXISTS required_help CASCADE;
 
 -- user
 CREATE TABLE users (
@@ -30,6 +30,7 @@ CREATE TABLE projects (
     project_id INT PRIMARY KEY  AUTO_INCREMENT,
     title VARCHAR(255),
     proj_description TEXT,
+    proj_image VARCHAR(255),
     proj_start DATE,
     proj_end DATE,
     request_status ENUM('approved', 'denied', 'pending') DEFAULT 'pending',
@@ -46,6 +47,7 @@ CREATE TABLE project_requests (
     project_id INT,
     title VARCHAR(255),
     proj_description TEXT,
+    proj_image VARCHAR(255),
     proj_start DATE,
     proj_end DATE,
     request_status ENUM('approved', 'denied', 'pending') DEFAULT 'pending',
@@ -61,6 +63,7 @@ CREATE TABLE project_highlights (
     project_id INT,
     title VARCHAR(255),
     proj_description TEXT,
+    proj_image VARCHAR(255),
     proj_start DATE,
     proj_end DATE,
     community_id INT,
@@ -80,7 +83,7 @@ CREATE TABLE testimonials (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
     FOREIGN KEY (community_id) REFERENCES communities(community_id) ON DELETE CASCADE
-    ) ENGINE=INNODB;
+) ENGINE=INNODB;
 
 -- community help needed
 CREATE TABLE required_help (
@@ -98,7 +101,6 @@ CREATE TABLE about_content (
     image_path VARCHAR(255)
 ) ENGINE=INNODB;
 
-
 -- insert statements with test data
 INSERT INTO users (fname, lname, username, email, user_role) VALUES
 ('fname', 'lname', 'user1', 'user1@example.com', 'resident'),
@@ -110,19 +112,19 @@ INSERT INTO communities (comm_name, comm_description, comm_location) VALUES
 ('Community 2', 'Community 2 description', 'Community 2 location'),
 ('Community 3', 'Community 3 description', 'Community 3 location');
 
-INSERT INTO projects (title, proj_description, proj_start, proj_end, request_status, admin_comments, user_id, community_id) VALUES
-('Project 1', 'Project 1 description', '2020-11-12', '2025-09-07', 'approved', 'Looks great! Let us know if you need any help.', 1, 1),
-('Project 2', 'Project 2 description', '2022-09-12', '2027-04-07', 'approved', 'I look forward to seeing your progress!', 2, 3),
-('Project 5', 'Project 5 description', '2025-09-12', '2026-10-15', 'approved', 'Your project has been approved!', 1, 3);
+INSERT INTO projects (title, proj_description, proj_image, proj_start, proj_end, request_status, admin_comments, user_id, community_id) VALUES
+('Project 1', 'Project 1 description', null, '2020-11-12', '2025-09-07', 'approved', 'Looks great! Let us know if you need any help.', 1, 1),
+('Project 2', 'Project 2 description', null, '2022-09-12', '2027-04-07', 'approved', 'I look forward to seeing your progress!', 2, 3),
+('Project 5', 'Project 5 description', null, '2025-09-12', '2026-10-15', 'approved', 'Your project has been approved!', 1, 3);
 
-INSERT INTO project_highlights(title, proj_description, proj_start, proj_end, community_id) VALUES 
-('Project 10', 'Project 10 description', '2020-04-23', '2025-01-11', 3),
-('Project 11', 'Project 11 description', '2017-11-14', '2020-05-24', 2),
-('Project 12', 'Project 12 description', '2022-06-05', '2024-09-07', 1);
+INSERT INTO project_highlights(title, proj_description, proj_image, proj_start, proj_end, community_id) VALUES 
+('Health Center', 'Supporting the processing and sharing of information reports with jurisdictions, hospitals, and the central health sector office.', 'uploads/health_center.jpeg', '2020-04-23', '2025-01-11', 3),
+('Migrant Shelter', 'Training refugees to access information about human rights and refugee assistance', 'uploads/shelter.png', '2017-11-14', '2020-05-24', 2),
+('Telesecondary School', 'Supporting Online Education', 'uploads/school.jpeg', '2022-06-05', '2024-09-07', 1);
 
-INSERT INTO project_requests (title, proj_description, proj_start, proj_end, request_status, admin_comments, user_id, community_id) VALUES
-('Project 3', 'Project 3 description', '2025-04-09', '2026-01-03', 'pending', null, 1, 1),
-('Project 4', 'Project 4 description', '2025-11-09', '2028-11-04', 'approved', "This is a really great project to work on!", 2, 2);
+INSERT INTO project_requests (title, proj_description, proj_image, proj_start, proj_end, request_status, admin_comments, user_id, community_id) VALUES
+('Project 3', 'Project 3 description', null, '2025-04-09', '2026-01-03', 'pending', null, 1, 1),
+('Project 4', 'Project 4 description', null, '2025-11-09', '2028-11-04', 'approved', "This is a really great project to work on!", 2, 2);
 
 INSERT INTO testimonials (user_id, community_id, story_text, video_url, category, status)
 VALUES

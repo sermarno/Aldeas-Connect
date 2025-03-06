@@ -98,22 +98,23 @@ $villages = [
         </div>
         <div class="projects-container">
             <h3>Project Highlights</h3>
-                <div class="proj-grid">
-                    <?php
-                        if (count($projects) > 0 ) {
-                            foreach ($projects as $project) {
-                                echo "<div class='proj-card'>";
-                                echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
-                                echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
-                                echo "<a href='investor.php?project_id=" . $project['id'] . "' class='donate-btn'>Donate</a>";
-                                echo "</div>";
+            <div class="proj-grid">
+                <?php
+                    if (count($projects) > 0 ) {
+                        foreach ($projects as $project) {
+                            echo "<div class='proj-card'>";
+                            if (!empty($project['proj_image'])) {
+                                echo "<img src='" . htmlspecialchars($project['proj_image']) . "' alt='project image' class='proj-image'><br>";
                             }
+                            echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
+                            echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
+                            echo "<a href='investor.php?project_id=" . $project['id'] . "' class='donate-btn'>Donate</a>";
+                            echo "</div>";
                         }
-                    ?>
-                </div>
-                <a class="button" href="investor.php">See More</a>
+                    }
+                ?>
             </div>
-
+            <a class="button" href="investor.php">See More</a>
         </div>
 
         <div id="map">
