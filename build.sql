@@ -4,18 +4,18 @@ DROP TABLE IF EXISTS projects CASCADE;
 DROP TABLE IF EXISTS project_highlights CASCADE;
 DROP TABLE IF EXISTS communities CASCADE;
 DROP TABLE IF EXISTS about_content CASCADE;
--- DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS required_help CASCADE;
 
 -- user
--- CREATE TABLE users (
---     user_id INT PRIMARY KEY AUTO_INCREMENT,
---     fname VARCHAR(255),
---     lname VARCHAR(255),
---     username VARCHAR(255) NOT NULL,
---     email VARCHAR(255),
---     user_role ENUM('resident', 'admin', 'visitor')
--- ) ENGINE=INNODB;
+CREATE TABLE users (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    fname VARCHAR(255),
+    lname VARCHAR(255),
+    username VARCHAR(255) NOT NULL,
+    email VARCHAR(255),
+    user_role ENUM('resident', 'admin', 'visitor') DEFAULT ('visitor')
+) ENGINE=INNODB;
 
 -- community
 CREATE TABLE communities (
@@ -35,9 +35,9 @@ CREATE TABLE projects (
     proj_end DATE,
     request_status ENUM('approved', 'denied', 'pending') DEFAULT 'pending',
     admin_comments TEXT, -- message from admin about decision
-    -- user_id INT,
+    user_id INT,
     community_id INT,
-    -- FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (community_id) REFERENCES communities(community_id)
 ) ENGINE=INNODB;
 
@@ -52,9 +52,9 @@ CREATE TABLE project_requests (
     proj_end DATE,
     request_status ENUM('approved', 'denied', 'pending') DEFAULT 'pending',
     admin_comments TEXT,
-    -- user_id INT,
+    user_id INT,
     community_id INT,
-    -- FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
     FOREIGN KEY (community_id) REFERENCES communities(community_id)
 ) ENGINE=INNODB;
 
@@ -66,6 +66,7 @@ CREATE TABLE project_highlights (
     proj_image VARCHAR(255),
     proj_start DATE,
     proj_end DATE,
+    user_id INT,
     community_id INT,
     FOREIGN KEY (community_id) REFERENCES communities(community_id)
 ) ENGINE=INNODB;
@@ -73,7 +74,7 @@ CREATE TABLE project_highlights (
 -- Testimonial/Connectivity
 CREATE TABLE testimonials (
     testimonial_id INT PRIMARY KEY AUTO_INCREMENT,
-    -- user_id INT NOT NULL,
+    user_id INT NOT NULL,
     community_id INT NOT NULL,
     story_text TEXT NOT NULL,
     video_url VARCHAR(255) NULL, -- Optional video testimonial
@@ -81,7 +82,7 @@ CREATE TABLE testimonials (
     status ENUM('pending', 'approved', 'denied') DEFAULT 'pending', -- Admin approval status
     admin_comments TEXT NULL, -- Admin feedback
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    -- FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
     FOREIGN KEY (community_id) REFERENCES communities(community_id) ON DELETE CASCADE
 ) ENGINE=INNODB;
 
@@ -102,34 +103,34 @@ CREATE TABLE about_content (
 ) ENGINE=INNODB;
 
 -- insert statements with test data
--- INSERT INTO users (fname, lname, username, email, user_role) VALUES
--- ('fname', 'lname', 'user1', 'user1@example.com', 'resident'),
--- ('fname2', 'lname2', 'user2', 'user2@example.com', 'resident'),
--- ('fname3', 'lname3', 'user3', 'user3@example.com', 'visitor');
+INSERT INTO users (fname, lname, username, email, user_role) VALUES
+('fname', 'lname', 'user1', 'user1@example.com', 'resident'),
+('fname2', 'lname2', 'user2', 'user2@example.com', 'resident'),
+('fname3', 'lname3', 'user3', 'user3@example.com', 'visitor');
 
 INSERT INTO communities (comm_name, comm_description, comm_location) VALUES
 ('Community 1', 'Community 1 description', 'Community 1 location'), 
 ('Community 2', 'Community 2 description', 'Community 2 location'),
 ('Community 3', 'Community 3 description', 'Community 3 location');
 
-INSERT INTO projects (title, proj_description, proj_image, proj_start, proj_end, request_status, admin_comments, community_id) VALUES
-('Project 1', 'Project 1 description', null, '2020-11-12', '2025-09-07', 'approved', 'Looks great! Let us know if you need any help.', 1),
-('Project 2', 'Project 2 description', null, '2022-09-12', '2027-04-07', 'approved', 'I look forward to seeing your progress!', 3),
-('Project 5', 'Project 5 description', null, '2025-09-12', '2026-10-15', 'approved', 'Your project has been approved!', 3);
+INSERT INTO projects (title, proj_description, proj_image, proj_start, proj_end, request_status, admin_comments, user_id, community_id) VALUES
+('Project 1', 'Project 1 description', null, '2020-11-12', '2025-09-07', 'approved', 'Looks great! Let us know if you need any help.', 1, 1),
+('Project 2', 'Project 2 description', null, '2022-09-12', '2027-04-07', 'approved', 'I look forward to seeing your progress!', 2, 3),
+('Project 5', 'Project 5 description', null, '2025-09-12', '2026-10-15', 'approved', 'Your project has been approved!', 1, 3);
 
-INSERT INTO project_highlights(title, proj_description, proj_image, proj_start, proj_end, community_id) VALUES 
-('Health Center', 'Supporting the processing and sharing of information reports with jurisdictions, hospitals, and the central health sector office.', 'uploads/health_center.jpeg', '2020-04-23', '2025-01-11', 3),
-('Migrant Shelter', 'Training refugees to access information about human rights and refugee assistance', 'uploads/shelter.png', '2017-11-14', '2020-05-24', 2),
-('Telesecondary School', 'Supporting Online Education', 'uploads/school.jpeg', '2022-06-05', '2024-09-07', 1);
+INSERT INTO project_highlights (title, proj_description, proj_image, proj_start, proj_end, user_id, community_id) VALUES 
+('Health Center', 'Supporting the processing and sharing of information reports with jurisdictions, hospitals, and the central health sector office.', 'uploads/health_center.jpeg', '2020-04-23', '2025-01-11', 1, 3),
+('Migrant Shelter', 'Training refugees to access information about human rights and refugee assistance', 'uploads/shelter.png', '2017-11-14', '2020-05-24', 2, 2),
+('Telesecondary School', 'Supporting Online Education', 'uploads/school.jpeg', '2022-06-05', '2024-09-07', 1, 1);
 
-INSERT INTO project_requests (title, proj_description, proj_image, proj_start, proj_end, request_status, admin_comments, community_id) VALUES
-('Project 3', 'Project 3 description', null, '2025-04-09', '2026-01-03', 'pending', null, 1),
-('Project 4', 'Project 4 description', null, '2025-11-09', '2028-11-04', 'pending', null, 2);
+INSERT INTO project_requests (title, proj_description, proj_image, proj_start, proj_end, request_status, admin_comments, user_id, community_id) VALUES
+('Project 3', 'Project 3 description', null, '2025-04-09', '2026-01-03', 'pending', null, 1, 1),
+('Project 4', 'Project 4 description', null, '2025-11-09', '2028-11-04', 'pending', null, 2, 2);
 
-INSERT INTO testimonials (community_id, story_text, video_url, category, status)
+INSERT INTO testimonials (user_id, community_id, story_text, video_url, category, status)
 VALUES
-(1, 'My name is Elisa Cercanche, I live in the community of Tiunca, municipality of Yaxcabá, I am a community educator in the community of San Marcos. Preschool level, for me the smart villages project is one, it is a support that has served us in the Community, in rural communities such as the Community of Tiuncá, since it has been used educationally.', 'uploads/sample_video.mp4', 'Education', 'approved'),
-(3, "My name is Juanita Atzuk Heredia, I am from the community of Santa Cruz Chemax, Yucatán. It has been of many benefits to all of us in this Community because through them many community projects have been worked on, within which women's rights are covered, because in communities like these is where violence is suffered the most, because women You don't know all your rights. Of course, with programs like these smart villages, the risk of violence in the home can be minimized.
+(2, 1, 'My name is Elisa Cercanche, I live in the community of Tiunca, municipality of Yaxcabá, I am a community educator in the community of San Marcos. Preschool level, for me the smart villages project is one, it is a support that has served us in the Community, in rural communities such as the Community of Tiuncá, since it has been used educationally.', 'uploads/sample_video.mp4', 'Education', 'approved'),
+(1, 3, "My name is Juanita Atzuk Heredia, I am from the community of Santa Cruz Chemax, Yucatán. It has been of many benefits to all of us in this Community because through them many community projects have been worked on, within which women's rights are covered, because in communities like these is where violence is suffered the most, because women You don't know all your rights. Of course, with programs like these smart villages, the risk of violence in the home can be minimized.
 ", 'uploads/sample_video.mp4', 'Education', 'approved');
 
 INSERT INTO required_help (community, req_resources) VALUES

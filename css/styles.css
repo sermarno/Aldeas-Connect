@@ -112,6 +112,15 @@ li span {
   text-align: center;
 }
 
+.account-details {
+  background-color: blanchedalmond;
+  max-width: 700px;
+  margin: 4em auto;
+  padding: 50px;
+  box-shadow: 0px 0px 8px grey;
+  border-radius: 10px;
+}
+
 .chat {
   position: fixed;
   bottom: 20px;
@@ -399,6 +408,47 @@ p.underline {
 /* ---------------------------------------------
         NAVIGATION
 ------------------------------------------------ */
+.account-icon {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.account-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.account-dropdown img {
+  width: 60px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  top: 100%;
+  left: 0;
+  font-size: 14px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0, 2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 5px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.account-dropdown:hover .dropdown-content {
+  display: block;
+}
+
 nav {
   background-color: blanchedalmond;
   display: flex;
@@ -433,10 +483,6 @@ nav .logo img {
   position: absolute;
   top: 9px;
   left: 15px;
-}
-
-.login img {
-  width: 60px;
 }
 
 .all-over-bkg {

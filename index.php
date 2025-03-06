@@ -10,6 +10,22 @@ if ($result->num_rows > 0) {
     }
 }
 
+if (isset($_SESSION['google_email'])) {
+    $email = $_SESSION['google_email'];
+
+    $sql = "SELECT * FROM users WHERE email = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows == 0) {
+        // If user does not exist, redirect to register.php
+        header("Location: register.php");
+        exit();
+    }
+}
+
 //array of village data placeholders still need to pull info to village
 $villages = [
     ["name" => "Sacún Cubwitz", "lat" => 17.1275, "lng" => -91.93989, "info" => "Centro de Salud in Chiapas, focused on processing and sharing health sector reports."],
@@ -72,8 +88,33 @@ $villages = [
             select.dispatchEvent(new Event('change'));
         }
     </script>
+    <!-- Logout/login Popup -->
+     <script>
+        function logoutMessage() {
+            alert("You have been successfully logged out!");
+        }
+     </script>
+    <script>
+        function loginMessage() {
+            alert("You have been successfully logged in!");
+        }
+     </script>
 </head>
 <body>
+    <!-- logout message -->
+    <?php if (isset($_GET['logout']) && $_GET['logout'] == 'success'): ?>
+        <script>
+            logoutMessage();
+        </script>
+    <?php endif; ?>
+
+    <!-- login message -->
+     <?php if (isset($_GET['login']) && $_GET['login'] == 'success'): ?>
+        <script>
+            loginMessage();
+        </script>
+    <?php endif; ?>
+
     <!-- Nav Bar -->
     <?php include 'includes/nav.php' ?>
     <?php include 'includes/side_nav.php' ?>
