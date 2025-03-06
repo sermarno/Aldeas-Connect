@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "includes/db.php";
-$sql = "SELECT * FROM projects";
+$sql = "SELECT * FROM project_highlights";
 $result = $conn->query($sql);
 $projects = [];
 if ($result->num_rows > 0) {

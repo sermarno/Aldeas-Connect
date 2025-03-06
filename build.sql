@@ -5,6 +5,7 @@ DROP TABLE IF EXISTS projects CASCADE;
 DROP TABLE IF EXISTS communities CASCADE;
 DROP TABLE IF EXISTS about_content CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS project_highlights;
 
 -- user
 CREATE TABLE users (
@@ -55,6 +56,17 @@ CREATE TABLE project_requests (
     FOREIGN KEY (community_id) REFERENCES communities(community_id)
 ) ENGINE=INNODB;
 
+-- project highlights
+CREATE TABLE project_highlights (
+    project_id INT,
+    title VARCHAR(255),
+    proj_description TEXT,
+    proj_start DATE,
+    proj_end DATE,
+    community_id INT,
+    FOREIGN KEY (community_id) REFERENCES communities(community_id)
+) ENGINE=INNODB;
+
 -- Testimonial/Connectivity
 CREATE TABLE testimonials (
     testimonial_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -102,6 +114,11 @@ INSERT INTO projects (title, proj_description, proj_start, proj_end, request_sta
 ('Project 1', 'Project 1 description', '2020-11-12', '2025-09-07', 'approved', 'Looks great! Let us know if you need any help.', 1, 1),
 ('Project 2', 'Project 2 description', '2022-09-12', '2027-04-07', 'approved', 'I look forward to seeing your progress!', 2, 3),
 ('Project 5', 'Project 5 description', '2025-09-12', '2026-10-15', 'approved', 'Your project has been approved!', 1, 3);
+
+INSERT INTO project_highlights(title, proj_description, proj_start, proj_end, community_id) VALUES 
+('Project 10', 'Project 10 description', '2020-04-23', '2025-01-11', 3),
+('Project 11', 'Project 11 description', '2017-11-14', '2020-05-24', 2),
+('Project 12', 'Project 12 description', '2022-06-05', '2024-09-07', 1);
 
 INSERT INTO project_requests (title, proj_description, proj_start, proj_end, request_status, admin_comments, user_id, community_id) VALUES
 ('Project 3', 'Project 3 description', '2025-04-09', '2026-01-03', 'pending', null, 1, 1),
