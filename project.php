@@ -14,14 +14,13 @@
     />
 </head>
 <body>
-    <main>
     <!-- Nav Bar -->
     <?php include 'includes/nav.php' ?>
     <?php include 'includes/side_nav.php' ?>
 
-        <header>
-            <h1>Project Overview: <br><span>La Conexión y el Futuro de las Aldeas Inteligentes</span></h1>
-        </header>
+    <header>
+        <h1></h1>
+    </header>
         <div class="scroll">
             <h3>Project Overview:</h3>
             <ul> 
@@ -106,7 +105,6 @@
                     direct the users to a page that examines the community further. </li>
             </ul>
         </article>
-    </main>
     <?php include 'includes/footer.php' ?>
     <script src="js/nav.js"></script>
 </body>
