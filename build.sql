@@ -124,7 +124,7 @@ INSERT INTO project_highlights(title, proj_description, proj_image, proj_start, 
 
 INSERT INTO project_requests (title, proj_description, proj_image, proj_start, proj_end, request_status, admin_comments, community_id) VALUES
 ('Project 3', 'Project 3 description', null, '2025-04-09', '2026-01-03', 'pending', null, 1),
-('Project 4', 'Project 4 description', null, '2025-11-09', '2028-11-04', 'approved', "This is a really great project to work on!", 2);
+('Project 4', 'Project 4 description', null, '2025-11-09', '2028-11-04', 'pending', null, 2);
 
 INSERT INTO testimonials (community_id, story_text, video_url, category, status)
 VALUES
