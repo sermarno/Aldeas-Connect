@@ -117,34 +117,41 @@ $villages = [
             <a class="button" href="investor.php">See More</a>
         </div>
 
-        <div id="map">
-            <script>
-                const villages = <?php echo json_encode($villages); ?>;
+        <div class="map-container">
+            <div class="map-text">
+                <h3>83 Communtities with Smart Village Resources</h3>
+                <p>Explore the many communities benefiting from Smart Village inititaves.<br></p>
+                <p class="italic">Click on a map marker to learn more</p>
+            </div>
+            <div id="map">
+                <script>
+                    const villages = <?php echo json_encode($villages); ?>;
 
-                function initMap() {
-                    const map = new google.maps.Map(document.getElementById("map"), {
-                        zoom: 5,
-                        center: { lat: 20.4229, lng: -88.1653 }, // Center of Yucatan
-                    });
-                    villages.forEach(village => {
-                        const marker = new google.maps.Marker({
-                            position: { lat: village.lat, lng: village.lng },
-                            map: map,
-                            title: village.name,
+                    function initMap() {
+                        const map = new google.maps.Map(document.getElementById("map"), {
+                            zoom: 5,
+                            center: { lat: 20.4229, lng: -88.1653 }, // Center of Yucatan
                         });
+                        villages.forEach(village => {
+                            const marker = new google.maps.Marker({
+                                position: { lat: village.lat, lng: village.lng },
+                                map: map,
+                                title: village.name,
+                            });
 
-                        const infoWindow = new google.maps.InfoWindow({
-                            content: `<h3>${village.name}</h3><p>${village.info}</p>`,
-                        });
-                        //Testing
-                        marker.addListener("click", () => {
-                            infoWindow.open(map, marker);
-                        });
-                    })
-                }
+                            const infoWindow = new google.maps.InfoWindow({
+                                content: `<h3>${village.name}</h3><p>${village.info}</p>`,
+                            });
+                            //Testing
+                            marker.addListener("click", () => {
+                                infoWindow.open(map, marker);
+                            });
+                        })
+                    }
 
-            window.onload = initMap;
-            </script>
+                window.onload = initMap;
+                </script>
+            </div>
         </div>
         <div class="chat">
             <a href="https://web.whatsapp.com/" target="_blank">

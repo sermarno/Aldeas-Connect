@@ -259,10 +259,24 @@ input[type="date"] {
         INDEX CARD SHUFFLE AND MAP
 ------------------------------------------------ */
 #map {
+  flex: 1;
   height: 400px;
   width: 80%;
-  margin: 0 auto;
+  margin: 1em auto;
   border-radius: 10px;
+}
+
+.map-container {
+  display: flex;
+  padding: 20px;
+  margin: 1em auto;
+  border-top: 1px solid rgb(183, 183, 183);
+  border-bottom: 1px solid rgb(183, 183, 183);
+}
+
+.map-text {
+  flex: 1;
+  max-width: 40%;
 }
 
 .project_details {
