@@ -45,7 +45,8 @@
                         echo "<p>" . htmlspecialchars($project_request['proj_description']) . "</p>";
                         echo "<p>Start Date: " . htmlspecialchars($project_request['proj_start']) . "</p>";
                         echo "<p>End Date: " . htmlspecialchars($project_request['proj_end']) . "</p>";
-                        echo "<p> Request Status: " . htmlspecialchars($project_request['request_status']) . "</p>";
+                        echo "<p>Request Status: " . htmlspecialchars($project_request['request_status']) . "</p>";
+                        echo "<button class='review-btn' data-id='" . $project_request['request_id'] . "'>Review Request</button>";
                         // button "see how you can help": a href? or button? 
                         echo "</div>";
                     }
@@ -54,8 +55,21 @@
          </div>
     </div>
 
+    <div id="review-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Review Project Request</h2>
+            <input type="hidden" id="request-id">
+            <p id="request-details"></p>
+            <textarea name="admin-comments" id="admin-comments" placeholder="Enter decision comment if denied..."></textarea>
+            <button id="approve-btn">Approve</button>
+            <button id="deny-btn">Deny</button>
+        </div>
+    </div>
+
     <?php include 'includes/footer.php' ?>
     <script src="js/nav.js"></script>
+    <script src="js/modal.js"></script>
     <?php $conn->close(); ?>
 </body>
 </html>
