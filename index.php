@@ -201,7 +201,7 @@ $villages = [
                 <button class="close_button" type="button" onclick="closeChatbox()">X</button>
                     <h3>Send a Message</h3>
                     <div id="messages-container"></div>
-                <form id="message_form" action="send_message.php" method="POST">
+                <form id="message_form">
                     <label for="recipient_id">Select Recipient:</label>
                     <select id="recipient_id" name="recipient_id" required>
                         <option value="">Users</option>
@@ -218,11 +218,33 @@ $villages = [
                     <label for="message">Message:</label><br>
                     <textarea id="message" name="message" placeholder="Type your message..." required></textarea>
                     <button type="submit">Send Message</button>
+                    <p id="message_status"></p>
                 </form>
             </div>
         <?php endif; ?>
         <script src="js/nav.js"></script>
         <script src="js/messenger.js"></script>
+        <script>
+            document.getElementById("message_form").addEventListener("submit", function (e) {
+            e.preventDefault(); // Prevent page reload
+
+            let formData = new FormData(this);
+
+            fetch("send_message.php", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.text()) // Convert response to text
+            .then(data => {
+                document.getElementById("message_status").innerHTML = data; // Show response inside chat popup
+                document.getElementById("message_form").reset(); // Clear the form
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                document.getElementById("message_status").innerHTML = "An error occurred. Please try again.";
+            });
+            });
+        </script>
     </main>
     <?php include 'includes/footer.php'; ?>
 </body>
