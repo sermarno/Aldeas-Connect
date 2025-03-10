@@ -408,19 +408,17 @@ p.underline {
 /* ---------------------------------------------
         NAVIGATION
 ------------------------------------------------ */
-.account-icon {
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-}
-
 .account-dropdown {
   position: relative;
   display: inline-block;
 }
 
 .account-dropdown img {
-  width: 60px;
+  width: 30px;
+}
+
+.account-icon {
+  padding-right: 10px;
 }
 
 .dropdown-content {
