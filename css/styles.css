@@ -370,6 +370,15 @@ p.underline {
   position: relative;
 }
 
+.proj-grid2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
 .proj-card {
   background-color: rgba(128, 128, 128, 0.233);
   border-radius: 10px;
@@ -380,11 +389,7 @@ p.underline {
 }
 
 .proj-image {
-  display: block;
-  width: 200px;
-  height: 100px;
-  margin: 0;
-  padding: 0;
+  margin: 1em auto;
 }
 
 .modal {
@@ -415,10 +420,15 @@ p.underline {
 
 .account-dropdown img {
   width: 30px;
+  height: 30px;
 }
 
-.account-icon {
-  padding-right: 10px;
+img.account-icon {
+  padding-right: 5px;
+}
+
+img.request-icon {
+  height: 40px;
 }
 
 .dropdown-content {
@@ -698,5 +708,13 @@ table tr:nth-child(even) {
   input[type="date"] {
     width: 400px;
     margin: 0 1em 0 0;
+  }
+
+  .proj-image {
+    display: block;
+    width: 200px;
+    height: 100px;
+    margin: 0;
+    padding: 0;
   }
 }

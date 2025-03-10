@@ -17,7 +17,7 @@
         if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] === 'resident' || $_SESSION['user_role'] === 'admin')) {
             echo '<li class="account-dropdown">
                     <a href="requests.php">
-                        <img class="request_icon" src="img/request_icon.png" alt="request">
+                        <img class="request-icon" src="img/request_icon.png" alt="request">
                     </a>
                     <div class="dropdown-content">
                         <a href="requests.php">Requests</a>
@@ -40,6 +40,12 @@
                 }
                 ?>
             </div>
+        </li>
+        <li>
+            <div class="openbtn">
+                <span class="material-symbols-outlined menu-button" onclick="openNav()">menu</span>
+            </div>
+            <div class="all-over-bkg"></div>
         </li>
         <li><?php include "includes/side_nav.php" ?></li>
     </ul>

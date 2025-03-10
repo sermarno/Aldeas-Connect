@@ -77,11 +77,6 @@
                             ?>
                         </select> <br><br>
                     </div>
-                    <div class="details_container">
-                        <p class="underline">UPLOAD AN IMAGE (optional)</p>
-                        <p class="italic">Want to upload an image to represent your project?</p>
-                        <input type="file" name="proj_image" id="proj_image" accept="image/*"><br><br>
-                    </div>
                     <input type="submit" value="Send Request">
                 </div>
             </form>
