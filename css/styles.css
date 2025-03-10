@@ -121,22 +121,54 @@ li span {
   border-radius: 10px;
 }
 
-.chat {
+/* ---------------------------------------------
+        WHATSAPP MESSENGER TOOL
+------------------------------------------------ */
+#chat-button {
   position: fixed;
   bottom: 20px;
   right: 20px;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+#chat-button-close {
+  position: fixed;
+}
+
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+  border-radius: 8px;
   z-index: 1000;
 }
 
-.chat img {
-  width: 100px;
-  height: auto;
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out;
+.close_button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
-.chat img:hover {
-  transform: scale(1.1);
+.chat-popup button {
+  background-color: blanchedalmond;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 /* ---------------------------------------------

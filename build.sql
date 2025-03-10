@@ -1,11 +1,12 @@
+DROP TABLE IF EXISTS required_help CASCADE;
+DROP TABLE IF EXISTS about_content CASCADE;
 DROP TABLE IF EXISTS testimonials CASCADE;
+DROP TABLE IF EXISTS project_highlights CASCADE;
 DROP TABLE IF EXISTS project_requests CASCADE;
 DROP TABLE IF EXISTS projects CASCADE;
-DROP TABLE IF EXISTS project_highlights CASCADE;
 DROP TABLE IF EXISTS communities CASCADE;
-DROP TABLE IF EXISTS about_content CASCADE;
+DROP TABLE IF EXISTS messages CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
-DROP TABLE IF EXISTS required_help CASCADE;
 
 -- user
 CREATE TABLE users (
@@ -14,7 +15,18 @@ CREATE TABLE users (
     lname VARCHAR(255),
     username VARCHAR(255) NOT NULL,
     email VARCHAR(255),
-    user_role ENUM('resident', 'admin', 'visitor') DEFAULT ('visitor')
+    user_role ENUM('resident', 'admin', 'visitor') DEFAULT 'visitor'
+) ENGINE=INNODB;
+
+-- messages 
+CREATE TABLE messages (
+    message_id INT AUTO_INCREMENT PRIMARY KEY,
+    sender_id INT NOT NULL,
+    recipient_id INT NOT NULL,
+    message TEXT NOT NULL,
+    sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (sender_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (recipient_id) REFERENCES users(user_id) ON DELETE CASCADE
 ) ENGINE=INNODB;
 
 -- community

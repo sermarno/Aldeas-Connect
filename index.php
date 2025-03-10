@@ -194,12 +194,35 @@ $villages = [
                 </script>
             </div>
         </div>
-        <div class="chat">
-            <a href="https://web.whatsapp.com/" target="_blank">
-                <img src="img/chat.png" alt="whatsapp">
-            </a>
-        </div>
+        <!-- Messenger Tool -->
+         <?php if (isset($_SESSION['user_id'])): ?>
+            <div id="chat-button" onclick="toggleChatbox()">Messenger ^</div>
+            <div class="chat-popup" style="display:none">
+                <button class="close_button" type="button" onclick="closeChatbox()">X</button>
+                    <h3>Send a Message</h3>
+                    <div id="messages-container"></div>
+                <form id="message_form" action="send_message.php" method="POST">
+                    <label for="recipient_id">Select Recipient:</label>
+                    <select id="recipient_id" name="recipient_id" required>
+                        <option value="">Users</option>
+                        <?php
+                        $query = "SELECT user_id, fname, lname, user_role FROM users";
+                        $result = $conn->query($query);
+                        while ($row = $result->fetch_assoc()): ?>
+                            <option value="<?php echo $row['user_id']; ?>">
+                                <?php echo htmlspecialchars($row['fname'] . " " . $row['lname']); ?>
+                            </option>
+                        <?php endwhile; ?>
+                    </select><br><br>
+
+                    <label for="message">Message:</label><br>
+                    <textarea id="message" name="message" placeholder="Type your message..." required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        <?php endif; ?>
         <script src="js/nav.js"></script>
+        <script src="js/messenger.js"></script>
     </main>
     <?php include 'includes/footer.php'; ?>
 </body>
