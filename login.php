@@ -12,6 +12,8 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
+    <!-- Loading Google's library -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
     <!-- Nav Bar -->
@@ -24,8 +26,6 @@
 
     <div class="google_login">
         <p>Login with Google</p>
-        <script src="https://accounts.google.com/gsi/client" async defer></script>
-        <script src="js/google-login.js" defer></script>
         <div id="g_id_onload"
             data-client_id="425696034712-7ns8jm05qgakn29cmkfvmaffv6bpnvp9.apps.googleusercontent.com"
             data-context="signin"
@@ -38,5 +38,6 @@
     </div>
     <?php include 'includes/footer.php' ?>
     <script src="js/nav.js"></script>
+    <script src="js/google-login.js"></script>
 </body>
 </html>

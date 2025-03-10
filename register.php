@@ -1,13 +1,13 @@
 <?php
 session_start();
 if (!isset($_SESSION['google_email'])) {
-    header("Location: login.php");
+    header("Location: login.php?login=success");
     exit();
 }
 
 $email = $_SESSION['google_email'];
 
-require 'includes/db.php'; // Database connection
+require 'includes/db.php';
 ?>
 
 <!DOCTYPE html>
