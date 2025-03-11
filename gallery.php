@@ -18,6 +18,7 @@
     <!-- Nav Bar -->
     <?php include 'includes/nav.php' ?>
     <?php include 'includes/side_nav.php' ?>
+    
 <br>
 <br>
     <h1>Village Gallery</h1>
@@ -104,10 +105,13 @@
         <a class="next">&#10095;</a>
     </div>
 
-    <script src="js/nav.js"></script>
-    <script src="js/gallery.js"></script>
+
 
     
     
+    
+    <?php include 'includes/footer.php' ?>
+    <script src="js/nav.js"></script>
+    <script src="js/gallery.js"></script>
 </body>
 </html>
