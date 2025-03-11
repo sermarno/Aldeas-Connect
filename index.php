@@ -199,20 +199,59 @@ $villages = [
             <div id="chat-button" onclick="toggleChatbox()">Messenger ^</div>
             <div class="chat-popup" style="display:none">
                 <button class="close_button" type="button" onclick="closeChatbox()">X</button>
-                    <h3>Send a Message</h3>
-                    <div id="messages-container"></div>
+                    <h3>Messages</h3>
+                    <div id="messages-container">
+                    <?php
+                        // Fetch the messages sent to the current user
+                        $user_id = $_SESSION['user_id'];
+                        $query = "
+                            SELECT messages.sender_id, messages.message, messages.sent_at, users.fname, users.lname 
+                            FROM messages
+                            JOIN users ON users.user_id = messages.sender_id
+                            WHERE messages.recipient_id = ? OR messages.sender_id = ?
+                            ORDER BY messages.sent_at DESC
+                        ";
+                        if ($stmt = $conn->prepare($query)) {
+                            $stmt->bind_param('ii', $user_id, $user_id);
+                            $stmt->execute();
+                            $result = $stmt->get_result();
+
+                            while ($row = $result->fetch_assoc()) {
+                                $sender_name = htmlspecialchars($row['fname'] . ' ' . $row['lname']);
+                                $message = htmlspecialchars($row['message']);
+                                $timestamp = date('Y-m-d H:i:s', strtotime($row['sent_at']));
+                                $sender_id = $row['sender_id'];
+
+                                // Display the message with sender's name and timestamp
+                                echo "<div class='message' data-sender-id='$sender_id'>
+                                        <strong>$sender_name:</strong>
+                                        <p>$message</p>
+                                        <small>$timestamp</small>
+                                    </div>";
+                            }
+                            $stmt->close();
+                        }
+                        ?>
+                    </div>
                 <form id="message_form">
+                    <h3>Send a Message</h3>
                     <label for="recipient_id">Select Recipient:</label>
                     <select id="recipient_id" name="recipient_id" required>
                         <option value="">Users</option>
                         <?php
-                        $query = "SELECT user_id, fname, lname, user_role FROM users";
-                        $result = $conn->query($query);
-                        while ($row = $result->fetch_assoc()): ?>
-                            <option value="<?php echo $row['user_id']; ?>">
-                                <?php echo htmlspecialchars($row['fname'] . " " . $row['lname']); ?>
-                            </option>
-                        <?php endwhile; ?>
+                        $query = "SELECT user_id, fname, lname, user_role FROM users WHERE user_id != ?";
+                        if ($stmt = $conn->prepare($query)) {
+                            $stmt->bind_param('i', $user_id);
+                            $stmt->execute();
+                            $result = $stmt->get_result();
+                            
+                            while ($row = $result->fetch_assoc()): ?>
+                                <option value="<?php echo $row['user_id']; ?>">
+                                    <?php echo htmlspecialchars($row['fname'] . " " . $row['lname']); ?>
+                                </option>
+                            <?php endwhile; ?>
+                            <?php $stmt->close(); ?>
+                        <?php } ?>
                     </select><br><br>
 
                     <label for="message">Message:</label><br>
@@ -224,27 +263,7 @@ $villages = [
         <?php endif; ?>
         <script src="js/nav.js"></script>
         <script src="js/messenger.js"></script>
-        <script>
-            document.getElementById("message_form").addEventListener("submit", function (e) {
-            e.preventDefault(); // Prevent page reload
-
-            let formData = new FormData(this);
-
-            fetch("send_message.php", {
-                method: "POST",
-                body: formData
-            })
-            .then(response => response.text()) // Convert response to text
-            .then(data => {
-                document.getElementById("message_status").innerHTML = data; // Show response inside chat popup
-                document.getElementById("message_form").reset(); // Clear the form
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                document.getElementById("message_status").innerHTML = "An error occurred. Please try again.";
-            });
-            });
-        </script>
+        <script src="js/messenger_form.js"></script>
     </main>
     <?php include 'includes/footer.php'; ?>
 </body>

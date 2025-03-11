@@ -13,7 +13,7 @@ function closeChatbox() {
 document.addEventListener("DOMContentLoaded", function () {
   const messageForm = document.getElementById("message-form");
   const messagesContainer = document.getElementById("messages-container");
-  const recipientSelect = document.getElementById("admin");
+  const recipientSelect = document.getElementById("recipient_id");
 
   function loadMessages() {
     const recipientId = recipientSelect.value;
