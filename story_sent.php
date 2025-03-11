@@ -17,9 +17,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Testimonial
-    $stmt = $conn->prepare("INSERT INTO testimonials (community_id, story_text, video_url, category, status) 
-                            VALUES (?, ?, ?, ?, 'pending')");
-    $stmt->bind_param("iisss", $community_id, $story_text, $video_url, $category);
+    session_start();
+    $user_id = $_SESSION['user_id'] ?? 1;
+    $stmt = $conn->prepare("INSERT INTO testimonials (user_id, community_id, story_text, video_url, category, status) 
+                            VALUES (?, ?, ?, ?, ?, 'pending')");
+    $stmt->bind_param("iisss", $user_id, $community_id, $story_text, $video_url, $category);
 
     if ($stmt->execute()) {
         echo "<script>alert('Story submitted! Awaiting admin approval.'); window.location.href='success_stories.php';</script>";
