@@ -273,7 +273,6 @@ $villages = [
                 document.getElementById('message_form').style.display = 'block';
             }
 
-<<<<<<< HEAD
         </div>
 
         <div id="map">
@@ -324,13 +323,6 @@ $villages = [
             From improving education and healthcare to boosting local commerce, we're creating a platform that helps amplify the voices and aspirations of Mexico's underrated regions.
         </p>
     </article>
-=======
-            function closeChatbox() {
-                document.querySelector('.chat-popup').style.display = 'none';
-            }
-        </script>
-    </main>
->>>>>>> origin/main
     <?php include 'includes/footer.php'; ?>
 </body>
 </html>
