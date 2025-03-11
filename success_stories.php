@@ -144,6 +144,9 @@
     <?php include 'includes/side_nav.php'; ?>
 
     <hr>
+    <header>
+        <h1></h1>
+    </header>
     <h1>Read Stories From the Villages</h1>
     <div class="testimonials">
         <?php foreach ($testimonials as $t) { ?>
