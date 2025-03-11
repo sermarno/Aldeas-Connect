@@ -1,12 +1,28 @@
 <?php
 session_start();
 include "includes/db.php";
-$sql = "SELECT * FROM projects";
+$sql = "SELECT * FROM project_highlights";
 $result = $conn->query($sql);
 $projects = [];
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         $projects[] = $row;
+    }
+}
+
+if (isset($_SESSION['google_email'])) {
+    $email = $_SESSION['google_email'];
+
+    $sql = "SELECT * FROM users WHERE email = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows == 0) {
+        // If user does not exist, redirect to register.php
+        header("Location: register.php");
+        exit();
     }
 }
 
@@ -53,6 +69,9 @@ $villages = [
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
+    <!-- Map API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDf99Nyj4amTBbILPYjYt0S01h-kuSWqo"></script> 
+    <!-- Translate API -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
@@ -60,17 +79,6 @@ $villages = [
     </script>
     <script type="text/javascript"
         src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <!-- Map API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDf99Nyj4amTBbILPYjYt0S01h-kuSWqo"></script> 
-</head>
-<body>
-    <!-- Nav Bar -->
-    <?php include 'includes/nav.php' ?>
-    <?php include 'includes/side_nav.php' ?>
-
-    <header>
-        <h1><span>The Connection and Future of Smart Villages</span></h1>
-    </header>
     <script>
         function translatePage() {
             var translateElement = document.getElementById('google_translate_element');
@@ -80,95 +88,196 @@ $villages = [
             select.dispatchEvent(new Event('change'));
         }
     </script>
-    <div class="header">
+    <!-- Logout/login Popup -->
+     <script>
+        function logoutMessage() {
+            alert("You have been successfully logged out!");
+        }
+     </script>
+    <script>
+        function loginMessage() {
+            alert("You have been successfully logged in!");
+        }
+     </script>
+</head>
+<body>
+    <!-- logout message -->
+    <?php if (isset($_GET['logout']) && $_GET['logout'] == 'success'): ?>
+        <script>
+            logoutMessage();
+        </script>
+    <?php endif; ?>
+
+    <!-- login message -->
+     <?php if (isset($_GET['login']) && $_GET['login'] == 'success'): ?>
+        <script>
+            loginMessage();
+        </script>
+    <?php endif; ?>
+
+    <!-- Nav Bar -->
+    <?php include 'includes/nav.php' ?>
+    <?php include 'includes/side_nav.php' ?>
+    <header id="home">
+        <h1>
+            Aldeas Inteligentes IU <br>
+            <span>
+                The Connection and Future of Smart Villages
+            </span>
+        </h1>
+        <a class="button_home" href="project.php">Learn More About Aldeas Inteligentes IU</a>
+    </header>
+
+    <main>
+        <div class="intro">
+            <p>
+                Aldeas Inteligentes is a transformative initiative by the Mexican Federal Government aimed at providing digital access to rural and isolated communities across Mexico. 
+                By connecting 83 communities with wireless internet, offering STEM training, and supporting community development projects, Aldeas Inteligentes is enhancing education, commerce, health, and overall welfare.
+                Our information system will change how rural communities track progress, showcase their achievements, and connect with supporters.
+                From improving education and healthcare to boosting local commerce, we're creating a platform that helps amplify the voices and aspirations of Mexico's underrated regions.
+            </p>
+        </div>
         <div class="projects-container">
             <h3>Project Highlights</h3>
-            
-            <!-- cycle through project highlight cards (left/right arrows) -->
-            <div class="cycle-cards">
-                <button id="backbtn">&#9665;</button>
-                <div class="proj-grid">
+            <div class="proj-grid">
+                <?php
+                    if (count($projects) > 0 ) {
+                        foreach ($projects as $project) {
+                            echo "<div class='proj-card'>";
+                            if (!empty($project['proj_image'])) {
+                                echo "<img src='" . htmlspecialchars($project['proj_image']) . "' alt='project image' class='proj-image'><br>";
+                            }
+                            echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
+                            echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
+                            echo "<a href='investor.php?project_id=" . $project['id'] . "' class='donate-btn'>Donate</a>";
+                            echo "</div>";
+                        }
+                    }
+                ?>
+            </div>
+            <a class="button" href="investor.php">See More</a>
+        </div>
+
+        <div class="map-container">
+            <div class="map-text">
+                <h3>83 Communtities with Smart Village Resources</h3>
+                <p>Explore the many communities benefiting from Smart Village inititaves.<br></p>
+                <p class="italic">Click on a map marker to learn more</p>
+            </div>
+            <div id="map">
+                <script>
+                    const villages = <?php echo json_encode($villages); ?>;
+
+                    function initMap() {
+                        const map = new google.maps.Map(document.getElementById("map"), {
+                            zoom: 5,
+                            center: { lat: 20.4229, lng: -88.1653 }, // Center of Yucatan
+                        });
+                        villages.forEach(village => {
+                            const marker = new google.maps.Marker({
+                                position: { lat: village.lat, lng: village.lng },
+                                map: map,
+                                title: village.name,
+                            });
+
+                            const infoWindow = new google.maps.InfoWindow({
+                                content: `<h3>${village.name}</h3><p>${village.info}</p>`,
+                            });
+                            //Testing
+                            marker.addListener("click", () => {
+                                infoWindow.open(map, marker);
+                            });
+                        })
+                    }
+
+                window.onload = initMap;
+                </script>
+            </div>
+        </div>
+        <!-- Messenger Tool -->
+         <?php if (isset($_SESSION['user_id'])): ?>
+            <div id="chat-button" onclick="toggleChatbox()">Messenger ^</div>
+            <div class="chat-popup" style="display:none">
+                <button class="close_button" type="button" onclick="closeChatbox()">X</button>
+                <button class="new_message" onclick="showMessageForm()">New Message</button>
+                
+                <div id="messages-container">
+                    <h3>Messages</h3>
                     <?php
-                        if (count($projects) > 0 ) {
-                            foreach ($projects as $project) {
-                                echo "<div class='proj-card'>";
-                                echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
-                                echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
-                                echo "<a href='investor.php?project_id=" . $project['id'] . "' class='donate-btn'>Donate</a>";
+                    // Fetch the messages sent to the current user
+                    $user_id = $_SESSION['user_id'];
+                    $query = "
+                        SELECT messages.message, messages.sent_at, users.fname, users.lname, messages.sender_id
+                        FROM messages
+                        JOIN users ON users.user_id = messages.sender_id
+                        WHERE messages.recipient_id = ? 
+                        ORDER BY messages.sent_at DESC
+                    ";
+                    if ($stmt = $conn->prepare($query)) {
+                        $stmt->bind_param('i', $user_id);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                $sender_name = $row['sender_id'] == $user_id ? "You" : $row['fname'] . " " . $row['lname'];
+                                $message = htmlspecialchars($row['message']);
+                                $sent_at = $row['sent_at'];
+                                echo "<div class='message-box'>";
+                                echo "<strong>" . $sender_name . "</strong>: " . $message . "<br>";
+                                echo "<small>" . $sent_at . "</small>";
                                 echo "</div>";
                             }
+                        } else {
+                            echo "<p>No messages found.</p>";
                         }
+                    }
                     ?>
                 </div>
-                <button id="nextbtn">&#9655;</button>
+
+
+                <form id="message_form" style="display:none;">
+                    <h3>Send a Message</h3>
+                    <label for="recipient_id">Select Recipient:</label>
+                    <select id="recipient_id" name="recipient_id" required>
+                        <option value="">Users</option>
+                        <?php
+                        $query = "SELECT user_id, fname, lname, user_role FROM users WHERE user_id != ?";
+                        if ($stmt = $conn->prepare($query)) {
+                            $stmt->bind_param('i', $user_id);
+                            $stmt->execute();
+                            $result = $stmt->get_result();
+                            
+                            while ($row = $result->fetch_assoc()): ?>
+                                <option value="<?php echo $row['user_id']; ?>">
+                                    <?php echo htmlspecialchars($row['fname'] . " " . $row['lname']); ?>
+                                </option>
+                            <?php endwhile; ?>
+                            <?php $stmt->close(); ?>
+                        <?php } ?>
+                    </select><br><br>
+
+                    <label for="message">Message:</label><br>
+                    <textarea id="message" name="message" placeholder="Type your message..." required></textarea>
+                    <button type="submit">Send Message</button>
+                    <p id="message_status"></p>
+                </form>
             </div>
+        <?php endif; ?>
+        <script src="js/nav.js"></script>
+        <script src="js/messenger.js"></script>
+        <script src="js/messenger_form.js"></script>
+        <script>
+            function showMessageForm() {
+                document.getElementById('messages-container').style.display = 'none';
+                document.getElementById('message_form').style.display = 'block';
+            }
 
-        </div>
-
-        <div id="map">
-            <script>
-                const villages = <?php echo json_encode($villages); ?>;
-
-                function initMap() {
-                    const map = new google.maps.Map(document.getElementById("map"), {
-                        zoom: 5,
-                        center: { lat: 20.6345, lng: -95.5528 }, // Center of Mexico might change later depending on what villages
-                    });
-                }
-
-                    villages.forEach(village => {
-                        const marker = new google.maps.Marker({
-                            position: { lat: village.lat, lng: village.lng },
-                            map: map,
-                            title: village.name,
-                        });
-
-                        const infoWindow = new google.maps.InfoWindow({
-                            content: `<h3>${village.name}</h3><p>${village.info}</p>`,
-                        });
-                    })
-            window.onload = initMap;
-            </script>
-        </div>
-    </div>
-    <div class="projects-container">
-        <h3>Community Projects</h3>
-        <div class="proj-grid">
-            <?php
-                if (count($projects) > 0 ) {
-                    foreach ($projects as $project) {
-                        echo "<div class='proj-card'>";
-                        //echo "<div class='card-body'>"; //Adding card body //
-                        echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
-                        echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
-                        echo "<a href='investor.php?project_id=" . $project['id'] . "' class='donate-btn'>Donate</a>";
-                        //echo "</div>";//
-                        echo "</div>";                                                                                                                                                                                                                                                                                                                                                                                                                                         
-                    }
-                }
-            ?>
-        </div>
-    </div>
-    <div class="chat">
-        <a href="https://web.whatsapp.com/" target="_blank">
-            <img src="img/chat.png" alt="whatsapp">
-        </a>
-    </div>
-    <div class="request">
-        <p>Want to see your community's projects here?</p>
-        <a href="request.php">Submit a Request</a>
-    </div>
-    <article id="overview">
-        <h3>Overview</h3>
-        <p>
-            Aldeas Inteligentes is a transformative initiative by the Mexican Federal Government aimed at providing digital access to rural and isolated communities across Mexico. 
-            By connecting 83 communities with wireless internet, offering STEM training, and supporting community development projects, Aldeas Inteligentes is enhancing education, commerce, health, and overall welfare.
-            Our information system will change how rural communities track progress, showcase their achievements, and connect with supporters.
-            From improving education and healthcare to boosting local commerce, we're creating a platform that helps amplify the voices and aspirations of Mexico's underrated regions.
-        </p>
-    </article>
+            function closeChatbox() {
+                document.querySelector('.chat-popup').style.display = 'none';
+            }
+        </script>
+    </main>
     <?php include 'includes/footer.php'; ?>
-    <script src="js/nav.js"></script>
-    <script src="js/card_cycle.js"></script>
 </body>
 </html>

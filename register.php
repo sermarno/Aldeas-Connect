@@ -1,13 +1,13 @@
 <?php
 session_start();
 if (!isset($_SESSION['google_email'])) {
-    header("Location: login.php");
+    header("Location: login.php?login=success");
     exit();
 }
 
 $email = $_SESSION['google_email'];
 
-require 'includes/db.php'; // Database connection
+require 'includes/db.php';
 ?>
 
 <!DOCTYPE html>
@@ -30,17 +30,18 @@ require 'includes/db.php'; // Database connection
     <?php include 'includes/side_nav.php' ?>
     <header>
         <h1>Complete Registration</h1>
+        <p class="italic">You don't have an account yet. Enter your details below to sign up!</p>
     </header>
     <div class="form">
         <form action="register_process.php" method="POST">
         <label for="fname">First Name: </label>
-        <input type="text" id="fname" name="fname" required><br>
+        <input type="text" id="fname" name="fname" placeholder="First Name" required><br>
 
         <label for="lname">Last Name: </label>
-        <input type="text" id="lname" name="lname" required><br>
+        <input type="text" id="lname" name="lname" placeholder="Last Name" required><br>
 
         <label for="username">Create a Username:</label>
-        <input type="text" id="username" name="username" required><br>
+        <input type="text" id="username" name="username" placeholder="Username"required><br>
 
         <label for="email">Confirm email</label>
         <input type="text" id="email" name="email" value="<?php echo htmlspecialchars($_SESSION['google_email'] ?? ''); ?>"required>

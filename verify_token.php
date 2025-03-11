@@ -1,6 +1,9 @@
 <?php
 require 'vendor/autoload.php';
-require 'includes/db.php'; // Database connection
+require 'includes/db.php';
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST');
+header('Access-Control-Allow-Headers: Content-Type');
 
 use Google\Client;
 
