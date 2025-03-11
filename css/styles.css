@@ -8,18 +8,49 @@ html {
 /* ---------------------------------------------
         LAYOUT/POSITIONING PAGE ELEMENTS
 ------------------------------------------------ */
+#home {
+  position: relative;
+  height: 400px;
+  background: url(../img/home.jpeg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+main {
+  max-width: 750px;
+  background-color: rgba(255, 235, 205, 0.159);
+  border: 1px solid rgba(128, 128, 128, 0.15);
+  margin: 0 auto;
+  border-radius: 5px;
+}
 
 header {
   text-align: center;
   padding-top: 100px;
+  font-family: sans-serif;
 }
 
-h1 {
+header h1 {
   font-weight: normal;
+  width: 500px;
+  margin: 1em auto;
+  background: rgba(255, 255, 255, 0.569);
 }
 
 h1 span {
+  color: white;
   font-weight: bold;
+  letter-spacing: 1px;
+  -webkit-text-stroke: 1px rgb(122, 122, 122);
+}
+
+img {
+  width: 350px;
+}
+
+p.intro {
+  text-align: left;
 }
 
 article {
@@ -34,6 +65,12 @@ article {
   position: relative;
   max-width: 700px;
   margin: 3em auto;
+}
+
+.intro p {
+  max-width: 500px;
+  text-align: center;
+  margin: 4em auto;
 }
 
 .scroll a {
@@ -55,9 +92,11 @@ li span {
 }
 
 .proj_container,
-.form,
-.request {
-  border: 2px solid black;
+.form {
+  text-align: center;
+  border: 2px solid rgba(128, 128, 128, 0.577);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: blanchedalmond;
   max-width: 700px;
   border-radius: 15px;
   margin: 3em auto;
@@ -73,22 +112,133 @@ li span {
   text-align: center;
 }
 
-.chat {
+.account-details {
+  background-color: blanchedalmond;
+  max-width: 700px;
+  margin: 4em auto;
+  padding: 50px;
+  box-shadow: 0px 0px 8px grey;
+  border-radius: 10px;
+}
+
+/* ---------------------------------------------
+        WHATSAPP MESSENGER TOOL
+------------------------------------------------ */
+#chat-button {
   position: fixed;
   bottom: 20px;
   right: 20px;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+#chat-button-close {
+  position: fixed;
+}
+
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+  border-radius: 8px;
   z-index: 1000;
 }
 
-.chat img {
-  width: 100px;
-  height: auto;
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out;
+.close_button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
-.chat img:hover {
-  transform: scale(1.1);
+.chat-popup button {
+  background-color: blanchedalmond;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* ---------------------------------------------
+        FORM/INPUT
+------------------------------------------------ */
+.request_type {
+  margin: 1em;
+  padding: 20px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+select {
+  width: 100%;
+  padding: 16px 20px;
+  border: 1px solid rgba(64, 64, 64, 0.629);
+  background-color: white;
+}
+
+.select_date {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.project_details h2 {
+  text-align: center;
+}
+.large_input {
+  height: 100px;
+}
+
+.details_container {
+  border-top: 1px solid grey;
+  margin: 1em;
+  padding: 30px 0;
+}
+
+.date_input {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border: 3px solid #555;
+}
+
+input[type="date"] {
+  padding: 8px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  max-width: 200px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form {
+  text-align: left;
+}
+
+.form_container {
+  padding: 10px;
+  margin: 30px auto;
+  max-width: 700px;
 }
 
 /* ---------------------------------------------
@@ -150,77 +300,29 @@ li span {
         INDEX CARD SHUFFLE AND MAP
 ------------------------------------------------ */
 #map {
+  flex: 1;
   height: 400px;
   width: 80%;
-  margin: 0 auto;
+  margin: 1em auto;
   border-radius: 10px;
 }
 
-.header {
+.map-container {
   display: flex;
-  flex-direction: column;
-  max-width: 900px;
-  margin: 0 auto;
-  border: 1px solid rgb(175, 175, 175);
-  border-radius: 10px;
-  padding: 10px;
-  text-align: center;
+  padding: 20px;
+  margin: 1em auto;
+  border-top: 1px solid rgb(183, 183, 183);
+  border-bottom: 1px solid rgb(183, 183, 183);
 }
 
-.projects-container {
-  padding: 10px;
-  margin-top: 30px;
-  overflow: auto;
+.map-text {
+  flex: 1;
+  max-width: 40%;
 }
 
-.proj-grid {
-  display: flex;
-  flex-wrap: wrap;
-  overflow: visible;
-  gap: 10px;
-  justify-content: center;
-  width: 100%;
-  height: auto;
-  position: relative;
-  transition: transform 0.3s ease-in-out;
-}
-
-.proj-card {
-  border: 2px solid blanchedalmond;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 5px;
-  min-width: 250px;
-  max-width: 300px;
-  flex-shrink: 0;
-  flex-grow: 1;
-}
-
-.cycle-cards {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-#backbtn,
-#nextbtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-/* ---------------------------------------------
-        PROJECT CARDS
------------------------------------------------- */
-.requests-container {
-  border: 1px solid rgb(175, 175, 175);
-  border-radius: 10px;
-  max-width: 700px;
-  margin: 0 auto;
+.project_details {
+  border: 2px solid grey;
+  border-radius: 3px;
   padding: 10px;
 }
 
@@ -229,9 +331,164 @@ li span {
   flex-direction: column;
 }
 
+.button,
+.back,
+.button_home {
+  text-decoration: none;
+  color: black;
+}
+
+.goback {
+  position: relative;
+  text-align: left;
+}
+
+.back:hover {
+  text-decoration: underline;
+}
+
+.button,
+.button_home,
+input[type="submit"] {
+  border: 1px solid grey;
+  background-color: rgba(128, 128, 128, 0.156);
+  border-radius: 5px;
+  padding: 10px;
+  display: inline-block;
+  transition: transform 0.3s ease-in-out;
+}
+
+.button_home {
+  margin-top: 100px;
+  background-color: rgba(128, 128, 128, 0.714);
+}
+
+.button:hover,
+.button_home,
+input[type="submit"]:hover {
+  transform: scale(1.1);
+  font-weight: normal;
+  cursor: pointer;
+}
+
+/* ---------------------------------------------
+        PROJECT CARDS
+------------------------------------------------ */
+
+.projects-container,
+.all_projects {
+  padding: 10px;
+  margin: 30px auto;
+  max-width: 700px;
+  text-align: center;
+  background-color: blanchedalmond;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+}
+
+p.italic {
+  font-style: italic;
+  margin-top: 4px;
+}
+
+p.underline {
+  text-decoration: underline;
+  margin-bottom: 2px;
+}
+
+.proj-grid {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.proj-grid2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.proj-card {
+  background-color: rgba(128, 128, 128, 0.233);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  width: 90%;
+  margin: 1em auto;
+}
+
+.proj-image {
+  margin: 1em auto;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px grey;
+}
+
+.close {
+  float: right;
+  cursor: pointer;
+  font-size: 20px;
+}
+
 /* ---------------------------------------------
         NAVIGATION
 ------------------------------------------------ */
+.account-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.account-dropdown img {
+  width: 30px;
+  height: 30px;
+}
+
+img.account-icon {
+  padding-right: 5px;
+}
+
+img.request-icon {
+  height: 40px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  top: 100%;
+  left: 0;
+  font-size: 14px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0, 2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 5px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.account-dropdown:hover .dropdown-content {
+  display: block;
+}
+
 nav {
   background-color: blanchedalmond;
   display: flex;
@@ -266,10 +523,6 @@ nav .logo img {
   position: absolute;
   top: 9px;
   left: 15px;
-}
-
-.login img {
-  width: 60px;
 }
 
 .all-over-bkg {
@@ -464,24 +717,36 @@ table th {
   color: black;
 }
 
-
 table tr:nth-child(even) {
   background: #f2f2f2;
 }
 
 /* ---------------------------------------------
-        Button
+      MEDIA QUERIES
+------------------------------------------------ */
+@media (min-width: 768px) {
+  .proj-grid {
+    flex-direction: row;
+  }
 
-.donate-btn {
-  background: #ff4500;
-  color: white;
-  padding: 12px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s ease;
-}
+  .proj-card {
+    margin: 10px;
+  }
 
-.donate-btn:hover {
-  background: #cc3700;
+  .select_date {
+    flex-direction: row;
+  }
+
+  input[type="date"] {
+    width: 400px;
+    margin: 0 1em 0 0;
+  }
+
+  .proj-image {
+    display: block;
+    width: 200px;
+    height: 100px;
+    margin: 0;
+    padding: 0;
+  }
 }

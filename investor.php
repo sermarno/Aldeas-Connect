@@ -16,7 +16,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Investor Page</title>
+    <title>All Projects</title>
     <!-- Linking CSS Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/normalize.css">
@@ -32,13 +32,13 @@
         include 'includes/side_nav.php';?>
     <!-- Header -->
     <header>
-        <h1>Investor Page</h1>
+        <h1>See How You Can Help</h1>
     </header>
 
     <!-- Community Projects Section -->
-    <div class="projects-container">
+    <div class="all_projects">
         <h3>Community Projects</h3>
-        <div class="proj-grid">
+        <div class="proj-grid2">
             <?php
                 if (count($projects) > 0) {
                     foreach ($projects as $project) {
@@ -52,10 +52,12 @@
                 }
             ?>
         </div>
+        <p class="italic">Want to see your community's projects here?</p>
+        <a class="button" href="request.php">Submit a Request</a>
     </div>
 
     <!-- Requred Help Section -->
-    <div class="requests-container">
+    <div class="projects-container">
         <?php
             // Database Query
             $query = "SELECT * FROM required_help";

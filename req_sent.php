@@ -9,13 +9,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $proj_start = $conn->real_escape_string($_POST['proj_start']);
     $proj_end = $conn->real_escape_string($_POST['proj_end']);
     $community_id = $conn->real_escape_string($_POST['community_id']);
-
     // inserting data into projects table
-    $sql = "INSERT INTO project_requests (title, proj_description, proj_start, proj_end, community_id) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO project_requests (title, proj_description, proj_image, proj_start, proj_end, community_id) VALUES (?, ?, ?, ?, ?, ?)";
     
     // preparing and running the query
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssi", $title, $proj_description, $proj_start, $proj_end, $community_id);
+    $stmt->bind_param("sssssi", $title, $proj_description, $image_path, $proj_start, $proj_end, $community_id);
     if ($stmt->execute()) {
         // retrieving the inserted project
         $new_project_id = $conn->insert_id;
@@ -73,6 +72,13 @@ $conn->close();
 
     <header>
         <h1>Request Summary</h1>
+        <p class="italic">
+            Requests will be reviewed within 24-48 hours after submission. 
+            If approved, your project will be published on the website, and 
+            you will be able to make changes to your project 
+            details. You will receive a notification by administrators
+            regarding the approval or denial of your request.
+        </p>
     </header>
     <div class="form">
         <h2><?php echo htmlspecialchars($project_request['title']); ?></h2>

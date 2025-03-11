@@ -1,8 +1,7 @@
 "use strict";
 
 function handleCredentialResponse(response) {
-  console.log("Encoded JWT ID token: " + response.credential);
-
+  const data = response.credential;
   fetch("verify_token.php", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -11,7 +10,7 @@ function handleCredentialResponse(response) {
     .then((response) => response.json())
     .then((data) => {
       if (data.success) {
-        window.location.href = data.redirect; // Redirect user
+        window.location.href = "index.php?login=success";
       } else {
         alert("Login failed.");
       }
