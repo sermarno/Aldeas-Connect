@@ -33,6 +33,7 @@
     <!-- Header -->
     <header>
         <h1>See How You Can Help</h1>
+        <p>Support projects that create lasting impact in local communities.</p>
     </header>
 
     <!-- Community Projects Section -->
@@ -48,12 +49,33 @@
                         echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
                         echo "</div>";
                         echo "</div>";
+
+                        // Progress Bar
+                        echo "<div class='progress-container'>";
+                        echo "<div class='progress-bar' style='width: {$progress}%;'></div>";
+                        echo "</div>";
+                        echo "<p class='progress-text'>Raised: \${$raised} / Goal: \${$goal} ({$progress}%)</p>";
+
+                        // Donate Button
+                        echo "<a href='investor.php?project_id=" . $project['id'] . "' class='donate-btn'>Donate</a>";
+                        echo "</div>";
                     }
                 }
             ?>
         </div>
         <p class="italic">Want to see your community's projects here?</p>
         <a class="button" href="request.php">Submit a Request</a>
+    </div>
+
+    <div class="collaboration">
+        <h3>How Companies Can Help</h3>
+        <p>Businesses can support these projects in various ways:</p>
+        <ul>
+            <li><strong>Financial Contributions:</strong> Donate directly to community projects.</li>
+            <li><strong>Resources & Expertise:</strong> Provide materials, mentorship, or technical support.</li>
+            <li><strong>Partnerships:</strong> Build long-term collaborations for sustainable impact.</li>
+        </ul>
+        <a class="button" href="partner.php">Partner with Us</a>
     </div>
 
     <!-- Requred Help Section -->
