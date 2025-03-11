@@ -199,41 +199,44 @@ $villages = [
             <div id="chat-button" onclick="toggleChatbox()">Messenger ^</div>
             <div class="chat-popup" style="display:none">
                 <button class="close_button" type="button" onclick="closeChatbox()">X</button>
+                <button class="new_message" onclick="showMessageForm()">New Message</button>
+                
+                <div id="messages-container">
                     <h3>Messages</h3>
-                    <div id="messages-container">
                     <?php
-                        // Fetch the messages sent to the current user
-                        $user_id = $_SESSION['user_id'];
-                        $query = "
-                            SELECT messages.sender_id, messages.message, messages.sent_at, users.fname, users.lname 
-                            FROM messages
-                            JOIN users ON users.user_id = messages.sender_id
-                            WHERE messages.recipient_id = ? OR messages.sender_id = ?
-                            ORDER BY messages.sent_at DESC
-                        ";
-                        if ($stmt = $conn->prepare($query)) {
-                            $stmt->bind_param('ii', $user_id, $user_id);
-                            $stmt->execute();
-                            $result = $stmt->get_result();
+                    // Fetch the messages sent to the current user
+                    $user_id = $_SESSION['user_id'];
+                    $query = "
+                        SELECT messages.message, messages.sent_at, users.fname, users.lname, messages.sender_id
+                        FROM messages
+                        JOIN users ON users.user_id = messages.sender_id
+                        WHERE messages.recipient_id = ? 
+                        ORDER BY messages.sent_at DESC
+                    ";
+                    if ($stmt = $conn->prepare($query)) {
+                        $stmt->bind_param('i', $user_id);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
 
+                        if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
-                                $sender_name = htmlspecialchars($row['fname'] . ' ' . $row['lname']);
+                                $sender_name = $row['sender_id'] == $user_id ? "You" : $row['fname'] . " " . $row['lname'];
                                 $message = htmlspecialchars($row['message']);
-                                $timestamp = date('Y-m-d H:i:s', strtotime($row['sent_at']));
-                                $sender_id = $row['sender_id'];
-
-                                // Display the message with sender's name and timestamp
-                                echo "<div class='message' data-sender-id='$sender_id'>
-                                        <strong>$sender_name:</strong>
-                                        <p>$message</p>
-                                        <small>$timestamp</small>
-                                    </div>";
+                                $sent_at = $row['sent_at'];
+                                echo "<div class='message-box'>";
+                                echo "<strong>" . $sender_name . "</strong>: " . $message . "<br>";
+                                echo "<small>" . $sent_at . "</small>";
+                                echo "</div>";
                             }
-                            $stmt->close();
+                        } else {
+                            echo "<p>No messages found.</p>";
                         }
-                        ?>
-                    </div>
-                <form id="message_form">
+                    }
+                    ?>
+                </div>
+
+
+                <form id="message_form" style="display:none;">
                     <h3>Send a Message</h3>
                     <label for="recipient_id">Select Recipient:</label>
                     <select id="recipient_id" name="recipient_id" required>
@@ -264,6 +267,16 @@ $villages = [
         <script src="js/nav.js"></script>
         <script src="js/messenger.js"></script>
         <script src="js/messenger_form.js"></script>
+        <script>
+            function showMessageForm() {
+                document.getElementById('messages-container').style.display = 'none';
+                document.getElementById('message_form').style.display = 'block';
+            }
+
+            function closeChatbox() {
+                document.querySelector('.chat-popup').style.display = 'none';
+            }
+        </script>
     </main>
     <?php include 'includes/footer.php'; ?>
 </body>

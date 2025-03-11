@@ -6,8 +6,12 @@ function toggleChatbox() {
     chatPopup.style.display = "block";
   }
 }
+
 function closeChatbox() {
-  document.querySelector(".chat-popup").style.display = "none";
+  const chatPopup = document.querySelector(".chat-popup");
+  if (chatPopup) {
+    chatPopup.style.display = "none";
+  }
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -15,15 +19,15 @@ document.addEventListener("DOMContentLoaded", function () {
   const messagesContainer = document.getElementById("messages-container");
   const recipientSelect = document.getElementById("recipient_id");
 
-  function loadMessages() {
-    const recipientId = recipientSelect.value;
-    if (!recipientId) {
-      messagesContainer.innerHTML =
-        "<p>Select a recipient to view messages.</p>";
-      return;
-    }
+  // Ensure elements exist before continuing
+  if (!messageForm || !messagesContainer || !recipientSelect) {
+    console.error("One or more required elements are missing from the DOM.");
+    return; // Exit the function if any element is missing
+  }
 
-    fetch(`fetch_messages.php?recipient_id=${recipientId}`)
+  function loadMessages() {
+    // This function now fetches messages for the current logged-in user
+    fetch("fetch_messages.php") // Assuming the server-side fetch function can return all messages for the current user
       .then((response) => response.text())
       .then((data) => {
         messagesContainer.innerHTML = data || "<p>No messages yet.</p>";
@@ -31,10 +35,16 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => console.error("Error fetching messages:", error));
   }
 
+  // Load messages every 3 seconds
   setInterval(loadMessages, 3000);
 
+  // Load messages when the page first loads
+  loadMessages();
+
+  // Event listener for when the recipient changes
   recipientSelect.addEventListener("change", loadMessages);
 
+  // Handle the form submission for sending messages
   messageForm.addEventListener("submit", function (e) {
     e.preventDefault();
     const formData = new FormData(messageForm);
