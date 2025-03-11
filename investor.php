@@ -81,7 +81,7 @@
     <!-- Requred Help Section -->
     <div class="projects-container">
         <?php
-            // Database Query
+            // Database Querygit 
             $query = "SELECT * FROM required_help";
             $result_set = mysqli_query($conn, $query);
             if ($result_set) {
