@@ -4,7 +4,7 @@
     $comm_result = $conn->query($comm_sql);
 
     // Testimonials
-    $query = "SELECT t.*, c.comm_name 
+    $query = "SELECT t.*, c.comm_name
     FROM testimonials t 
     JOIN communities c ON t.community_id = c.community_id
     WHERE t.status = 'approved' 
