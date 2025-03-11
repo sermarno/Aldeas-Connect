@@ -30,6 +30,7 @@ require 'includes/db.php';
     <?php include 'includes/side_nav.php' ?>
     <header>
         <h1>Complete Registration</h1>
+        <p class="italic">You don't have an account yet. Enter your details below to sign up!</p>
     </header>
     <div class="form">
         <form action="register_process.php" method="POST">

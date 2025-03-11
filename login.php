@@ -34,7 +34,11 @@
             data-auto_prompt="false">
         </div>
 
-        <div class="g_id_signin" data-type="standard"></div>
+        <div class="g_id_signin" 
+            data-type="standard" 
+            data-size="large" 
+            data-theme="outline" 
+            data-shape="rectangular"></div>
     </div>
     <?php include 'includes/footer.php' ?>
     <script src="js/nav.js"></script>

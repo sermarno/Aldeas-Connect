@@ -1,10 +1,3 @@
- <?php
-    session_start();
-    include "includes/db.php";
-    $comm_sql = "SELECT comm_name, comm_description FROM communities";
-    $comm_result = $conn->query($comm_sql);
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,48 +18,100 @@
     <!-- Nav Bar -->
     <?php include 'includes/nav.php' ?>
     <?php include 'includes/side_nav.php' ?>
-
-    <header>
-        <h1>Village Gallery</h1>
-    </header>
+    
+<br>
+<br>
+    <h1>Village Gallery</h1>
+    
+    
+    <div class="gallery-section">
+        <h2>Agricultural Products</h2>
     <div class="gallery">
-    <?php
-        if ($comm_result->num_rows > 0) {
-            while($row = $comm_result->fetch_assoc()) {
-                echo '<div class="gallery-item" id="community-' . $row["id"] . '">';
-                echo '<h2>' . $row["comm_name"] . '</h2>';
-                echo '<img src="' . $row["image"] . '" alt="' . $row["comm_name"] . '">';
-                echo '<p>' . $row["comm_description"] . '</p>';
-                echo '</div>';
-            }
-        } else {
-            echo "0 results";
-        }
-        ?>
+        <img src="img/smartvillages2.jpg" >
+        <img src="img/smartvillagessauce.jpg" >
+        <img src="img/smartvillagessauces.jpg" >
+        <!-- Add more images as needed -->
     </div>
-    <div class="lightbox" id="lightbox">
-        <img src="" alt="">
+        </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <div class="gallery-section">
+        <h2>Female Empowerment</h2>
+        <div class="gallery">
+            <img src="img/female-empowerment2.jpg">
+            <img src="img/female-empowerment3.jpg">
+            <img src="img/female-empowerment.jpg">
+        </div>
+    </div>
+    <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <div class="gallery-section">
+        <h2>Education</h2>
+        <div class="gallery">
+            <img src="img/education3.jpg">
+            <img src="img/education2.jpg">
+            <img src="img/education1.jpg">
+        </div>
+    </div>
+    <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <div class="gallery-section">
+        <h2>Handmade Art</h2>
+        <div class="gallery">
+            <img src="img/artwork1.jpg">
+            <img src="img/artwork2.jpg">
+            <img src="img/artwork3.jpg">
+        </div>
+    </div>
+    <br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <div class="gallery-section">
+        <h2>Health Education</h2>
+        <div class="gallery">
+            <img src="img/health1.jpg">
+            <img src="img/health2.jpg">
+            <img src="img/health3.jpg">
+        </div>
     </div>
 
-    <script>
-        const galleryItems = document.querySelectorAll('.gallery-item img');
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = lightbox.querySelector('img');
+    <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <a class="prev">&#10094;</a>
+        <a class="next">&#10095;</a>
+    </div>
 
-        galleryItems.forEach(item => {
-            item.addEventListener('click', () => {
-                lightboxImg.src = item.src;
-                lightbox.style.display = 'flex';
-            });
-        });
 
-        lightbox.addEventListener('click', () => {
-            lightbox.style.display = 'none';
-        });
-    </script>
+
+    
+    
+    
     <?php include 'includes/footer.php' ?>
     <script src="js/nav.js"></script>
-    <?php $conn->close(); ?>
-    
+    <script src="js/gallery.js"></script>
 </body>
 </html>
