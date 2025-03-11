@@ -63,7 +63,7 @@
             $query = "SELECT * FROM required_help";
             $result_set = mysqli_query($conn, $query);
             if ($result_set) {
-                echo "<h3>Required Help</h3>";
+                echo "<h3>Communities That Need Support</h3>";
                 echo "<table>";
                 echo "<tr><th>Community</th><th>Required Resources</th></tr>";
 
