@@ -53,7 +53,7 @@
     mysqli_close($conn);
     ?>
 
-    <div class="form-container">
+    <div class="form_container">
         <?php if (!empty($successMessage)) : ?>
                 <p class="success-message"><?php echo $successMessage; ?></p>
         <?php endif; ?>
