@@ -145,9 +145,8 @@
 
     <hr>
     <header>
-        <h1></h1>
+        <h1>Read Stories From the Villages</h1>
     </header>
-    <h1>Read Stories From the Villages</h1>
     <div class="testimonials">
         <?php foreach ($testimonials as $t) { ?>
             <div class="testimonial">
