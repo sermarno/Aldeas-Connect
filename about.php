@@ -55,7 +55,7 @@
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("ss", $content, $section);
         }
-        $stmt->execute();
+        $stmt->execute(); // Execute the statement
         $stmt->close();
     }
 
@@ -129,28 +129,5 @@
 </div>
 <?php include 'includes/footer.php'; ?>
 <script src="js/nav.js"></script>
-        <!-- Edit form -->
-        <h2>Edit Content</h2>
-        <form action="about.php" method="post" enctype="multipart/form-data">
-            <label for="section">Section:</label>
-            <select name="section" id="section">
-                <option value="Our Mission">Our Mission</option>
-                <option value="Why?">Why?</option>
-            </select>
-            <br>
-            <br>
-            <label for="content">Content:</label>
-            <textarea name="content" id="content" rows="5" cols="40"></textarea>
-            <br>
-            <br>
-            <label for="image">Image:</label>
-            <input type="file" name="image" id="image">
-            <br>
-            <br>
-            <input type="submit" value="Update">
-        </form>
-    </div>
-    <?php include 'includes/footer.php'; ?>
-    <script src="js/nav.js"></script>
 </body>
 </html>

@@ -39,20 +39,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $video_url = $target_file;
         }
     }
-
-<<<<<<< HEAD
     // Testimonial
     session_start();
     $user_id = $_SESSION['user_id'] ?? 1;
     $stmt = $conn->prepare("INSERT INTO testimonials (user_id, community_id, story_text, video_url, category, status) 
                             VALUES (?, ?, ?, ?, ?, 'pending')");
-=======
     // Fix the SQL query to correctly match bind_param()
     $stmt = $conn->prepare("INSERT INTO testimonials (user_id, community_id, story_text, video_url, category, status) 
                             VALUES (?, ?, ?, ?, ?, 'pending')");
     
->>>>>>> origin/main
     $stmt->bind_param("iisss", $user_id, $community_id, $story_text, $video_url, $category);
+    // Fix the SQL query to correctly match bind_param()
+    session_start();
+    $user_id = $_SESSION['user_id'] ?? 1;
+    $stmt = $conn->prepare("INSERT INTO testimonials (user_id, user_id, community_id, story_text, video_url, category, status) 
+                            VALUES (?, ?, ?, ?, ?, ?, 'pending')");
+    
+    $stmt->bind_param("iisss", $user_id, $user_id, $community_id, $story_text, $video_url, $category);
 
     if ($stmt->execute()) {
         echo "<script>alert('Story submitted! Awaiting admin approval.'); window.location.href='success_stories.php';</script>";
