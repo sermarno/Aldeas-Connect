@@ -107,6 +107,8 @@
         <a class="next">&#10095;</a>
     </div>
 
+    <a class="button" href="investor.php">See Ongoing Projects</a>
+
 
 
     

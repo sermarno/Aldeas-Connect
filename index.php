@@ -192,7 +192,7 @@ $villages = [
                     }
                 ?>
             </div>
-            <a class="button" href="investor.php">See More</a>
+            <a class="button" href="gallery.php">See Project Gallery</a>
         </div>
         <!-- Messenger Tool -->
          <?php if (isset($_SESSION['user_id'])): ?>
