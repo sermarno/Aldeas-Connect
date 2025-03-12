@@ -186,13 +186,13 @@ $villages = [
                             }
                             echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
                             echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
-                            echo "<a href='investor.php?project_id=" . $project['id'] . "' class='donate-btn'>Donate</a>";
                             echo "</div>";
                         }
                     }
                 ?>
             </div>
             <a class="button" href="investor.php">See More</a>
+            <a class="button" href="investor.php">Donate</a>
         </div>
         <!-- Messenger Tool -->
          <?php if (isset($_SESSION['user_id'])): ?>
