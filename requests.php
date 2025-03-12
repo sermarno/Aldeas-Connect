@@ -9,6 +9,15 @@
             $project_requests[] = $row;
         }
     }
+
+    $testimonial_sql = "SELECT * FROM testimonials WHERE status = 'pending'";
+    $testimonial_result = $conn->query($testimonial_sql);
+    $testimonials = [];
+    if ($testimonial_result->num_rows > 0) {
+        while($row = $testimonial_result->fetch_assoc()) {
+            $testimonials[] = $row;
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +69,39 @@
                 }
                 ?>
          </div>
+
+
+<h2>Pending Testimonials</h2>
+<div class="req-grid">
+    <?php if (count($testimonials) > 0 ) { ?>
+        <?php foreach ($testimonials as $testimonial) { ?>
+            <div class="proj-card">
+                <h3>Testimonial</h3>
+                <p><strong>Community:</strong> <?= htmlspecialchars($testimonial['community_id']) ?></p>
+                <p><?= htmlspecialchars($testimonial['story_text']) ?></p>
+                <p><strong>Category:</strong> <?= htmlspecialchars($testimonial['category']) ?></p>
+
+                <?php if (!empty($testimonial['video_url'])) { ?>
+                    <video width="100%" controls>
+                        <source src="<?= htmlspecialchars($testimonial['video_url']) ?>" type="video/mp4">
+                    </video>
+                <?php } ?>
+
+                <button class='review-testimonial-btn' 
+                    data-id="<?= htmlspecialchars($testimonial['testimonial_id']) ?>"
+                    data-community="<?= htmlspecialchars($testimonial['community_id']) ?>"
+                    data-category="<?= htmlspecialchars($testimonial['category']) ?>"
+                    data-story="<?= htmlspecialchars($testimonial['story_text']) ?>"
+                    data-video="<?= htmlspecialchars($testimonial['video_url']) ?>">Review Testimonial</button>
+            </div>
+        <?php } ?>
+    <?php } else { ?>
+        <p>No pending testimonials.</p>
+    <?php } ?>
+</div>
+
     </div>
+
 
     <div id="review-modal" class="modal">
         <div class="modal-content">
@@ -74,6 +115,26 @@
             <button id="deny-btn">Deny</button>
         </div>
     </div>
+
+
+    <div id="testimonial-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Review Testimonial</h2>
+        <input type="hidden" id="testimonial-id">
+        <p><strong>Community:</strong> <span id="testimonial-community"></span></p>
+        <p><strong>Category:</strong> <span id="testimonial-category"></span></p>
+        <p id="testimonial-story"></p>
+
+        <div id="testimonial-video-container"></div>
+
+        <p><strong>Decision Message (if denied):</strong></p>
+        <textarea name="admin-comments" id="testimonial-comments" placeholder="Enter decision comment if denied..."></textarea><br>
+        <button id="approve-testimonial-btn">Approve</button>
+        <button id="deny-testimonial-btn">Deny</button>
+    </div>
+</div>
+
 
     <?php include 'includes/footer.php' ?>
     <script src="js/nav.js"></script>

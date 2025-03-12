@@ -145,8 +145,19 @@
 
     <hr>
     <header>
+<<<<<<< HEAD
         <h1>Read Stories From the Villages</h1>
     </header>
+=======
+<<<<<<< HEAD
+        <h1></h1>
+    </header>
+    <h1>Read Stories From the Villages</h1>
+=======
+        <h1>Read Stories From the Villages</h1>
+    </header>
+>>>>>>> origin/main
+>>>>>>> 55c85f75c6759f61590606a1b5a45fd15e1adc67
     <div class="testimonials">
         <?php foreach ($testimonials as $t) { ?>
             <div class="testimonial">
