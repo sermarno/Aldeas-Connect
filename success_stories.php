@@ -4,7 +4,12 @@
     $comm_result = $conn->query($comm_sql);
 
     // Testimonials
-    $query = "SELECT * FROM testimonials WHERE status = 'approved' ORDER BY created_at DESC";
+    $query = "SELECT t.*, c.comm_name
+    FROM testimonials t 
+    JOIN communities c ON t.community_id = c.community_id
+    WHERE t.status = 'approved' 
+    ORDER BY t.created_at DESC";
+
     $result = $conn->query($query);
     $testimonials = [];
     while ($row = $result->fetch_assoc()) {
@@ -38,22 +43,24 @@
         }
 
         .testimonials {
-            width:90%;
+            width:100%;
             max-width: 1200px; 
             margin: 20px auto;
             justify-content: center;
-            align-items: stretch;
+            align-items: center;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
+            text-align: center;
         }
 
         .testimonial {
             background:white;
             border-radius: 8px;
             padding: 20px;
-            width: 45%;
+            width: 100%;
+            text-align: center;
             max-width: 500px; 
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease-in-out;
@@ -137,18 +144,23 @@
     <?php include 'includes/side_nav.php'; ?>
 
     <hr>
-    <div class="testimonials">
+    <header>
         <h1>Read Stories From the Villages</h1>
+    </header>
+    <div class="testimonials">
         <?php foreach ($testimonials as $t) { ?>
             <div class="testimonial">
-                <h3><?= htmlspecialchars($t['user_id']) ?> (Community: <?= htmlspecialchars($t['community_id']) ?>)</h3>
+                <h3><?= htmlspecialchars($t['comm_name']) ?></h3>
                 <p><?= htmlspecialchars($t['story_text']) ?></p>
                 <?php if (!empty($t['video_url'])) { ?>
                     <video width="300" controls>
                         <source src="<?= htmlspecialchars($t['video_url']) ?>" type="video/mp4">
                     </video>
                 <?php } ?>
-                <p class="category">Category: <?= htmlspecialchars($t['category']) ?></p>
+                <p class="category" data-category="<?= htmlspecialchars($t['category']) ?>">
+                    <?= htmlspecialchars($t['category']) ?>
+                </p>
+
             </div>
         <?php } ?>
     </div>
@@ -160,7 +172,7 @@
           
 
             <label>Your Story:</label>
-            <input type="text" name="story_text" required><br>
+            <textarea name="story_text" required rows="5"></textarea><br>
 
             <label>Category:</label>
             <select name="category" required>

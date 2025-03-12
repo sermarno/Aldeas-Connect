@@ -88,11 +88,11 @@
     <?php endif; ?>
         <!-- Display content -->
         <?php if (isset($content['Our Mission'])): ?>
-            <header>
+            <div>
                 <h2>Our Mission</h2>
                 <p><?php echo $content['Our Mission']['content']; ?></p>
                 <img src="<?php echo $content['Our Mission']['image_path']; ?>" alt="Our Mission Image">
-            </header>
+            </div>
         <?php else: ?>
             <h2>Our Mission</h2>
             <p>Content not available.</p>

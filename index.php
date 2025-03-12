@@ -118,17 +118,17 @@ $villages = [
     <!-- Nav Bar -->
     <?php include 'includes/nav.php' ?>
     <?php include 'includes/side_nav.php' ?>
-    <header id="home">
-        <h1>
-            Aldeas Inteligentes IU <br>
-            <span>
-                The Connection and Future of Smart Villages
-            </span>
-        </h1>
-        <a class="button_home" href="project.php">Learn More About Aldeas Inteligentes IU</a>
-    </header>
 
     <main>
+        <header id="home">
+            <h1>
+                Aldeas Inteligentes IU <br>
+                <span>
+                    The Connection and Future of Smart Villages
+                </span>
+            </h1>
+            <a class="button_home" href="project.php">Learn More About Aldeas Inteligentes IU</a>
+        </header>
         <div class="intro">
             <p>
                 Aldeas Inteligentes is a transformative initiative by the Mexican Federal Government aimed at providing digital access to rural and isolated communities across Mexico. 
@@ -136,26 +136,6 @@ $villages = [
                 Our information system will change how rural communities track progress, showcase their achievements, and connect with supporters.
                 From improving education and healthcare to boosting local commerce, we're creating a platform that helps amplify the voices and aspirations of Mexico's underrated regions.
             </p>
-        </div>
-        <div class="projects-container">
-            <h3>Project Highlights</h3>
-            <div class="proj-grid">
-                <?php
-                    if (count($projects) > 0 ) {
-                        foreach ($projects as $project) {
-                            echo "<div class='proj-card'>";
-                            if (!empty($project['proj_image'])) {
-                                echo "<img src='" . htmlspecialchars($project['proj_image']) . "' alt='project image' class='proj-image'><br>";
-                            }
-                            echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
-                            echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
-                            echo "<a href='investor.php?project_id=" . $project['id'] . "' class='donate-btn'>Donate</a>";
-                            echo "</div>";
-                        }
-                    }
-                ?>
-            </div>
-            <a class="button" href="investor.php">See More</a>
         </div>
 
         <div class="map-container">
@@ -193,6 +173,26 @@ $villages = [
                 window.onload = initMap;
                 </script>
             </div>
+        </div>
+        <div class="projects-container">
+            <h3>Project Highlights</h3>
+            <div class="proj-grid">
+                <?php
+                    if (count($projects) > 0 ) {
+                        foreach ($projects as $project) {
+                            echo "<div class='proj-card'>";
+                            if (!empty($project['proj_image'])) {
+                                echo "<img src='" . htmlspecialchars($project['proj_image']) . "' alt='project image' class='proj-image'><br>";
+                            }
+                            echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
+                            echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
+                            echo "</div>";
+                        }
+                    }
+                ?>
+            </div>
+            <a class="button" href="investor.php">See More</a>
+            <a class="button" href="investor.php">Donate</a>
         </div>
         <!-- Messenger Tool -->
          <?php if (isset($_SESSION['user_id'])): ?>
