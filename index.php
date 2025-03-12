@@ -118,17 +118,17 @@ $villages = [
     <!-- Nav Bar -->
     <?php include 'includes/nav.php' ?>
     <?php include 'includes/side_nav.php' ?>
-    <header id="home">
-        <h1>
-            Aldeas Inteligentes IU <br>
-            <span>
-                The Connection and Future of Smart Villages
-            </span>
-        </h1>
-        <a class="button_home" href="project.php">Learn More About Aldeas Inteligentes IU</a>
-    </header>
 
     <main>
+        <header id="home">
+            <h1>
+                Aldeas Inteligentes IU <br>
+                <span>
+                    The Connection and Future of Smart Villages
+                </span>
+            </h1>
+            <a class="button_home" href="project.php">Learn More About Aldeas Inteligentes IU</a>
+        </header>
         <div class="intro">
             <p>
                 Aldeas Inteligentes is a transformative initiative by the Mexican Federal Government aimed at providing digital access to rural and isolated communities across Mexico. 
