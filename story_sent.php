@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 include 'includes/db.php';
 
 error_reporting(E_ALL);
@@ -37,9 +41,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Fix the SQL query to correctly match bind_param()
+<<<<<<< HEAD
+    // Testimonial
+    session_start();
+    $user_id = $_SESSION['user_id'] ?? 1;
+    $stmt = $conn->prepare("INSERT INTO testimonials (user_id, user_id, community_id, story_text, video_url, category, status) 
+                            VALUES (?, ?, ?, ?, ?, ?, 'pending')");
+    $stmt = $conn->prepare("INSERT INTO testimonials (user_id, community_id, story_text, video_url, category, status) 
+                            VALUES (?, ?, ?, ?, ?, 'pending')");
+=======
+    // Fix the SQL query to correctly match bind_param()
     $stmt = $conn->prepare("INSERT INTO testimonials (user_id, community_id, story_text, video_url, category, status) 
                             VALUES (?, ?, ?, ?, ?, 'pending')");
     
+    $stmt->bind_param("iisss", $user_id, $user_id, $community_id, $story_text, $video_url, $category);
+>>>>>>> origin/main
     $stmt->bind_param("iisss", $user_id, $community_id, $story_text, $video_url, $category);
 
     if ($stmt->execute()) {

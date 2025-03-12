@@ -114,6 +114,17 @@ CREATE TABLE about_content (
     image_path VARCHAR(255)
 ) ENGINE=INNODB;
 
+--partner submission page
+CREATE TABLE partners (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    company_name VARCHAR(255) NOT NULL,
+    contact_person VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    support_type TEXT NOT NULL,
+    message TEXT
+)ENGINE=INNODB;
+
 -- insert statements with test data
 INSERT INTO users (fname, lname, username, email, user_role) VALUES
 ('fname', 'lname', 'user1', 'user1@example.com', 'resident'),
@@ -168,3 +179,7 @@ INSERT INTO about_content (section, content, image_path) VALUES
     allows them to learn valuable technical skills as well as build a strong bond with their peers as they work
     on
     projects together that will benefit their community for years to come.', '');
+
+-- insert partnership data
+INSERT INTO partners (company_name, contact_person, email, phone, support_type, message) VALUES
+('Company Name', 'Contact Person', 'Email', 'Phone', 'Support Type', 'Message')";
