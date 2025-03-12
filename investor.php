@@ -38,40 +38,37 @@
 
     <!-- Community Projects Section -->
     <div class="all_projects">
-    <h3>Community Projects</h3>
-    <div class="proj-grid2">
-        <?php
-            if (count($projects) > 0) {
-                foreach ($projects as $project) {
-                    // Project Card
-                    echo "<div class='proj-card'>";
-                    echo "<div class='card-body'>"; // Adding card body
-                    echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
-                    echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
-                    echo "</div>";
-                    echo "</div>";
+        <h3>Community Projects</h3>
+        <div class="proj-grid2">
+            <?php
+                if (count($projects) > 0) {
+                    foreach ($projects as $project) {
+                        // Project Card
+                        echo "<div class='proj-card'>";
+                        echo "<div class='card-body'>"; // Adding card body
+                        echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
+                        echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
+                        echo "</div>";
+                        echo "</div>";
 
-                    // Ensure these variables exist before use
-                    $raised = $project['raised_amount'] ?? 0;
-                    $goal = $project['goal_amount'] ?? 1; // Avoid division by zero
-                    $progress = ($goal > 0) ? round(($raised / $goal) * 100) : 0;
+                        // Ensure these variables exist before use
+                        $raised = $project['raised_amount'] ?? 0;
+                        $goal = $project['goal_amount'] ?? 1; // Avoid division by zero
+                        $progress = ($goal > 0) ? round(($raised / $goal) * 100) : 0;
 
-                    // Progress Bar
-                    echo "<div class='progress-container'>";
-                    echo "<div class='progress-bar' style='width: {$progress}%;'></div>";
-                    echo "</div>";
-                    echo "<p class='progress-text'>Raised: \${$raised} / Goal: \${$goal} ({$progress}%)</p>";
-
-                    // Donate Button
-                    echo "<a href='investor.php?project_id=" . $project['id'] . "' class='donate-btn'>Donate</a>";
-                    echo "</div>"; // Closing div for proj-card
+                        // Progress Bar
+                        echo "<div class='progress-container'>";
+                        echo "<div class='progress-bar' style='width: {$progress}%;'></div>";
+                        echo "<p class='progress-text'>Raised: \${$raised} / Goal: \${$goal} ({$progress}%)</p>";
+                        echo "<a href='investor.php?project_id=" . $project['id'] . "' class='donate-btn'>Donate</a>";
+                        echo "</div>";
+                    }
                 }
-            }
-        ?>       
+            ?> 
+            <p class='italic'>Want to see your community's projects here?</p>
+            <a class='button' href='request.php'>Submit a Request</a>      
+        </div>
     </div>
-    <p class='italic'>Want to see your community's projects here?</p>
-    <a class='button' href='request.php'>Submit a Request</a>
-</div>
 
 
     <div class="collaboration">
