@@ -19,17 +19,8 @@
     <?php include 'includes/side_nav.php' ?>
 
     <header>
-        <h1></h1>
+        <h1>The Problem & Our Purpose</h1>
     </header>
-        <div class="scroll">
-            <h3>Project Overview:</h3>
-            <ul> 
-                <li><a href="#problem">The Problem ↓</a></li>
-                <li><a href="#goal">Our Goal ↓</a></li>
-                <li><a href="#stakeholders">Stakeholders ↓</a></li>
-                <li><a href="#features">Features & Benefits ↓</a></li>
-            </ul>
-        </div>
 
         <article id="problem">
             <h3>The Problem</h3>

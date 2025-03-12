@@ -21,7 +21,9 @@
     
 <br>
 <br>
-    <h1>Village Gallery</h1>
+    <header>
+        <h1>Village Gallery</h1>
+    </header>   
     
     
     <div class="gallery-section">
@@ -104,6 +106,8 @@
         <a class="prev">&#10094;</a>
         <a class="next">&#10095;</a>
     </div>
+
+    <a class="button" href="investor.php">See Ongoing Projects</a>
 
 
 
