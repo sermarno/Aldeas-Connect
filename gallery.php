@@ -21,7 +21,9 @@
     
 <br>
 <br>
-    <h1>Village Gallery</h1>
+    <header>
+        <h1>Village Gallery</h1>
+    </header>   
     
     
     <div class="gallery-section">
