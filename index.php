@@ -118,17 +118,17 @@ $villages = [
     <!-- Nav Bar -->
     <?php include 'includes/nav.php' ?>
     <?php include 'includes/side_nav.php' ?>
-    <header id="home">
-        <h1>
-            Aldeas Inteligentes IU <br>
-            <span>
-                The Connection and Future of Smart Villages
-            </span>
-        </h1>
-        <a class="button_home" href="project.php">Learn More About Aldeas Inteligentes IU</a>
-    </header>
 
     <main>
+        <header id="home">
+            <h1>
+                Aldeas Inteligentes IU <br>
+                <span>
+                    The Connection and Future of Smart Villages
+                </span>
+            </h1>
+            <a class="button_home" href="project.php">Learn More About Aldeas Inteligentes IU</a>
+        </header>
         <div class="intro">
             <p>
                 Aldeas Inteligentes is a transformative initiative by the Mexican Federal Government aimed at providing digital access to rural and isolated communities across Mexico. 
@@ -136,26 +136,6 @@ $villages = [
                 Our information system will change how rural communities track progress, showcase their achievements, and connect with supporters.
                 From improving education and healthcare to boosting local commerce, we're creating a platform that helps amplify the voices and aspirations of Mexico's underrated regions.
             </p>
-        </div>
-        <div class="projects-container">
-            <h3>Project Highlights</h3>
-            <div class="proj-grid">
-                <?php
-                    if (count($projects) > 0 ) {
-                        foreach ($projects as $project) {
-                            echo "<div class='proj-card'>";
-                            if (!empty($project['proj_image'])) {
-                                echo "<img src='" . htmlspecialchars($project['proj_image']) . "' alt='project image' class='proj-image'><br>";
-                            }
-                            echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
-                            echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
-                            echo "<a href='investor.php?project_id=" . $project['id'] . "' class='donate-btn'>Donate</a>";
-                            echo "</div>";
-                        }
-                    }
-                ?>
-            </div>
-            <a class="button" href="investor.php">See More</a>
         </div>
 
         <div class="map-container">
@@ -193,6 +173,26 @@ $villages = [
                 window.onload = initMap;
                 </script>
             </div>
+        </div>
+        <div class="projects-container">
+            <h3>Project Highlights</h3>
+            <div class="proj-grid">
+                <?php
+                    if (count($projects) > 0 ) {
+                        foreach ($projects as $project) {
+                            echo "<div class='proj-card'>";
+                            if (!empty($project['proj_image'])) {
+                                echo "<img src='" . htmlspecialchars($project['proj_image']) . "' alt='project image' class='proj-image'><br>";
+                            }
+                            echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
+                            echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
+                            echo "</div>";
+                        }
+                    }
+                ?>
+            </div>
+            <a class="button" href="investor.php">See More</a>
+            <a class="button" href="investor.php">Donate</a>
         </div>
         <!-- Messenger Tool -->
          <?php if (isset($_SESSION['user_id'])): ?>
@@ -273,64 +273,11 @@ $villages = [
                 document.getElementById('message_form').style.display = 'block';
             }
 
-<<<<<<< HEAD
-        </div>
-
-        <div id="map">
-            <script>
-                const villages = <?php echo json_encode($villages); ?>;
-
-                function initMap() {
-                    const map = new google.maps.Map(document.getElementById("map"), {
-                        zoom: 5,
-                        center: { lat: 19.4326, lng: -99.1332 }, // Center of Yucatan (Mexico City)
-                    });
-                    villages.forEach(village => {
-                        const marker = new google.maps.Marker({
-                            position: { lat: village.lat, lng: village.lng },
-                            map: map,
-                            title: village.name,
-                        });
-
-                        const infoWindow = new google.maps.InfoWindow({
-                            content: `<h3>${village.name}</h3><p>${village.info}</p>`,
-                        });
-                        //Testing
-                        marker.addListener("click", () => {
-                            infoWindow.open(map, marker);
-                        });
-                    })
-                }
-
-            window.onload = initMap;
-            </script>
-        </div>
-    </div>
-    <div class="chat">
-        <a href="https://web.whatsapp.com/" target="_blank">
-            <img src="img/chat.png" alt="whatsapp">
-        </a>
-    </div>
-    <div class="request">
-        <p>Want to see your community's projects here?</p>
-        <a href="request.php">Submit a Request</a>
-    </div>
-    <article id="overview">
-        <h3>Overview</h3>
-        <p>
-            Aldeas Inteligentes is a transformative initiative by the Mexican Federal Government aimed at providing digital access to rural and isolated communities across Mexico. 
-            By connecting 83 communities with wireless internet, offering STEM training, and supporting community development projects, Aldeas Inteligentes is enhancing education, commerce, health, and overall welfare.
-            Our information system will change how rural communities track progress, showcase their achievements, and connect with supporters.
-            From improving education and healthcare to boosting local commerce, we're creating a platform that helps amplify the voices and aspirations of Mexico's underrated regions.
-        </p>
-    </article>
-=======
             function closeChatbox() {
                 document.querySelector('.chat-popup').style.display = 'none';
             }
         </script>
     </main>
->>>>>>> origin/main
     <?php include 'includes/footer.php'; ?>
 </body>
 </html>
