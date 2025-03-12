@@ -5,10 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
 </head>
 <body>
         
-     <?php include 'includes/nav.php' ?>
+    <?php include 'includes/nav.php' ?>
     <?php include 'includes/side_nav.php' ?> 
     
     <div class="about-container">
@@ -81,6 +86,17 @@
         <h2>Our Mission</h2>
         <p>Content not available.</p>
     <?php endif; ?>
+        <!-- Display content -->
+        <?php if (isset($content['Our Mission'])): ?>
+            <header>
+                <h2>Our Mission</h2>
+                <p><?php echo $content['Our Mission']['content']; ?></p>
+                <img src="<?php echo $content['Our Mission']['image_path']; ?>" alt="Our Mission Image">
+            </header>
+        <?php else: ?>
+            <h2>Our Mission</h2>
+            <p>Content not available.</p>
+        <?php endif; ?>
 
     <?php if (isset($content['Why?'])): ?>
         <h2>Why?</h2>
@@ -113,5 +129,28 @@
 </div>
 <?php include 'includes/footer.php'; ?>
 <script src="js/nav.js"></script>
+        <!-- Edit form -->
+        <h2>Edit Content</h2>
+        <form action="about.php" method="post" enctype="multipart/form-data">
+            <label for="section">Section:</label>
+            <select name="section" id="section">
+                <option value="Our Mission">Our Mission</option>
+                <option value="Why?">Why?</option>
+            </select>
+            <br>
+            <br>
+            <label for="content">Content:</label>
+            <textarea name="content" id="content" rows="5" cols="40"></textarea>
+            <br>
+            <br>
+            <label for="image">Image:</label>
+            <input type="file" name="image" id="image">
+            <br>
+            <br>
+            <input type="submit" value="Update">
+        </form>
+    </div>
+    <?php include 'includes/footer.php'; ?>
+    <script src="js/nav.js"></script>
 </body>
 </html>
