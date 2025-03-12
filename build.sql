@@ -141,9 +141,9 @@ INSERT INTO project_requests (title, proj_description, proj_image, proj_start, p
 
 INSERT INTO testimonials (user_id, community_id, story_text, video_url, category, status)
 VALUES
-(2, 1, 'My name is Elisa Cercanche, I live in the community of Tiunca, municipality of Yaxcabá, I am a community educator in the community of San Marcos. Preschool level, for me the smart villages project is one, it is a support that has served us in the Community, in rural communities such as the Community of Tiuncá, since it has been used educationally.', 'uploads/elisa_vid.mov', 'Education', 'approved'),
+(2, 1, 'My name is Elisa Cercanche, I live in the community of Tiunca, municipality of Yaxcabá, I am a community educator in the community of San Marcos. Preschool level, for me the smart villages project is one, it is a support that has served us in the Community, in rural communities such as the Community of Tiuncá, since it has been used educationally.', 'uploads/elisa.mov', 'Education', 'approved'),
 (1, 3, "My name is Juanita Atzuk Heredia, I am from the community of Santa Cruz Chemax, Yucatán. It has been of many benefits to all of us in this Community because through them many community projects have been worked on, within which women's rights are covered, because in communities like these is where violence is suffered the most, because women You don't know all your rights. Of course, with programs like these smart villages, the risk of violence in the home can be minimized.
-", 'uploads/juanita_vid.mov', 'Education', 'approved');
+", 'uploads/juanita.mov', 'Education', 'approved');
 
 INSERT INTO required_help (community, req_resources) VALUES
 ('Yokdzonot-Hu, Yaxkabá', 'More carving tools.'),
