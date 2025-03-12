@@ -273,11 +273,56 @@ $villages = [
                 document.getElementById('message_form').style.display = 'block';
             }
 
-            function closeChatbox() {
-                document.querySelector('.chat-popup').style.display = 'none';
-            }
-        </script>
-    </main>
+        </div>
+
+        <div id="map">
+            <script>
+                const villages = <?php echo json_encode($villages); ?>;
+
+                function initMap() {
+                    const map = new google.maps.Map(document.getElementById("map"), {
+                        zoom: 5,
+                        center: { lat: 19.4326, lng: -99.1332 }, // Center of Yucatan (Mexico City)
+                    });
+                    villages.forEach(village => {
+                        const marker = new google.maps.Marker({
+                            position: { lat: village.lat, lng: village.lng },
+                            map: map,
+                            title: village.name,
+                        });
+
+                        const infoWindow = new google.maps.InfoWindow({
+                            content: `<h3>${village.name}</h3><p>${village.info}</p>`,
+                        });
+                        //Testing
+                        marker.addListener("click", () => {
+                            infoWindow.open(map, marker);
+                        });
+                    })
+                }
+
+            window.onload = initMap;
+            </script>
+        </div>
+    </div>
+    <div class="chat">
+        <a href="https://web.whatsapp.com/" target="_blank">
+            <img src="img/chat.png" alt="whatsapp">
+        </a>
+    </div>
+    <div class="request">
+        <p>Want to see your community's projects here?</p>
+        <a href="request.php">Submit a Request</a>
+    </div>
+    <article id="overview">
+        <h3>Overview</h3>
+        <p>
+            Aldeas Inteligentes is a transformative initiative by the Mexican Federal Government aimed at providing digital access to rural and isolated communities across Mexico. 
+            By connecting 83 communities with wireless internet, offering STEM training, and supporting community development projects, Aldeas Inteligentes is enhancing education, commerce, health, and overall welfare.
+            Our information system will change how rural communities track progress, showcase their achievements, and connect with supporters.
+            From improving education and healthcare to boosting local commerce, we're creating a platform that helps amplify the voices and aspirations of Mexico's underrated regions.
+        </p>
+    </article>
     <?php include 'includes/footer.php'; ?>
 </body>
 </html>
