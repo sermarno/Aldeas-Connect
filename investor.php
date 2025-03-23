@@ -44,29 +44,26 @@
                 if (count($projects) > 0) {
                     foreach ($projects as $project) {
                         // Project Card
-                        echo "<div class='proj-card'>";
-                        echo "<div class='card-body'>"; // Adding card body
-                        echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
-                        echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
-                        echo "</div>";
-                        echo "</div>";
-
                         // Ensure these variables exist before use
                         $raised = $project['raised_amount'] ?? 0;
                         $goal = $project['goal_amount'] ?? 1; // Avoid division by zero
                         $progress = ($goal > 0) ? round(($raised / $goal) * 100) : 0;
-
+                        echo "<div class='proj-card'>";
+                        echo "<div class='card-body'>"; // Adding card body
+                        echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
+                        echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
                         // Progress Bar
                         echo "<div class='progress-container'>";
                         echo "<div class='progress-bar' style='width: {$progress}%;'></div>";
                         echo "<p class='progress-text'>Raised: \${$raised} / Goal: \${$goal} ({$progress}%)</p>";
                         echo "<a href='investor.php?project_id=" . $project['id'] . "' class='donate-btn'>Donate</a>";
                         echo "</div>";
+                        echo "</div>";
+                        echo "</div>";
                     }
                 }
             ?> 
-            <p class='italic'>Want to see your community's projects here?</p>
-            <a class='button' href='request.php'>Submit a Request</a>      
+            <a class='button' href='new_proj.php'><img src="img/plus.png"></a>      
         </div>
     </div>
 

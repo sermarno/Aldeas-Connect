@@ -376,7 +376,7 @@ input[type="submit"]:hover {
 .all_projects {
   padding: 10px;
   margin: 30px auto;
-  max-width: 700px;
+  max-width: 900px;
   text-align: center;
   background-color: blanchedalmond;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -403,7 +403,7 @@ p.underline {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
-  width: 100%;
+  width: 900px;
   margin: 0 auto;
   position: relative;
 }
