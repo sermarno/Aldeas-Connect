@@ -50,6 +50,7 @@
                         $progress = ($goal > 0) ? round(($raised / $goal) * 100) : 0;
                         echo "<div class='proj-card'>";
                         echo "<div class='card-body'>"; // Adding card body
+                        echo "<img src='" . htmlspecialchars($project['proj_image']) . "'</img>";
                         echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
                         echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
                         // Progress Bar

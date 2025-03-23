@@ -118,9 +118,11 @@ INSERT INTO communities (comm_name, comm_description, comm_location) VALUES
 ('Community 3', 'Community 3 description', 'Community 3 location');
 
 INSERT INTO projects (title, proj_description, proj_image, proj_start, proj_end, user_id, community_id) VALUES
-('Project 1', 'Project 1 description', null, '2020-11-12', '2025-09-07', 1, 1),
-('Project 2', 'Project 2 description', null, '2022-09-12', '2027-04-07', 2, 3),
-('Project 5', 'Project 5 description', null, '2025-09-12', '2026-10-15', 1, 3);
+('Health Center', 'Supporting the processing and sharing of information reports with jurisdictions, hospitals, and the central health sector office.', 'uploads/health_center.jpeg', '2020-04-23', '2025-01-11', 1, 3),
+('Migrant Shelter', 'Training refugees to access information about human rights and refugee assistance', 'uploads/shelter.png', '2017-11-14', '2020-05-24', 2, 2),
+('Telesecondary School', 'Supporting Online Education', 'uploads/school.jpeg', '2022-06-05', '2024-09-07', 1, 1),
+('Sustainable Landscapes Oaxaca', 'Promote productive projects through e-commerce, virtual training, and online education', 'uploads/e-commerce.jpeg', '2020-11-12', '2025-09-07', 1, 1),
+('Community Center', 'Support education for adult women and indigenous girls, and promote ecotourism', 'uploads/community_center.jpeg', '2022-09-12', '2027-04-07', 2, 3);
 
 INSERT INTO project_highlights (title, proj_description, proj_image, proj_start, proj_end, user_id, community_id) VALUES 
 ('Health Center', 'Supporting the processing and sharing of information reports with jurisdictions, hospitals, and the central health sector office.', 'uploads/health_center.jpeg', '2020-04-23', '2025-01-11', 1, 3),
