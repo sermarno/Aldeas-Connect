@@ -30,9 +30,47 @@ $(document).ready(function () {
     $("#review-modal").show();
   });
 
+
+
+  //Testimonial Modal
+  $(".review-testimonial-btn").click(function () {
+    var testimonialId = $(this).data("id");
+    var community = $(this).data("community");
+    var category = $(this).data("category");
+    var story = $(this).data("story");
+    var videoUrl = $(this).data("video");
+
+
+    //Populate
+    $("#testimonial-id").val(testimonialId);
+    $("#testimonial-community").text(community);
+    $("#testimonial-category").text(category);
+    $("#testimonial-story").text(story);
+
+//For videos
+let videoContainer = $("#testimonial-video-container");
+videoContainer.empty(); // Clear any previous video
+if (videoUrl) {
+  let videoElement = $("<video>", {
+    width: "100%",
+    controls: true,
+  });
+  let source = $("<source>", {
+    src: videoUrl,
+    type: "video/mp4",
+  });
+  videoElement.append(source);
+  videoContainer.append(videoElement);
+}
+
+//Show testimonial one
+$("#testimonial-modal").show();
+});
+
   // Close modal when 'X' button is clicked
   $(".close").click(function () {
     $("#review-modal").hide();
+    $("#testimonial-modal").hide();
   });
 
   // Handle approve/deny buttons
@@ -50,4 +88,25 @@ $(document).ready(function () {
       }
     );
   });
+});
+
+//For testimonial
+$("#approve-testimonial-btn, #deny-testimonial-btn").click(function () {
+  var action =
+    $(this).attr("id") === "approve-testimonial-btn" ? "approve" : "deny";
+  var testimonialId = $("#testimonial-id").val();
+  var comment = $("#testimonial-comments").val();
+
+  $.post(
+    "process_testimonial.php",
+    {
+      testimonial_id: testimonialId,
+      action: action,
+      admin_comments: comment,
+    },
+    function (response) {
+      alert(response);
+      location.reload();
+    }
+  );
 });
