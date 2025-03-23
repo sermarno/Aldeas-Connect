@@ -50,14 +50,14 @@
                         $progress = ($goal > 0) ? round(($raised / $goal) * 100) : 0;
                         echo "<div class='proj-card'>";
                         echo "<div class='card-body'>"; // Adding card body
-                        echo "<img src='" . htmlspecialchars($project['proj_image']) . "'</img>";
+                        echo "<img src='" . htmlspecialchars($project['proj_image'], ENT_QUOTES, 'UTF-8') . "' />";
                         echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
                         echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
                         // Progress Bar
                         echo "<div class='progress-container'>";
                         echo "<div class='progress-bar' style='width: {$progress}%;'></div>";
                         echo "<p class='progress-text'>Raised: \${$raised} / Goal: \${$goal} ({$progress}%)</p>";
-                        echo "<a href='investor.php?project_id=" . $project['id'] . "' class='donate-btn'>Donate</a>";
+                        echo "<a href='investor.php?project_id=" . $project['project_id'] . "' class='donate-btn'>Donate</a>";
                         echo "</div>";
                         echo "</div>";
                         echo "</div>";
