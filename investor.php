@@ -32,8 +32,8 @@
         include 'includes/side_nav.php';?>
     <!-- Header -->
     <header>
-        <h1>See How You Can Help</h1>
-        <p>Support projects that create lasting impact in local communities.</p>
+        <h1>Community Projects</h1>
+        <p>See How You Can Help: Support projects that create lasting impact in local communities.</p>
     </header>
 
     <!-- Community Projects Section -->
@@ -70,7 +70,7 @@
 
 
     <div class="collaboration">
-        <h3>How Companies Can Help</h3>
+        <h3>How You Can Help</h3>
         <p>Businesses can support these projects in various ways:</p>
         <ul>
             <li><strong>Financial Contributions:</strong> Donate directly to community projects.</li>
