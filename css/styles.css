@@ -28,21 +28,22 @@ main {
 header {
   text-align: center;
   padding-top: 100px;
-  font-family: sans-serif;
 }
 
 header h1 {
-  font-weight: normal;
   width: 500px;
   margin: 1em auto;
-  background: rgba(255, 255, 255, 0.569);
+  background: rgba(255, 255, 255, 0.355);
+  border-radius: 8px;
+  font-family: "Alumni Sans Pinstripe", sans-serif;
 }
 
 h1 span {
-  color: white;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: rgb(212, 212, 212);
   font-weight: bold;
-  letter-spacing: 1px;
-  -webkit-text-stroke: 1px rgb(122, 122, 122);
+  -webkit-text-stroke: 1px rgba(119, 119, 119, 0.609);
 }
 
 p.intro {
@@ -382,7 +383,7 @@ input[type="submit"]:hover {
 .all_projects {
   padding: 10px;
   margin: 30px auto;
-  max-width: 700px;
+  max-width: 900px;
   text-align: center;
   background-color: blanchedalmond;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -409,7 +410,7 @@ p.underline {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
-  width: 100%;
+  width: 900px;
   margin: 0 auto;
   position: relative;
 }
@@ -443,6 +444,41 @@ p.underline {
   float: right;
   cursor: pointer;
   font-size: 20px;
+}
+
+.modal2 {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 60px;
+}
+
+.modal-content2 {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close2 {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close2:hover,
+.close2:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 /* ---------------------------------------------
@@ -766,6 +802,24 @@ table {
   text-align: left;
 }
 
+.communitites-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+.communities-table th,
+.communities-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.communities-table th {
+  background-color: #f4f4f4;
+}
+
 table th,
 td {
   padding: 12px;
@@ -808,4 +862,20 @@ table tr:nth-child(even) {
     margin: 0;
     padding: 0;
   }
+}
+
+/* ---------------------------------------------
+      PROGRESS BAR
+------------------------------------------------ */
+.progress-container {
+  width: 100%;
+  background-color: #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.progress-bar {
+  height: 10px;
+  background: #28a745;
 }

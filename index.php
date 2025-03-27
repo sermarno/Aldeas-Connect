@@ -69,6 +69,10 @@ $villages = [
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
+    <!-- GOOGLE FONTS: Typeface -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap" rel="stylesheet">
     <!-- Map API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDf99Nyj4amTBbILPYjYt0S01h-kuSWqo"></script> 
     <!-- Translate API -->
@@ -132,9 +136,10 @@ $villages = [
         <div class="intro">
             <p>
                 Aldeas Inteligentes is a transformative initiative by the Mexican Federal Government aimed at providing digital access to rural and isolated communities across Mexico. 
-                By connecting 83 communities with wireless internet, offering STEM training, and supporting community development projects, Aldeas Inteligentes is enhancing education, commerce, health, and overall welfare.
+                By connecting 83 communities with wireless internet, offering STEM training, and supporting community development projects, Aldeas Inteligentes is enhancing education, commerce, health, and overall welfare in these communitites.
                 Our information system will change how rural communities track progress, showcase their achievements, and connect with supporters.
                 From improving education and healthcare to boosting local commerce, we're creating a platform that helps amplify the voices and aspirations of Mexico's underrated regions.
+                <a class="button" href="investor.php">View Community Projects</a>
             </p>
         </div>
 
@@ -143,6 +148,7 @@ $villages = [
                 <h3>83 Communtities with Smart Village Resources</h3>
                 <p>Explore the many communities benefiting from Smart Village inititaves.<br></p>
                 <p class="italic">Click on a map marker to learn more</p>
+                <a class="button" href="communitites.php">See Communities</a>
             </div>
             <div id="map"></div>
      </div>
@@ -192,8 +198,8 @@ $villages = [
                     }
                 ?>
             </div>
-            <a class="button" href="investor.php">See More</a>
-            <a class="button" href="investor.php">Donate</a>
+            <a class="button" href="gallery.php">See Project Gallery</a>
+            <a class="button" href="investor.php">See All Projects</a>
         </div>
         <!-- Messenger Tool -->
          <?php if (isset($_SESSION['user_id'])): ?>

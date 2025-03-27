@@ -2,6 +2,46 @@
     include 'includes/db.php';
     $comm_sql = "SELECT * FROM communities";
     $comm_result = $conn->query($comm_sql);
+
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL);
+
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $title = $conn->real_escape_string($_POST['title']);
+        $proj_description = $conn->real_escape_string($_POST['proj_description']);
+        $proj_start = $conn->real_escape_string($_POST['proj_start']);
+        $proj_end = $conn->real_escape_string($_POST['proj_end']);
+        $community_id = $conn->real_escape_string($_POST['community_id']);
+        
+        // Handle image upload
+        $proj_image = null;
+        if (isset($_FILES['proj_image']) && $_FILES['proj_image']['error'] == 0) {
+            echo "File uploaded: " . $_FILES['proj_image']['name'];
+            $proj_image = $_FILES['proj_image']['name'];
+            $target_dir = "uploads/";
+            $target_file = $target_dir . basename($proj_image);
+            if (move_uploaded_file($_FILES['proj_image']['tmp_name'], $target_file)) {
+                echo "Image uploaded successfully.";
+            } else {
+                echo "image upload failed.";
+            }
+        }
+    
+        // Insert project into database
+        $sql = "INSERT INTO projects (title, proj_description, proj_start, proj_end, community_id, proj_image) 
+                VALUES (?, ?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssssss", $title, $proj_description, $proj_start, $proj_end, $community_id, $proj_image);
+    
+        if ($stmt->execute()) {
+            header("Location: investor.php");
+            exit();
+        } else {
+            echo "Error: " . $stmt->error;
+        }
+    }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,29 +69,22 @@
     </header>
     <div class="form">
         <div class="goback">
-            <a class="back" href="request.php"> ← Go Back</a>
+            <a class="back" href="investor.php"> ← Go Back</a>
         </div>
         <div class="form_container">
-            <form action="req_sent.php" method="POST">
-                <h1>New Project Request Form</h1>
-                <p class="italic">
-                    This form is for Smart Village residents who wish to see
-                    their project on this website and do not see it already in the <a href="investor.php">project's list.</a>
-                    Your request will be reviewed and you will be provided with a message regarding
-                    it's approval or denial. <br><br> 
-                </p>
-                <input type="hidden" name="request_id">
+            <form action="new_proj.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="project_id">
                 <div class="project_details">
                     <h2>Project Details</h2>
                     <div class="details_container">
                         <p class="underline">PROJECT TITLE AND DESCRIPTION</p>
-                        <p class="italic">Give your project a name and tell us what it's about.</p>
+                        <p class="italic">Give the project a name and a short description explaining it's purpose.</p>
                         Project Title: <br><input type="text" name="title"><br><br>
                         Project Description: <br><input type="text" name="proj_description" class="large_input">
                     </div>
                     <div class="details_container">
                         <p class="underline">PROJECTED TIMELINE</p>
-                        <p class="italic">Please note that this is an estimation and can be changed.</p>
+                        <p class="italic"> Please note that this is an estimation and can be changed.</p>
                         <div class="select_date">
                             <div class="date_input">
                                 <label for="proj_start">Start Date:</label> 
@@ -65,7 +98,7 @@
                     </div>
                     <div class="details_container">
                         <p class="underline">COMMUNITY</p>
-                        <p class="italic">What community are you a part of? <br></p>
+                        <p class="italic">Which community is working on this project? <br></p>
                         <select name="community_id" id="community" required>
                             <option value="">Select a community</option>
                             <?php 
@@ -77,7 +110,13 @@
                             ?>
                         </select> <br><br>
                     </div>
-                    <input type="submit" value="Send Request">
+                    <div class="details_container">
+                        <p class="underline">PROJECT IMAGE</p>
+                        <p class="italic">Upload an image representing the project (optional).</p>
+                        <label for="proj_image">Select Image:</label><br>
+                        <input type="file" id="proj_image" name="proj_image" accept="image/*"><br><br>
+                    </div>
+                    <input type="submit" value="Add Project">
                 </div>
             </form>
         </div>
