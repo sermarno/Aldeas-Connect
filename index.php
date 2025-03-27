@@ -139,12 +139,13 @@ $villages = [
         </div>
 
         <div class="map-container">
-            <div class="map-text">
+            <div class="map-text top-text">
                 <h3>83 Communtities with Smart Village Resources</h3>
                 <p>Explore the many communities benefiting from Smart Village inititaves.<br></p>
                 <p class="italic">Click on a map marker to learn more</p>
             </div>
-            <div id="map">
+            <div id="map"></div>
+     </div>
                 <script>
                     const villages = <?php echo json_encode($villages); ?>;
 
