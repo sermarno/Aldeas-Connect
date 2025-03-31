@@ -104,20 +104,19 @@ $villages = [
                 <h1>
                     Aldeas Connect, <br>
                     The Connection and Future of Smart Villages <br>
-                    <a class="button_home" href="project.php">Learn More About Aldeas Inteligentes IU</a>
+                    <a class="button_home" href="project.php">Learn More</a>
                 </h1>
             </div>
-            <div class="header_img">
-                <img src="img/home.jpeg" alt="home">
-            </div>
+            <img src="img/home.jpeg" alt="home">
         </div>
         <div class="intro">
+            <img class='intro_img' src="img/laptops.jpeg" alt="utlizing_wifi">
             <p>
                 Aldeas Inteligentes is a transformative initiative by the Mexican Federal Government aimed at providing digital access to rural and isolated communities across Mexico. 
                 By connecting 83 communities with wireless internet, offering STEM training, and supporting community development projects, Aldeas Inteligentes is enhancing education, commerce, health, and overall welfare in these communitites.
                 Our information system will change how rural communities track progress, showcase their achievements, and connect with supporters.
-                From improving education and healthcare to boosting local commerce, we're creating a platform that helps amplify the voices and aspirations of Mexico's underrated regions.
-                <a class="button" href="investor.php">View Community Projects</a>
+                From improving education and healthcare to boosting local commerce, we're creating a platform that helps amplify the voices and aspirations of Mexico's underrated regions. <br>
+                <a class="button" href="investor.php">View Projects</a>
             </p>
         </div>
 
@@ -263,7 +262,7 @@ $villages = [
         </script>
         <div class="translate-container">
             <div id="google_translate_element" class="translate-box"></div>
-            <img src="img/translate_icon.jpeg" alt="Translate" class="translate-icon">
+            <img src="img/translate_icon.png" alt="Translate" class="translate-icon">
         </div>
     </main>
     <?php include 'includes/footer.php'; ?>

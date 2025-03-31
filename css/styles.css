@@ -13,20 +13,18 @@ html {
   /* putting h1 and image beside each other */
   display: flex;
   font-size: 32px;
-  margin-left: 2em;
+  color: rgb(0, 76, 0);
+  text-align: center;
   align-items: center;
 }
 
 .header img {
-  width: 450px;
-}
-
-.header_img {
-  padding-top: 100px;
+  width: 550px;
+  padding-top: 80px;
 }
 
 .button_home {
-  font-size: 18px;
+  font-size: 25px;
 }
 
 main {
@@ -38,6 +36,7 @@ main {
 header {
   text-align: center;
   padding-top: 100px;
+  font-family: "Alumni Sans Pinstripe", sans-serif;
 }
 
 .header h1 {
@@ -46,8 +45,17 @@ header {
   font-family: "Alumni Sans Pinstripe", sans-serif;
 }
 
-p.intro {
-  text-align: left;
+.intro p {
+  max-width: 900px;
+  text-align: center;
+  margin: 1em auto 3em;
+  font-size: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.intro_img {
+  max-width: 1050px;
+  margin: 9em auto 0;
 }
 
 article {
@@ -58,16 +66,6 @@ article {
   position: relative;
   max-width: 700px;
   margin: 3em auto;
-}
-
-.intro p {
-  max-width: 500px;
-  text-align: center;
-  margin: 4em auto;
-}
-
-li span {
-  text-decoration: underline;
 }
 
 .proj_container,
@@ -334,6 +332,7 @@ input[type="submit"] {
   border: 1px solid grey;
   background-color: rgba(128, 128, 128, 0.156);
   border-radius: 5px;
+  margin-top: 10px;
   padding: 10px;
   display: inline-block;
   transition: transform 0.3s ease-in-out;
@@ -358,7 +357,8 @@ input[type="submit"]:hover {
   width: 80px;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  background-color: #888888ab;
 }
 
 .translate-box {
@@ -508,6 +508,10 @@ nav ul {
   display: flex;
   width: 100%;
   justify-content: flex-end;
+}
+
+li span {
+  text-decoration: underline;
 }
 
 nav li {
