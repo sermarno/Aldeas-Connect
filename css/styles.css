@@ -8,19 +8,29 @@ html {
 /* ---------------------------------------------
         LAYOUT/POSITIONING PAGE ELEMENTS
 ------------------------------------------------ */
-#home {
-  position: relative;
-  height: 400px;
-  background: url(../img/home.jpeg);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+/* HOME PAGE: HEADER */
+.header {
+  /* putting h1 and image beside each other */
+  display: flex;
+  font-size: 32px;
+  margin-left: 2em;
+  align-items: center;
+}
+
+.header img {
+  width: 450px;
+}
+
+.header_img {
+  padding-top: 100px;
+}
+
+.button_home {
+  font-size: 18px;
 }
 
 main {
-  max-width: 750px;
   background-color: rgba(255, 235, 205, 0.159);
-  border: 1px solid rgba(128, 128, 128, 0.15);
   margin: 0 auto;
   border-radius: 5px;
 }
@@ -30,20 +40,10 @@ header {
   padding-top: 100px;
 }
 
-header h1 {
+.header h1 {
   width: 500px;
   margin: 1em auto;
-  background: rgba(255, 255, 255, 0.355);
-  border-radius: 8px;
   font-family: "Alumni Sans Pinstripe", sans-serif;
-}
-
-h1 span {
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  color: rgb(212, 212, 212);
-  font-weight: bold;
-  -webkit-text-stroke: 1px rgba(119, 119, 119, 0.609);
 }
 
 p.intro {
@@ -55,10 +55,6 @@ article {
   border-radius: 15px;
   background-color: blanchedalmond;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.scroll,
-article {
   position: relative;
   max-width: 700px;
   margin: 3em auto;
@@ -68,20 +64,6 @@ article {
   max-width: 500px;
   text-align: center;
   margin: 4em auto;
-}
-
-.scroll a {
-  text-decoration: none;
-  color: black;
-}
-
-.scroll a:hover {
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.scroll ul {
-  list-style-type: circle;
 }
 
 li span {
@@ -101,12 +83,13 @@ li span {
 }
 
 .google_login {
-  border: 2px solid rgb(214, 214, 214);
-  border-radius: 10px;
-  max-width: 700px;
-  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.9);
   padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
+  max-width: 400px;
+  width: 100%;
 }
 
 .account-details {
@@ -356,17 +339,37 @@ input[type="submit"] {
   transition: transform 0.3s ease-in-out;
 }
 
-.button_home {
-  margin-top: 100px;
-  background-color: rgba(128, 128, 128, 0.714);
-}
-
 .button:hover,
 .button_home,
 input[type="submit"]:hover {
   transform: scale(1.1);
   font-weight: normal;
   cursor: pointer;
+}
+
+.translate-container {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.translate-icon {
+  width: 80px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.translate-box {
+  overflow: hidden;
+  opacity: 0;
+  transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.translate-container:hover .translate-box {
+  width: 200px;
+  opacity: 1;
 }
 
 /* ---------------------------------------------
@@ -387,6 +390,10 @@ input[type="submit"]:hover {
 p.italic {
   font-style: italic;
   margin-top: 4px;
+}
+
+p.italic-login {
+  font-size: 20px;
 }
 
 p.underline {
@@ -478,58 +485,23 @@ p.underline {
 /* ---------------------------------------------
         NAVIGATION
 ------------------------------------------------ */
-.account-dropdown {
+.login {
   position: relative;
   display: inline-block;
-}
-
-.account-dropdown img {
-  width: 30px;
-  height: 30px;
-}
-
-img.account-icon {
-  padding-right: 5px;
-}
-
-img.request-icon {
-  height: 40px;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  top: 100%;
-  left: 0;
-  font-size: 14px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0, 2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 5px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-.account-dropdown:hover .dropdown-content {
-  display: block;
+  background-color: rgb(255, 248, 237);
+  border-radius: 5px;
+  border: 1px solid rgb(195, 195, 195);
+  width: 80px;
 }
 
 nav {
-  background-color: blanchedalmond;
+  background-color: rgb(255, 248, 237);
   display: flex;
   z-index: 9999;
   width: 100%;
   position: fixed;
   top: 0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
 nav ul {
@@ -541,6 +513,8 @@ nav ul {
 nav li {
   list-style-type: none;
   padding: 5px 1em;
+  font-family: "Alumni Sans Pinstripe", sans-serif;
+  font-size: 28px;
 }
 
 nav a {
@@ -555,8 +529,8 @@ a:hover {
 nav .logo img {
   width: 190px;
   position: absolute;
-  top: 9px;
-  left: 15px;
+  top: 5px;
+  left: 25px;
 }
 
 .all-over-bkg {
@@ -682,6 +656,22 @@ body {
   margin: 0;
   background-color: #f0f0f0;
   padding: 20px;
+}
+
+#login {
+  background: url("../img/login.jpg") no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: "Alumni Sans Pinstripe", sans-serif;
+}
+
+.g_id_signin {
+  display: flex;
+  justify-content: center;
 }
 
 .gallery-section {
