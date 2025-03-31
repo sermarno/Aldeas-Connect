@@ -69,25 +69,37 @@ article {
 }
 
 .proj_container,
-.form {
+.form,
+.register_form {
   text-align: center;
   border: 2px solid rgba(128, 128, 128, 0.577);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: blanchedalmond;
-  max-width: 700px;
+  max-width: 900px;
   border-radius: 15px;
   margin: 3em auto;
   padding: 50px;
 }
 
-.google_login {
+.register_form {
+  background-color: rgb(255, 247, 234);
+}
+
+.google_login,
+.register_form {
   background: rgba(255, 255, 255, 0.9);
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  text-align: center;
+  text-align: left;
   max-width: 400px;
   width: 100%;
+  font-size: 22px;
+}
+
+.register_form p,
+.register_form h1 {
+  text-align: center;
 }
 
 .account-details {
@@ -662,7 +674,8 @@ body {
   padding: 20px;
 }
 
-#login {
+#login,
+#register {
   background: url("../img/login.jpg") no-repeat center center fixed;
   background-size: cover;
   display: flex;

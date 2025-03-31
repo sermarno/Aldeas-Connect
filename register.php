@@ -28,28 +28,23 @@ require 'includes/db.php';
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap" rel="stylesheet">
 </head>
-<body>
-    <!-- Nav Bar -->
-    <?php include 'includes/nav.php' ?>
-    <?php include 'includes/side_nav.php' ?>
-    <header>
+<body id="register">
+    <div class="register_form">
         <h1>Complete Registration</h1>
         <p class="italic">You don't have an account yet. Enter your details below to sign up!</p>
-    </header>
-    <div class="form">
         <form action="register_process.php" method="POST">
         <label for="fname">First Name: </label>
-        <input type="text" id="fname" name="fname" placeholder="First Name" required><br>
+        <input type="text" id="fname" name="fname" placeholder="First Name" required><br><br>
 
         <label for="lname">Last Name: </label>
-        <input type="text" id="lname" name="lname" placeholder="Last Name" required><br>
+        <input type="text" id="lname" name="lname" placeholder="Last Name" required><br><br>
 
         <label for="username">Create a Username:</label>
-        <input type="text" id="username" name="username" placeholder="Username"required><br>
+        <input type="text" id="username" name="username" placeholder="Username"required><br><br>
 
         <label for="email">Confirm email</label>
         <input type="text" id="email" name="email" value="<?php echo htmlspecialchars($_SESSION['google_email'] ?? ''); ?>"required>
-        <br>
+        <br><br>
 
         <label for="user_role">Select Role:</label>
         <select id="user_role" name="user_role" required>
@@ -57,13 +52,9 @@ require 'includes/db.php';
             <option value="admin">Admin</option>
             <option value="visitor">Visitor</option>
         </select>
-        <br>
-        <button type="submit">Complete Registration</button>
+        <br><br>
+        <button class='button' type="submit">Complete Registration</button>
     </form>
     </div>
-    
-
-    <?php include 'includes/footer.php' ?>
-    <script src="js/nav.js"></script>
 </body>
 </html>
