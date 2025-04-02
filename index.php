@@ -59,7 +59,7 @@ $villages = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aldeas Inteligentes IU</title>
+    <title>Aldeas Connect</title>
     <!-- Linking CSS Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/normalize.css">
@@ -79,7 +79,7 @@ $villages = [
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
-        }
+        }       
     </script>
     <script type="text/javascript"
         src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
@@ -92,54 +92,31 @@ $villages = [
             select.dispatchEvent(new Event('change'));
         }
     </script>
-    <!-- Logout/login Popup -->
-     <script>
-        function logoutMessage() {
-            alert("You have been successfully logged out!");
-        }
-     </script>
-    <script>
-        function loginMessage() {
-            alert("You have been successfully logged in!");
-        }
-     </script>
 </head>
 <body>
-    <!-- logout message -->
-    <?php if (isset($_GET['logout']) && $_GET['logout'] == 'success'): ?>
-        <script>
-            logoutMessage();
-        </script>
-    <?php endif; ?>
-
-    <!-- login message -->
-     <?php if (isset($_GET['login']) && $_GET['login'] == 'success'): ?>
-        <script>
-            loginMessage();
-        </script>
-    <?php endif; ?>
-
     <!-- Nav Bar -->
     <?php include 'includes/nav.php' ?>
     <?php include 'includes/side_nav.php' ?>
 
     <main>
-        <header id="home">
-            <h1>
-                Aldeas Inteligentes IU <br>
-                <span>
-                    The Connection and Future of Smart Villages
-                </span>
-            </h1>
-            <a class="button_home" href="project.php">Learn More About Aldeas Inteligentes IU</a>
-        </header>
+        <div class="header">
+            <div>
+                <h1>
+                    Aldeas Connect, <br>
+                    The Connection and Future of Smart Villages <br>
+                    <a class="button_home" href="project.php">Learn More</a>
+                </h1>
+            </div>
+            <img src="img/home.jpeg" alt="home">
+        </div>
         <div class="intro">
+            <img class='intro_img' src="img/laptops.jpeg" alt="utlizing_wifi">
             <p>
                 Aldeas Inteligentes is a transformative initiative by the Mexican Federal Government aimed at providing digital access to rural and isolated communities across Mexico. 
                 By connecting 83 communities with wireless internet, offering STEM training, and supporting community development projects, Aldeas Inteligentes is enhancing education, commerce, health, and overall welfare in these communitites.
                 Our information system will change how rural communities track progress, showcase their achievements, and connect with supporters.
-                From improving education and healthcare to boosting local commerce, we're creating a platform that helps amplify the voices and aspirations of Mexico's underrated regions.
-                <a class="button" href="investor.php">View Community Projects</a>
+                From improving education and healthcare to boosting local commerce, we're creating a platform that helps amplify the voices and aspirations of Mexico's underrated regions. <br>
+                <a class="button" href="investor.php">View Projects</a>
             </p>
         </div>
 
@@ -284,6 +261,10 @@ $villages = [
                 document.querySelector('.chat-popup').style.display = 'none';
             }
         </script>
+        <div class="translate-container">
+            <div id="google_translate_element" class="translate-box"></div>
+            <img src="img/translate_icon.png" alt="Translate" class="translate-icon">
+        </div>
     </main>
     <?php include 'includes/footer.php'; ?>
 </body>

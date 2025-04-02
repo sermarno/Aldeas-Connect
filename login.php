@@ -12,20 +12,17 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
+    <!-- GOOGLE FONTS: Typeface -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap" rel="stylesheet">
     <!-- Loading Google's library -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
-<body>
-    <!-- Nav Bar -->
-    <?php include 'includes/nav.php' ?>
-    <?php include 'includes/side_nav.php' ?>
-
-    <header>
-        <h1>Login</h1>
-    </header>
-
+<body id="login">
     <div class="google_login">
-        <p>Login with Google</p>
+        <h1>Login with Google</h1>
+        <p class="italic-login">If you don't have an account, you will be redirected to register.</p>
         <div id="g_id_onload"
             data-client_id="425696034712-7ns8jm05qgakn29cmkfvmaffv6bpnvp9.apps.googleusercontent.com"
             data-context="signin"
@@ -40,8 +37,6 @@
             data-theme="outline" 
             data-shape="rectangular"></div>
     </div>
-    <?php include 'includes/footer.php' ?>
-    <script src="js/nav.js"></script>
     <script src="js/google-login.js"></script>
 </body>
 </html>
