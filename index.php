@@ -129,7 +129,7 @@ $villages = [
             </div>
             <div id="map"></div>
     
-            //legend for the colors
+            
             <div class="legend">
                 <p><img src="http://maps.google.com/mapfiles/ms/icons/red-dot.png"> Stage 1: Connection</p>
                 <p><img src="http://maps.google.com/mapfiles/ms/icons/orange-dot.png"> Stage 2: Use</p>
