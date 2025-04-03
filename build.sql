@@ -1,11 +1,12 @@
+SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS required_help CASCADE;
 DROP TABLE IF EXISTS about_content CASCADE;
+DROP TABLE IF EXISTS partners CASCADE;
 DROP TABLE IF EXISTS testimonials CASCADE;
 DROP TABLE IF EXISTS project_highlights CASCADE;
-DROP TABLE IF EXISTS project_requests CASCADE;
+DROP TABLE IF EXISTS messages CASCADE;
 DROP TABLE IF EXISTS projects CASCADE;
 DROP TABLE IF EXISTS communities CASCADE;
-DROP TABLE IF EXISTS messages CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
 
 -- user
@@ -18,21 +19,10 @@ CREATE TABLE users (
     user_role ENUM('resident', 'admin', 'visitor') DEFAULT 'visitor'
 ) ENGINE=INNODB;
 
--- messages 
-CREATE TABLE messages (
-    message_id INT AUTO_INCREMENT PRIMARY KEY,
-    sender_id INT NOT NULL,
-    recipient_id INT NOT NULL,
-    message TEXT NOT NULL,
-    sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (sender_id) REFERENCES users(user_id) ON DELETE CASCADE,
-    FOREIGN KEY (recipient_id) REFERENCES users(user_id) ON DELETE CASCADE
-) ENGINE=INNODB;
-
 -- community
 CREATE TABLE communities (
     community_id INT PRIMARY KEY AUTO_INCREMENT,
-    comm_name VARCHAR(255), -- if applicable
+    comm_name VARCHAR(255),
     comm_description TEXT,
     comm_location TEXT
 ) ENGINE=INNODB;
@@ -45,33 +35,15 @@ CREATE TABLE projects (
     proj_image VARCHAR(255),
     proj_start DATE,
     proj_end DATE,
-    request_status ENUM('approved', 'denied', 'pending') DEFAULT 'pending',
-    admin_comments TEXT, -- message from admin about decision
     user_id INT,
     community_id INT,
-    FOREIGN KEY (user_id) REFERENCES users(user_id),
-    FOREIGN KEY (community_id) REFERENCES communities(community_id)
-) ENGINE=INNODB;
-
--- project requests
-CREATE TABLE project_requests (
-    request_id INT PRIMARY KEY AUTO_INCREMENT,
-    project_id INT,
-    title VARCHAR(255),
-    proj_description TEXT,
-    proj_image VARCHAR(255),
-    proj_start DATE,
-    proj_end DATE,
-    request_status ENUM('approved', 'denied', 'pending') DEFAULT 'pending',
-    admin_comments TEXT,
-    user_id INT,
-    community_id INT,
-    FOREIGN KEY (user_id) REFERENCES users(user_id),
-    FOREIGN KEY (community_id) REFERENCES communities(community_id)
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (community_id) REFERENCES communities(community_id) ON DELETE CASCADE
 ) ENGINE=INNODB;
 
 -- project highlights
 CREATE TABLE project_highlights (
+    highlight_id INT PRIMARY KEY AUTO_INCREMENT,
     project_id INT,
     title VARCHAR(255),
     proj_description TEXT,
@@ -80,7 +52,8 @@ CREATE TABLE project_highlights (
     proj_end DATE,
     user_id INT,
     community_id INT,
-    FOREIGN KEY (community_id) REFERENCES communities(community_id)
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (community_id) REFERENCES communities(community_id) ON DELETE CASCADE
 ) ENGINE=INNODB;
 
 -- Testimonial/Connectivity
@@ -89,13 +62,22 @@ CREATE TABLE testimonials (
     user_id INT NOT NULL,
     community_id INT NOT NULL,
     story_text TEXT NOT NULL,
-    video_url VARCHAR(255) NULL, -- Optional video testimonial
+    video_url VARCHAR(255) NULL,
     category ENUM('Education', 'Economic', 'Health', 'Other') NOT NULL,
-    status ENUM('pending', 'approved', 'denied') DEFAULT 'pending', -- Admin approval status
-    admin_comments TEXT NULL, -- Admin feedback
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
     FOREIGN KEY (community_id) REFERENCES communities(community_id) ON DELETE CASCADE
+) ENGINE=INNODB;
+
+-- messages 
+CREATE TABLE messages (
+    message_id INT AUTO_INCREMENT PRIMARY KEY,
+    sender_id INT NOT NULL,
+    recipient_id INT NOT NULL,
+    message TEXT NOT NULL,
+    sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (sender_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (recipient_id) REFERENCES users(user_id) ON DELETE CASCADE
 ) ENGINE=INNODB;
 
 -- community help needed
@@ -114,36 +96,51 @@ CREATE TABLE about_content (
     image_path VARCHAR(255)
 ) ENGINE=INNODB;
 
+--partner submission page
+CREATE TABLE partners (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    company_name VARCHAR(255) NOT NULL,
+    contact_person VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    support_type TEXT NOT NULL,
+    message TEXT
+)ENGINE=INNODB;
+
 -- insert statements with test data
 INSERT INTO users (fname, lname, username, email, user_role) VALUES
-('fname', 'lname', 'user1', 'user1@example.com', 'resident'),
-('fname2', 'lname2', 'user2', 'user2@example.com', 'resident'),
-('fname3', 'lname3', 'user3', 'user3@example.com', 'visitor');
+('Serra', 'Arnold', 'sermarno', 'sermarno@iu.edu', 'admin'),
+('Miranda', 'Hanes', 'mhanes', 'mhanes1@example.com', 'resident'),
+('Joany', 'King', 'jking2', 'jking2@example.com', 'resident'),
+('Jeremy', 'Adkins', 'jadkins3', 'jadkins3@example.com', 'visitor');
+
+INSERT INTO messages (sender_id, recipient_id, message, sent_at) VALUES 
+(3, 1, "Everything is going great so far!", '2025-01-12 17:52:18'),
+(2, 1, "We have a question about the Community Center.", '2025-03-31 17:52:18'),
+(4, 1, "Did we get any donations for our project?", '2025-03-31 14:52:18');
 
 INSERT INTO communities (comm_name, comm_description, comm_location) VALUES
 ('Community 1', 'Community 1 description', 'Community 1 location'), 
 ('Community 2', 'Community 2 description', 'Community 2 location'),
 ('Community 3', 'Community 3 description', 'Community 3 location');
 
-INSERT INTO projects (title, proj_description, proj_image, proj_start, proj_end, request_status, admin_comments, user_id, community_id) VALUES
-('Project 1', 'Project 1 description', null, '2020-11-12', '2025-09-07', 'approved', 'Looks great! Let us know if you need any help.', 1, 1),
-('Project 2', 'Project 2 description', null, '2022-09-12', '2027-04-07', 'approved', 'I look forward to seeing your progress!', 2, 3),
-('Project 5', 'Project 5 description', null, '2025-09-12', '2026-10-15', 'approved', 'Your project has been approved!', 1, 3);
+INSERT INTO projects (title, proj_description, proj_image, proj_start, proj_end, user_id, community_id) VALUES
+('Health Center', 'Supporting the processing and sharing of information reports with jurisdictions, hospitals, and the central health sector office.', 'uploads/health_center.jpeg', '2020-04-23', '2025-01-11', 1, 3),
+('Migrant Shelter', 'Training refugees to access information about human rights and refugee assistance', 'uploads/shelter.png', '2017-11-14', '2020-05-24', 2, 2),
+('Telesecondary School', 'Supporting Online Education', 'uploads/school.jpeg', '2022-06-05', '2024-09-07', 1, 1),
+('Sustainable Landscapes Oaxaca', 'Promote productive projects through e-commerce, virtual training, and online education', 'uploads/e-commerce.jpeg', '2020-11-12', '2025-09-07', 1, 1),
+('Community Center', 'Support education for adult women and indigenous girls, and promote ecotourism', 'uploads/community_center.jpeg', '2022-09-12', '2027-04-07', 2, 3);
 
 INSERT INTO project_highlights (title, proj_description, proj_image, proj_start, proj_end, user_id, community_id) VALUES 
 ('Health Center', 'Supporting the processing and sharing of information reports with jurisdictions, hospitals, and the central health sector office.', 'uploads/health_center.jpeg', '2020-04-23', '2025-01-11', 1, 3),
 ('Migrant Shelter', 'Training refugees to access information about human rights and refugee assistance', 'uploads/shelter.png', '2017-11-14', '2020-05-24', 2, 2),
 ('Telesecondary School', 'Supporting Online Education', 'uploads/school.jpeg', '2022-06-05', '2024-09-07', 1, 1);
 
-INSERT INTO project_requests (title, proj_description, proj_image, proj_start, proj_end, request_status, admin_comments, user_id, community_id) VALUES
-('Project 3', 'Project 3 description', null, '2025-04-09', '2026-01-03', 'pending', null, 1, 1),
-('Project 4', 'Project 4 description', null, '2025-11-09', '2028-11-04', 'pending', null, 2, 2);
-
-INSERT INTO testimonials (user_id, community_id, story_text, video_url, category, status)
+INSERT INTO testimonials (user_id, community_id, story_text, video_url, category)
 VALUES
-(2, 1, 'My name is Elisa Cercanche, I live in the community of Tiunca, municipality of Yaxcabá, I am a community educator in the community of San Marcos. Preschool level, for me the smart villages project is one, it is a support that has served us in the Community, in rural communities such as the Community of Tiuncá, since it has been used educationally.', 'uploads/elisa.mov', 'Education', 'approved'),
+(2, 1, 'My name is Elisa Cercanche, I live in the community of Tiunca, municipality of Yaxcabá, I am a community educator in the community of San Marcos. Preschool level, for me the smart villages project is one, it is a support that has served us in the Community, in rural communities such as the Community of Tiuncá, since it has been used educationally.', 'uploads/elisa.mov', 'Education'),
 (1, 3, "My name is Juanita Atzuk Heredia, I am from the community of Santa Cruz Chemax, Yucatán. It has been of many benefits to all of us in this Community because through them many community projects have been worked on, within which women's rights are covered, because in communities like these is where violence is suffered the most, because women You don't know all your rights. Of course, with programs like these smart villages, the risk of violence in the home can be minimized.
-", 'uploads/juanita.mov', 'Education', 'approved');
+", 'uploads/juanita.mov', 'Education');
 
 INSERT INTO required_help (community, req_resources) VALUES
 ('Yokdzonot-Hu, Yaxkabá', 'More carving tools.'),
@@ -168,3 +165,7 @@ INSERT INTO about_content (section, content, image_path) VALUES
     allows them to learn valuable technical skills as well as build a strong bond with their peers as they work
     on
     projects together that will benefit their community for years to come.', '');
+
+-- insert partnership data
+INSERT INTO partners (company_name, contact_person, email, phone, support_type, message) VALUES
+('Company Name', 'Contact Person', 'Email', 'Phone', 'Support Type', 'Message');

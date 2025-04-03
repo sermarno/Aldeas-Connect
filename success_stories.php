@@ -7,7 +7,6 @@
     $query = "SELECT t.*, c.comm_name
     FROM testimonials t 
     JOIN communities c ON t.community_id = c.community_id
-    WHERE t.status = 'approved' 
     ORDER BY t.created_at DESC";
 
     $result = $conn->query($query);
@@ -29,6 +28,10 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
+    <!-- GOOGLE FONTS: Typeface -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -145,19 +148,8 @@
 
     <hr>
     <header>
-<<<<<<< HEAD
         <h1>Read Stories From the Villages</h1>
     </header>
-=======
-<<<<<<< HEAD
-        <h1></h1>
-    </header>
-    <h1>Read Stories From the Villages</h1>
-=======
-        <h1>Read Stories From the Villages</h1>
-    </header>
->>>>>>> origin/main
->>>>>>> 55c85f75c6759f61590606a1b5a45fd15e1adc67
     <div class="testimonials">
         <?php foreach ($testimonials as $t) { ?>
             <div class="testimonial">

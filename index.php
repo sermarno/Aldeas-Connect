@@ -59,7 +59,7 @@ $villages = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aldeas Inteligentes IU</title>
+    <title>Aldeas Connect</title>
     <!-- Linking CSS Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/normalize.css">
@@ -69,13 +69,17 @@ $villages = [
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
+    <!-- GOOGLE FONTS: Typeface -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap" rel="stylesheet">
     <!-- Map API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDf99Nyj4amTBbILPYjYt0S01h-kuSWqo"></script> 
     <!-- Translate API -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
-        }
+        }       
     </script>
     <script type="text/javascript"
         src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
@@ -88,53 +92,31 @@ $villages = [
             select.dispatchEvent(new Event('change'));
         }
     </script>
-    <!-- Logout/login Popup -->
-     <script>
-        function logoutMessage() {
-            alert("You have been successfully logged out!");
-        }
-     </script>
-    <script>
-        function loginMessage() {
-            alert("You have been successfully logged in!");
-        }
-     </script>
 </head>
 <body>
-    <!-- logout message -->
-    <?php if (isset($_GET['logout']) && $_GET['logout'] == 'success'): ?>
-        <script>
-            logoutMessage();
-        </script>
-    <?php endif; ?>
-
-    <!-- login message -->
-     <?php if (isset($_GET['login']) && $_GET['login'] == 'success'): ?>
-        <script>
-            loginMessage();
-        </script>
-    <?php endif; ?>
-
     <!-- Nav Bar -->
     <?php include 'includes/nav.php' ?>
     <?php include 'includes/side_nav.php' ?>
 
     <main>
-        <header id="home">
-            <h1>
-                Aldeas Inteligentes IU <br>
-                <span>
-                    The Connection and Future of Smart Villages
-                </span>
-            </h1>
-            <a class="button_home" href="project.php">Learn More About Aldeas Inteligentes IU</a>
-        </header>
+        <div class="header">
+            <div>
+                <h1>
+                    Aldeas Connect, <br>
+                    The Connection and Future of Smart Villages <br>
+                    <a class="button_home" href="project.php">Learn More</a>
+                </h1>
+            </div>
+            <img src="img/home.jpeg" alt="home">
+        </div>
         <div class="intro">
+            <img class='intro_img' src="img/laptops.jpeg" alt="utlizing_wifi">
             <p>
                 Aldeas Inteligentes is a transformative initiative by the Mexican Federal Government aimed at providing digital access to rural and isolated communities across Mexico. 
-                By connecting 83 communities with wireless internet, offering STEM training, and supporting community development projects, Aldeas Inteligentes is enhancing education, commerce, health, and overall welfare.
+                By connecting 83 communities with wireless internet, offering STEM training, and supporting community development projects, Aldeas Inteligentes is enhancing education, commerce, health, and overall welfare in these communitites.
                 Our information system will change how rural communities track progress, showcase their achievements, and connect with supporters.
-                From improving education and healthcare to boosting local commerce, we're creating a platform that helps amplify the voices and aspirations of Mexico's underrated regions.
+                From improving education and healthcare to boosting local commerce, we're creating a platform that helps amplify the voices and aspirations of Mexico's underrated regions. <br>
+                <a class="button" href="investor.php">View Projects</a>
             </p>
         </div>
 
@@ -143,6 +125,7 @@ $villages = [
                 <h3>83 Communtities with Smart Village Resources</h3>
                 <p>Explore the many communities benefiting from Smart Village inititaves.<br></p>
                 <p class="italic">Click on a map marker to learn more</p>
+                <a class="button" href="communitites.php">See Communities</a>
             </div>
             <div id="map"></div>
      </div>
@@ -192,30 +175,30 @@ $villages = [
                     }
                 ?>
             </div>
-            <a class="button" href="investor.php">See More</a>
-            <a class="button" href="investor.php">Donate</a>
+            <a class="button" href="gallery.php">See Project Gallery</a>
+            <a class="button" href="investor.php">See All Projects</a>
         </div>
         <!-- Messenger Tool -->
          <?php if (isset($_SESSION['user_id'])): ?>
-            <div id="chat-button" onclick="toggleChatbox()">Messenger ^</div>
+            <div id="chat-button" onclick="toggleChatbox()"><img src="img/messenger.png" alt="messages"></div></div>
             <div class="chat-popup" style="display:none">
                 <button class="close_button" type="button" onclick="closeChatbox()">X</button>
-                <button class="new_message" onclick="showMessageForm()">New Message</button>
                 
                 <div id="messages-container">
+                    <button class="new_message" onclick="showMessageForm()">New Message</button>
                     <h3>Messages</h3>
                     <?php
                     // Fetch the messages sent to the current user
                     $user_id = $_SESSION['user_id'];
                     $query = "
-                        SELECT messages.message, messages.sent_at, users.fname, users.lname, messages.sender_id
+                        SELECT messages.message, messages.sent_at, users.fname, users.lname, messages.sender_id, messages.recipient_id
                         FROM messages
                         JOIN users ON users.user_id = messages.sender_id
-                        WHERE messages.recipient_id = ? 
+                        WHERE (messages.sender_id = ? OR messages.recipient_id = ?) 
                         ORDER BY messages.sent_at DESC
-                    ";
+                        ";
                     if ($stmt = $conn->prepare($query)) {
-                        $stmt->bind_param('i', $user_id);
+                        $stmt->bind_param('ii', $user_id, $user_id);
                         $stmt->execute();
                         $result = $stmt->get_result();
 
@@ -225,7 +208,7 @@ $villages = [
                                 $message = htmlspecialchars($row['message']);
                                 $sent_at = $row['sent_at'];
                                 echo "<div class='message-box'>";
-                                echo "<strong>" . $sender_name . "</strong>: " . $message . "<br>";
+                                echo "<strong>" . $sender_name . "</strong><br> " . $message . "<br>";
                                 echo "<small>" . $sent_at . "</small>";
                                 echo "</div>";
                             }
@@ -237,11 +220,12 @@ $villages = [
                 </div>
 
 
-                <form id="message_form" style="display:none;">
+                <form id="message_form">
+                    <button class="show_messages" onclick="showMessages()">Go Back</button>
                     <h3>Send a Message</h3>
                     <label for="recipient_id">Select Recipient:</label>
                     <select id="recipient_id" name="recipient_id" required>
-                        <option value="">Users</option>
+                        <option value="">Select</option>
                         <?php
                         $query = "SELECT user_id, fname, lname, user_role FROM users WHERE user_id != ?";
                         if ($stmt = $conn->prepare($query)) {
@@ -274,10 +258,19 @@ $villages = [
                 document.getElementById('message_form').style.display = 'block';
             }
 
+            function showMessages() {
+                document.getElementById('messages-container').style.display = 'block';
+                document.getElementById('message_form').style.display = 'none';
+            }
+
             function closeChatbox() {
                 document.querySelector('.chat-popup').style.display = 'none';
             }
         </script>
+        <div class="translate-container">
+            <div id="google_translate_element" class="translate-box"></div>
+            <img src="img/translate_icon.png" alt="Translate" class="translate-icon">
+        </div>
     </main>
     <?php include 'includes/footer.php'; ?>
 </body>

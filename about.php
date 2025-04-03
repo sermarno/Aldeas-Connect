@@ -10,6 +10,10 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
+    <!-- GOOGLE FONTS: Typeface -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap" rel="stylesheet">
 </head>
 <body>
         
@@ -86,17 +90,6 @@
         <h2>Our Mission</h2>
         <p>Content not available.</p>
     <?php endif; ?>
-        <!-- Display content -->
-        <?php if (isset($content['Our Mission'])): ?>
-            <div>
-                <h2>Our Mission</h2>
-                <p><?php echo $content['Our Mission']['content']; ?></p>
-                <img src="<?php echo $content['Our Mission']['image_path']; ?>" alt="Our Mission Image">
-            </div>
-        <?php else: ?>
-            <h2>Our Mission</h2>
-            <p>Content not available.</p>
-        <?php endif; ?>
 
     <?php if (isset($content['Why?'])): ?>
         <h2>Why?</h2>
