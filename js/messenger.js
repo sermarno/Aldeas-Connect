@@ -26,8 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function loadMessages() {
+    let recipient_id = document.getElementById("recipient_id").value;
     // This function now fetches messages for the current logged-in user
-    fetch("fetch_messages.php") // Assuming the server-side fetch function can return all messages for the current user
+    fetch("fetch_messages.php?recipient_id=" + recipient_id) // Assuming the server-side fetch function can return all messages for the current user
       .then((response) => response.text())
       .then((data) => {
         messagesContainer.innerHTML = data || "<p>No messages yet.</p>";
