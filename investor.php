@@ -97,12 +97,12 @@
                     <th scope="col">Required Resources</th>
                     </tr>";
                 echo "</thead>";
-
+                echo "<tbody>";
                 while ($row = mysqli_fetch_assoc($result_set)) {
                     echo "<tr>";
-                    echo "<tbody>";
                     echo "<td>" . htmlspecialchars($row['community']) . "</td>";
-                    echo "<td>" . htmlspecialchars($row['req_resources']) . "</td>";
+                    echo "<td>" . htmlspecialchars($row['req_resources']) . 
+                    " <a href='corporate_support.php?community=" . urlencode($row['community']) . "' class='btn btn-sm btn-outline-primary ml-3'>Offer Help</a></td>";
                     echo "</tr>";
                 }
                 echo "</tbody></table></div>";
