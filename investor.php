@@ -24,6 +24,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     /> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
@@ -85,21 +86,28 @@
     <!-- Requred Help Section -->
     <div class="projects-container">
         <?php
-            // Database Querygit 
+            // Database Querygit
             $query = "SELECT * FROM required_help";
             $result_set = mysqli_query($conn, $query);
             if ($result_set) {
                 echo "<h3>Communities That Need Support</h3>";
-                echo "<table>";
-                echo "<tr><th>Community</th><th>Required Resources</th></tr>";
+                echo "<div class='table-responsive'>";
+                echo "<table class='table table-hover'>";
+                echo "<thead>";
+                echo "<tr>
+                    <th scope="col">Community</th>
+                    <th scope="col">Required Resources</th>
+                    </tr>";
+                echo "</thead>";
 
                 while ($row = mysqli_fetch_assoc($result_set)) {
                     echo "<tr>";
+                    echo "<tbody>";
                     echo "<td>" . htmlspecialchars($row['community']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['req_resources']) . "</td>";
                     echo "</tr>";
                 }
-                echo "</table>";
+                echo "</tbody></table></div>";
             } else {
                 echo "No records found.<br>";
             }
