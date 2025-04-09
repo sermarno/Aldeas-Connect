@@ -10,7 +10,7 @@
         }
     }
 
-    $testimonial_sql = "SELECT * FROM testimonials WHERE status = 'pending'";
+    $testimonial_sql = "SELECT * FROM testimonials";
     $testimonial_result = $conn->query($testimonial_sql);
     $testimonials = [];
     if ($testimonial_result->num_rows > 0) {

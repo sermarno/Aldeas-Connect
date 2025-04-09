@@ -24,7 +24,14 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
+<<<<<<< HEAD
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+=======
+    <!-- GOOGLE FONTS: Typeface -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap" rel="stylesheet">
+>>>>>>> origin
 </head>
 <body>
     <!-- Nav Bar -->
@@ -36,20 +43,20 @@
         <p>Join us in making a difference. Fill out the form below and we'll connect with you.</p>
     </header>
     <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $company_name = ($conn, $_POST['company_name']);
-        $contact_person = ($conn, $_POST['contact_person']);
-        $email = ($conn, $_POST['email']);
-        $phone = ($conn, $_POST['phone']);
-        $support_type = ($conn, $_POST['support_type']);
-        $message = ($conn, $_POST['message']);
+    // if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // $company_name = ($conn, $_POST['company_name']);
+        // $contact_person = ($conn, $_POST['contact_person']);
+        // $email = ($conn, $_POST['email']);
+        // $phone = ($conn, $_POST['phone']);
+        // $support_type = ($conn, $_POST['support_type']);
+        // $message = ($conn, $_POST['message']);
 
-        if (mysqli_query($conn, $sql)) {
-            $successMessage = "Thank you for your support! We will reach out to you soon.";
-        } else {
-            $successMessage = "Error: " . mysqli_error($conn);
-        }
-    }
+        // if (mysqli_query($conn, $sql)) {
+        //     $successMessage = "Thank you for your support! We will reach out to you soon.";
+        // } else {
+        //     $successMessage = "Error: " . mysqli_error($conn);
+        // }
+    // }
     
     mysqli_close($conn);
     ?>

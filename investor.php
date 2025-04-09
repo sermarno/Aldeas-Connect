@@ -24,7 +24,14 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     /> 
+<<<<<<< HEAD
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+=======
+    <!-- GOOGLE FONTS: Typeface -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap" rel="stylesheet">
+>>>>>>> origin
 </head>
 
 <body>
@@ -33,8 +40,8 @@
         include 'includes/side_nav.php';?>
     <!-- Header -->
     <header>
-        <h1>See How You Can Help</h1>
-        <p>Support projects that create lasting impact in local communities.</p>
+        <h1>Community Projects</h1>
+        <p>See How You Can Help: Support projects that create lasting impact in local communities.</p>
     </header>
 
     <!-- Community Projects Section -->
@@ -45,35 +52,33 @@
                 if (count($projects) > 0) {
                     foreach ($projects as $project) {
                         // Project Card
-                        echo "<div class='proj-card'>";
-                        echo "<div class='card-body'>"; // Adding card body
-                        echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
-                        echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
-                        echo "</div>";
-                        echo "</div>";
-
                         // Ensure these variables exist before use
                         $raised = $project['raised_amount'] ?? 0;
                         $goal = $project['goal_amount'] ?? 1; // Avoid division by zero
                         $progress = ($goal > 0) ? round(($raised / $goal) * 100) : 0;
-
+                        echo "<div class='proj-card'>";
+                        echo "<div class='card-body'>"; // Adding card body
+                        echo "<img src='" . htmlspecialchars($project['proj_image'], ENT_QUOTES, 'UTF-8') . "' />";
+                        echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
+                        echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
                         // Progress Bar
                         echo "<div class='progress-container'>";
                         echo "<div class='progress-bar' style='width: {$progress}%;'></div>";
                         echo "<p class='progress-text'>Raised: \${$raised} / Goal: \${$goal} ({$progress}%)</p>";
-                        echo "<a href='investor.php?project_id=" . $project['id'] . "' class='donate-btn'>Donate</a>";
+                        echo "<a href='investor.php?project_id=" . $project['project_id'] . "' class='donate-btn'>Donate</a>";
+                        echo "</div>";
+                        echo "</div>";
                         echo "</div>";
                     }
                 }
             ?> 
-            <p class='italic'>Want to see your community's projects here?</p>
-            <a class='button' href='request.php'>Submit a Request</a>      
+            <a class='button' href='new_proj.php'><img src="img/plus.png"></a>      
         </div>
     </div>
 
 
     <div class="collaboration">
-        <h3>How Companies Can Help</h3>
+        <h3>How You Can Help</h3>
         <p>Businesses can support these projects in various ways:</p>
         <ul>
             <li><strong>Financial Contributions:</strong> Donate directly to community projects.</li>
