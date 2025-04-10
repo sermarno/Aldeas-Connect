@@ -186,21 +186,33 @@ $villages = [
             <h3>Community Project Highlights</h3>
             <div class="proj-grid">
                 <?php
-                    if (count($projects) > 0 ) {
-                        foreach ($projects as $project) {
-                            echo "<div class='proj-card'>";
-                            if (!empty($project['proj_image'])) {
-                                echo "<img src='" . htmlspecialchars($project['proj_image']) . "' alt='project image' class='proj-image'><br>";
-                            }
-                            echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
-                            echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
-                            echo "</div>";
+                if (count($projects) > 0 ) {
+                    foreach ($projects as $project) {
+                        echo "<div class='proj-card' data-project-id='" . $project['project_id'] . "' data-community-id='" . $project['community_id'] . "'>";
+                        if (!empty($project['proj_image'])) {
+                            echo "<img src='" . htmlspecialchars($project['proj_image']) . "' alt='project image' class='proj-image'><br>";
                         }
+                        echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
+                        echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
+                        echo "</div>";
                     }
+                }
                 ?>
             </div>
             <a class="button" href="gallery.php">See Project Gallery</a>
             <a class="button" href="investor.php">See All Projects</a>
+        </div>
+        <!-- Project Card Popups -->
+        <div id="projectModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <img id="modalImage" src="" alt="Project Image">
+                <h3 id="modalTitle"></h3>
+                <p id="modalDescription"></p>
+                <p id="modalCommunity"></p>
+                <p id="modalStartDate"></p>
+                <a id="communityDetailsLink" class="button" href="communitites.php">See Communities</a>
+            </div>
         </div>
         <!-- Messenger Tool -->
          <?php if (isset($_SESSION['user_id'])): ?>
@@ -296,6 +308,7 @@ $villages = [
             <img src="img/translate_icon.png" alt="Translate" class="translate-icon">
         </div>
     </main>
+    <script src="js/card-modal.js"></script>
     <?php include 'includes/footer.php'; ?>
 </body>
 </html>
