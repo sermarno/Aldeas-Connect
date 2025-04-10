@@ -107,6 +107,18 @@ CREATE TABLE partners (
     message TEXT
 )ENGINE=INNODB;
 
+--submission table
+CREATE TABLE support_offers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    community VARCHAR(255),
+    requested_resources TEXT,
+    company_name VARCHAR(255),
+    contact_email VARCHAR(255),
+    support_type VARCHAR(100),
+    message TEXT,
+    submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)ENGINE=INNODB;
+
 -- insert statements with test data
 INSERT INTO users (fname, lname, username, email, user_role) VALUES
 ('Serra', 'Arnold', 'sermarno', 'sermarno@iu.edu', 'admin'),

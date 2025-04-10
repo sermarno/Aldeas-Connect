@@ -24,10 +24,6 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     /> 
-    <!-- GOOGLE FONTS: Typeface -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -87,21 +83,28 @@
     <!-- Requred Help Section -->
     <div class="projects-container">
         <?php
-            // Database Querygit 
+            // Database Querygit
             $query = "SELECT * FROM required_help";
             $result_set = mysqli_query($conn, $query);
             if ($result_set) {
                 echo "<h3>Communities That Need Support</h3>";
-                echo "<table>";
-                echo "<tr><th>Community</th><th>Required Resources</th></tr>";
-
+                echo "<div class='table-responsive'>";
+                echo "<table class='table table-hover'>";
+                echo "<thead>";
+                echo "<tr>
+                    <th scope='col'>Community</th>
+                    <th scope='col'>Required Resources</th>
+                    </tr>";
+                echo "</thead>";
+                echo "<tbody>";
                 while ($row = mysqli_fetch_assoc($result_set)) {
                     echo "<tr>";
                     echo "<td>" . htmlspecialchars($row['community']) . "</td>";
-                    echo "<td>" . htmlspecialchars($row['req_resources']) . "</td>";
+                    echo "<td>" . htmlspecialchars($row['req_resources']) . 
+                    " <a href='corporate_support.php?community=" . urlencode($row['community']) . "' class='btn btn-sm btn-outline-primary ml-3'>Offer Help</a></td>";
                     echo "</tr>";
                 }
-                echo "</table>";
+                echo "</tbody></table></div>";
             } else {
                 echo "No records found.<br>";
             }
