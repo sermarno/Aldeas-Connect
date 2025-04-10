@@ -74,6 +74,8 @@ header {
 
 .intro_content {
   display: flex;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .intro_header {
@@ -81,10 +83,16 @@ header {
   flex-direction: column;
 }
 
+.intro_header h2 span {
+  color: grey;
+  font-size: 18px;
+  padding-top: 10px;
+}
+
 .intro_header .button {
   width: 100px;
   margin-left: 40px;
-  margin-top: -30px;
+  margin-top: -50px;
 }
 
 .intro h2 {
@@ -93,7 +101,7 @@ header {
 }
 
 .intro_img {
-  max-width: 1050px;
+  max-width: 1100px;
   margin: 9em auto 0;
 }
 
@@ -470,9 +478,9 @@ p.underline {
 }
 
 .proj-grid {
-  display: flex;
-  flex-direction: column;
-  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
 }
 
 .proj-grid2 {
@@ -485,16 +493,21 @@ p.underline {
 }
 
 .proj-card {
-  background-color: rgba(128, 128, 128, 0.233);
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 5px;
-  width: 90%;
-  margin: 1em auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px grey;
+  background-color: rgba(176, 176, 176, 0.373);
 }
 
 .proj-image {
-  margin: 1em auto;
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  margin-bottom: 15px;
 }
 
 .modal {

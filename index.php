@@ -114,7 +114,7 @@ $villages = [
             <img class='intro_img' src="img/laptops.jpeg" alt="utlizing_wifi">
             <div class="intro_content">
                 <div class="intro_header">
-                    <h2>Aldeas <br> Inteligentes</h2>
+                    <h2>Aldeas <br> Inteligentes <br> <span>Community Development Projects</span></h2>
                     <a class="button" href="investor.php">View Projects</a>
                 </div>
                 <p>
@@ -183,7 +183,7 @@ $villages = [
             </div>
         </div>
         <div class="projects-container">
-            <h3>Project Highlights</h3>
+            <h3>Community Project Highlights</h3>
             <div class="proj-grid">
                 <?php
                     if (count($projects) > 0 ) {
