@@ -93,8 +93,8 @@
                 echo "<table class='table table-hover'>";
                 echo "<thead>";
                 echo "<tr>
-                    <th scope="col">Community</th>
-                    <th scope="col">Required Resources</th>
+                    <th scope='col'>Community</th>
+                    <th scope='col'>Required Resources</th>
                     </tr>";
                 echo "</thead>";
                 echo "<tbody>";
