@@ -73,6 +73,7 @@ $villages = [
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <!-- Map API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDf99Nyj4amTBbILPYjYt0S01h-kuSWqo"></script> 
     <!-- Translate API -->
@@ -100,9 +101,9 @@ $villages = [
 
     <main>
         <div class="header">
-            <div>
+            <div class="header_text">
                 <h1>
-                    Aldeas Connect, <br>
+                    <span>Aldeas Connect</span> <br>
                     The Connection and Future of Smart Villages <br>
                     <a class="button_home" href="project.php">Learn More</a>
                 </h1>
@@ -111,13 +112,18 @@ $villages = [
         </div>
         <div class="intro">
             <img class='intro_img' src="img/laptops.jpeg" alt="utlizing_wifi">
-            <p>
+            <div class="intro_content">
+                <div class="intro_header">
+                    <h2>Aldeas <br> Inteligentes</h2>
+                    <a class="button" href="investor.php">View Projects</a>
+                </div>
+                <p>
                 Aldeas Inteligentes is a transformative initiative by the Mexican Federal Government aimed at providing digital access to rural and isolated communities across Mexico. 
                 By connecting 83 communities with wireless internet, offering STEM training, and supporting community development projects, Aldeas Inteligentes is enhancing education, commerce, health, and overall welfare in these communitites.
                 Our information system will change how rural communities track progress, showcase their achievements, and connect with supporters.
                 From improving education and healthcare to boosting local commerce, we're creating a platform that helps amplify the voices and aspirations of Mexico's underrated regions. <br>
-                <a class="button" href="investor.php">View Projects</a>
-            </p>
+                </p>
+            </div>
         </div>
 
         <div class="map-container">
