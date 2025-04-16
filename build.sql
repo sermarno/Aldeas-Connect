@@ -8,6 +8,7 @@ DROP TABLE IF EXISTS messages CASCADE;
 DROP TABLE IF EXISTS projects CASCADE;
 DROP TABLE IF EXISTS communities CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS support_offers CASCADE;
 
 -- user
 CREATE TABLE users (
@@ -24,7 +25,8 @@ CREATE TABLE communities (
     community_id INT PRIMARY KEY AUTO_INCREMENT,
     comm_name VARCHAR(255),
     comm_description TEXT,
-    comm_location TEXT
+    comm_location TEXT,
+    comm_connection_date TEXT
 ) ENGINE=INNODB;
 
 -- project
@@ -131,10 +133,10 @@ INSERT INTO messages (sender_id, recipient_id, message, sent_at) VALUES
 (2, 1, "We have a question about the Community Center.", '2025-03-31 17:52:18'),
 (4, 1, "Did we get any donations for our project?", '2025-03-31 14:52:18');
 
-INSERT INTO communities (comm_name, comm_description, comm_location) VALUES
-('Community 1', 'Community 1 description', 'Community 1 location'), 
-('Community 2', 'Community 2 description', 'Community 2 location'),
-('Community 3', 'Community 3 description', 'Community 3 location');
+INSERT INTO communities (comm_name, comm_description, comm_location, comm_connection_date) VALUES
+('Telebachillerato Agua Azul', 'Educational center supporting online learning in Quintana Roo.', 'Leona Vicario, Yucatan', '2022-09-07'), 
+('Secundaria Comunitaria Niños Héroes', 'School offering remote education access.', 'Slferino, Yucatan', '2019-03-02'),
+('Comisaría Municipal Yokdzonot Hu', 'Economic and social support for Maya women in agriculture.', 'Yokdzonot-Hú', '2022-07-13');
 
 INSERT INTO projects (title, proj_description, proj_image, proj_start, proj_end, user_id, community_id) VALUES
 ('Health Center', 'Supporting the processing and sharing of information reports with jurisdictions, hospitals, and the central health sector office.', 'uploads/health_center.jpeg', '2020-04-23', '2025-01-11', 1, 3),

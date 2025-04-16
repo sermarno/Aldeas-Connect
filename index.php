@@ -73,6 +73,7 @@ $villages = [
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <!-- Map API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDf99Nyj4amTBbILPYjYt0S01h-kuSWqo"></script> 
     <!-- Translate API -->
@@ -100,9 +101,9 @@ $villages = [
 
     <main>
         <div class="header">
-            <div>
+            <div class="header_text">
                 <h1>
-                    Aldeas Connect, <br>
+                    <span>Aldeas Connect</span> <br>
                     The Connection and Future of Smart Villages <br>
                     <a class="button_home" href="project.php">Learn More</a>
                 </h1>
@@ -111,13 +112,18 @@ $villages = [
         </div>
         <div class="intro">
             <img class='intro_img' src="img/laptops.jpeg" alt="utlizing_wifi">
-            <p>
+            <div class="intro_content">
+                <div class="intro_header">
+                    <h2>Aldeas <br> Inteligentes <br> <span>Community Development Projects</span></h2>
+                    <a class="button" href="investor.php">View Projects</a>
+                </div>
+                <p>
                 Aldeas Inteligentes is a transformative initiative by the Mexican Federal Government aimed at providing digital access to rural and isolated communities across Mexico. 
                 By connecting 83 communities with wireless internet, offering STEM training, and supporting community development projects, Aldeas Inteligentes is enhancing education, commerce, health, and overall welfare in these communitites.
                 Our information system will change how rural communities track progress, showcase their achievements, and connect with supporters.
                 From improving education and healthcare to boosting local commerce, we're creating a platform that helps amplify the voices and aspirations of Mexico's underrated regions. <br>
-                <a class="button" href="investor.php">View Projects</a>
-            </p>
+                </p>
+            </div>
         </div>
 
         <div class="map-container">
@@ -177,24 +183,36 @@ $villages = [
             </div>
         </div>
         <div class="projects-container">
-            <h3>Project Highlights</h3>
+            <h3>Community Project Highlights</h3>
             <div class="proj-grid">
                 <?php
-                    if (count($projects) > 0 ) {
-                        foreach ($projects as $project) {
-                            echo "<div class='proj-card'>";
-                            if (!empty($project['proj_image'])) {
-                                echo "<img src='" . htmlspecialchars($project['proj_image']) . "' alt='project image' class='proj-image'><br>";
-                            }
-                            echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
-                            echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
-                            echo "</div>";
+                if (count($projects) > 0 ) {
+                    foreach ($projects as $project) {
+                        echo "<div class='proj-card' data-project-id='" . $project['project_id'] . "' data-community-id='" . $project['community_id'] . "'>";
+                        if (!empty($project['proj_image'])) {
+                            echo "<img src='" . htmlspecialchars($project['proj_image']) . "' alt='project image' class='proj-image'><br>";
                         }
+                        echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
+                        echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
+                        echo "</div>";
                     }
+                }
                 ?>
             </div>
             <a class="button" href="gallery.php">See Project Gallery</a>
             <a class="button" href="investor.php">See All Projects</a>
+        </div>
+        <!-- Project Card Popups -->
+        <div id="projectModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <img id="modalImage" src="" alt="Project Image">
+                <h3 id="modalTitle"></h3>
+                <p id="modalDescription"></p>
+                <p id="modalCommunity"></p>
+                <p id="modalStartDate"></p>
+                <a id="communityDetailsLink" class="button" href="communitites.php">See Communities</a>
+            </div>
         </div>
         <!-- Messenger Tool -->
          <?php if (isset($_SESSION['user_id'])): ?>
@@ -290,6 +308,7 @@ $villages = [
             <img src="img/translate_icon.png" alt="Translate" class="translate-icon">
         </div>
     </main>
+    <script src="js/card-modal.js"></script>
     <?php include 'includes/footer.php'; ?>
 </body>
 </html>
