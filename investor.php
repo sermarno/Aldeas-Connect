@@ -32,7 +32,8 @@
         include 'includes/side_nav.php';?>
     <!-- Header -->
     <header>
-        <h1>See How You Can Help</h1>
+        <h1>Community Projects</h1>
+        <p>See How You Can Help: Support projects that create lasting impact in local communities.</p>
     </header>
 
     <!-- Community Projects Section -->
@@ -42,38 +43,68 @@
             <?php
                 if (count($projects) > 0) {
                     foreach ($projects as $project) {
+                        // Project Card
+                        // Ensure these variables exist before use
+                        $raised = $project['raised_amount'] ?? 0;
+                        $goal = $project['goal_amount'] ?? 1; // Avoid division by zero
+                        $progress = ($goal > 0) ? round(($raised / $goal) * 100) : 0;
                         echo "<div class='proj-card'>";
                         echo "<div class='card-body'>"; // Adding card body
+                        echo "<img src='" . htmlspecialchars($project['proj_image'], ENT_QUOTES, 'UTF-8') . "' />";
                         echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
                         echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
+                        // Progress Bar
+                        echo "<div class='progress-container'>";
+                        echo "<div class='progress-bar' style='width: {$progress}%;'></div>";
+                        echo "<p class='progress-text'>Raised: \${$raised} / Goal: \${$goal} ({$progress}%)</p>";
+                        echo "<a href='investor.php?project_id=" . $project['project_id'] . "' class='donate-btn'>Donate</a>";
+                        echo "</div>";
                         echo "</div>";
                         echo "</div>";
                     }
                 }
-            ?>
+            ?> 
+            <a class='button' href='new_proj.php'><img src="img/plus.png"></a>      
         </div>
-        <p class="italic">Want to see your community's projects here?</p>
-        <a class="button" href="request.php">Submit a Request</a>
+    </div>
+
+
+    <div class="collaboration">
+        <h3>How You Can Help</h3>
+        <p>Businesses can support these projects in various ways:</p>
+        <ul>
+            <li><strong>Financial Contributions:</strong> Donate directly to community projects.</li>
+            <li><strong>Resources & Expertise:</strong> Provide materials, mentorship, or technical support.</li>
+            <li><strong>Partnerships:</strong> Build long-term collaborations for sustainable impact.</li>
+        </ul>
+        <a class="button" href="partner.php">Partner with Us</a>
     </div>
 
     <!-- Requred Help Section -->
     <div class="projects-container">
         <?php
-            // Database Query
+            // Database Querygit
             $query = "SELECT * FROM required_help";
             $result_set = mysqli_query($conn, $query);
             if ($result_set) {
-                echo "<h3>Required Help</h3>";
-                echo "<table>";
-                echo "<tr><th>Community</th><th>Required Resources</th></tr>";
-
+                echo "<h3>Communities That Need Support</h3>";
+                echo "<div class='table-responsive'>";
+                echo "<table class='table table-hover'>";
+                echo "<thead>";
+                echo "<tr>
+                    <th scope='col'>Community</th>
+                    <th scope='col'>Required Resources</th>
+                    </tr>";
+                echo "</thead>";
+                echo "<tbody>";
                 while ($row = mysqli_fetch_assoc($result_set)) {
                     echo "<tr>";
                     echo "<td>" . htmlspecialchars($row['community']) . "</td>";
-                    echo "<td>" . htmlspecialchars($row['req_resources']) . "</td>";
+                    echo "<td>" . htmlspecialchars($row['req_resources']) . 
+                    " <a href='corporate_support.php?community=" . urlencode($row['community']) . "' class='btn btn-sm btn-outline-primary ml-3'>Offer Help</a></td>";
                     echo "</tr>";
                 }
-                echo "</table>";
+                echo "</tbody></table></div>";
             } else {
                 echo "No records found.<br>";
             }

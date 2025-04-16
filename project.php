@@ -12,6 +12,10 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
+    <!-- GOOGLE FONTS: Typeface -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Nav Bar -->
@@ -19,17 +23,8 @@
     <?php include 'includes/side_nav.php' ?>
 
     <header>
-        <h1></h1>
+        <h1>The Problem & Our Purpose</h1>
     </header>
-        <div class="scroll">
-            <h3>Project Overview:</h3>
-            <ul> 
-                <li><a href="#problem">The Problem ↓</a></li>
-                <li><a href="#goal">Our Goal ↓</a></li>
-                <li><a href="#stakeholders">Stakeholders ↓</a></li>
-                <li><a href="#features">Features & Benefits ↓</a></li>
-            </ul>
-        </div>
 
         <article id="problem">
             <h3>The Problem</h3>
