@@ -328,6 +328,41 @@ input[type="date"] {
   margin-right: 6px;
 }
 
+.map-heading-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  max-width: 1000px;
+  margin: 1rem auto;
+  padding: 0 1rem;
+}
+
+.map-title {
+  font-size: 1.8rem;
+  margin: 0;
+  color: #333;
+}
+
+.legend-inline {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 14px;
+}
+
+.legend-inline p {
+  margin: 2px 0;
+  display: flex;
+  align-items: center;
+}
+
+.legend-inline img {
+  margin-right: 6px;
+}
+
 .project_details {
   border: 2px solid grey;
   border-radius: 3px;
