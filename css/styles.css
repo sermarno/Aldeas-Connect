@@ -932,3 +932,34 @@ table tr:nth-child(even) {
   height: 10px;
   background: #28a745;
 }
+
+.message-box {
+  border-top: 1px solid grey;
+  padding: 10px;
+  margin: 5px;
+}
+
+#message_form {
+  display: none;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.sent-message {
+  text-align: right;
+  background-color: #d1e7dd;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 5px 0;
+}
+
+.received-message {
+  text-align: left;
+  background-color: #f8d7da;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 5px 0;
+}

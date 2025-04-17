@@ -201,25 +201,25 @@ $villages = [
         </div>
         <!-- Messenger Tool -->
          <?php if (isset($_SESSION['user_id'])): ?>
-            <div id="chat-button" onclick="toggleChatbox()">Messenger ^</div>
+            <div id="chat-button" onclick="toggleChatbox()"><img src="img/messenger.png" alt="messages"></div></div>
             <div class="chat-popup" style="display:none">
                 <button class="close_button" type="button" onclick="closeChatbox()">X</button>
-                <button class="new_message" onclick="showMessageForm()">New Message</button>
                 
                 <div id="messages-container">
+                    <button class="new_message" onclick="showMessageForm()">New Message</button>
                     <h3>Messages</h3>
                     <?php
                     // Fetch the messages sent to the current user
                     $user_id = $_SESSION['user_id'];
                     $query = "
-                        SELECT messages.message, messages.sent_at, users.fname, users.lname, messages.sender_id
+                        SELECT messages.message, messages.sent_at, users.fname, users.lname, messages.sender_id, messages.recipient_id
                         FROM messages
                         JOIN users ON users.user_id = messages.sender_id
-                        WHERE messages.recipient_id = ? 
+                        WHERE (messages.sender_id = ? OR messages.recipient_id = ?) 
                         ORDER BY messages.sent_at DESC
-                    ";
+                        ";
                     if ($stmt = $conn->prepare($query)) {
-                        $stmt->bind_param('i', $user_id);
+                        $stmt->bind_param('ii', $user_id, $user_id);
                         $stmt->execute();
                         $result = $stmt->get_result();
 
@@ -229,7 +229,7 @@ $villages = [
                                 $message = htmlspecialchars($row['message']);
                                 $sent_at = $row['sent_at'];
                                 echo "<div class='message-box'>";
-                                echo "<strong>" . $sender_name . "</strong>: " . $message . "<br>";
+                                echo "<strong>" . $sender_name . "</strong><br> " . $message . "<br>";
                                 echo "<small>" . $sent_at . "</small>";
                                 echo "</div>";
                             }
@@ -241,11 +241,12 @@ $villages = [
                 </div>
 
 
-                <form id="message_form" style="display:none;">
+                <form id="message_form">
+                    <button class="show_messages" onclick="showMessages()">Go Back</button>
                     <h3>Send a Message</h3>
                     <label for="recipient_id">Select Recipient:</label>
                     <select id="recipient_id" name="recipient_id" required>
-                        <option value="">Users</option>
+                        <option value="">Select</option>
                         <?php
                         $query = "SELECT user_id, fname, lname, user_role FROM users WHERE user_id != ?";
                         if ($stmt = $conn->prepare($query)) {
@@ -276,6 +277,11 @@ $villages = [
             function showMessageForm() {
                 document.getElementById('messages-container').style.display = 'none';
                 document.getElementById('message_form').style.display = 'block';
+            }
+
+            function showMessages() {
+                document.getElementById('messages-container').style.display = 'block';
+                document.getElementById('message_form').style.display = 'none';
             }
 
             function closeChatbox() {

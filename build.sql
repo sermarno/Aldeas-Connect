@@ -109,9 +109,15 @@ CREATE TABLE partners (
 
 -- insert statements with test data
 INSERT INTO users (fname, lname, username, email, user_role) VALUES
-('fname', 'lname', 'user1', 'user1@example.com', 'resident'),
-('fname2', 'lname2', 'user2', 'user2@example.com', 'resident'),
-('fname3', 'lname3', 'user3', 'user3@example.com', 'visitor');
+('Serra', 'Arnold', 'sermarno', 'sermarno@iu.edu', 'admin'),
+('Miranda', 'Hanes', 'mhanes', 'mhanes1@example.com', 'resident'),
+('Joany', 'King', 'jking2', 'jking2@example.com', 'resident'),
+('Jeremy', 'Adkins', 'jadkins3', 'jadkins3@example.com', 'visitor');
+
+INSERT INTO messages (sender_id, recipient_id, message, sent_at) VALUES 
+(3, 1, "Everything is going great so far!", '2025-01-12 17:52:18'),
+(2, 1, "We have a question about the Community Center.", '2025-03-31 17:52:18'),
+(4, 1, "Did we get any donations for our project?", '2025-03-31 14:52:18');
 
 INSERT INTO communities (comm_name, comm_description, comm_location) VALUES
 ('Community 1', 'Community 1 description', 'Community 1 location'), 

@@ -3,9 +3,6 @@
     $comm_sql = "SELECT * FROM communities";
     $comm_result = $conn->query($comm_sql);
 
-    ini_set('display_errors', 1);
-    error_reporting(E_ALL);
-
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $title = $conn->real_escape_string($_POST['title']);
