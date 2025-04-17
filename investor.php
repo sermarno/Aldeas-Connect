@@ -64,20 +64,26 @@
                         echo "<div class='proj-card'>";
                         echo "<div class='card-body'>"; // Adding card body
                         echo "<img src='" . htmlspecialchars($project['proj_image'], ENT_QUOTES, 'UTF-8') . "' />";
+                        echo "<button class='edit-btn' 
+                        data-id='" . $project['project_id'] . "'
+                        data-title='" . htmlspecialchars($project['title'], ENT_QUOTES) . "'
+                        data-description='" . htmlspecialchars($project['proj_description'], ENT_QUOTES) . "'
+                        data-image='" . htmlspecialchars($project['proj_image'], ENT_QUOTES) . "'
+                        ><img src='img/edit.png' alt='edit'></button>";
                         echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
                         echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
                         // Progress Bar
                         echo "<div class='progress-container'>";
                         echo "<div class='progress-bar' style='width: {$progress}%;'></div>";
                         echo "<p class='progress-text'>Raised: \${$raised} / Goal: \${$goal} ({$progress}%)</p>";
-                        echo "<a href='investor.php?project_id=" . $project['project_id'] . "' class='donate-btn'>Donate</a>";
                         echo "</div>";
                         echo "</div>";
                         echo "</div>";
                     }
                 }
             ?> 
-            <a class='button' href='new_proj.php'><img src="img/plus.png"></a>      
+            <a class='button' href='new_proj.php'><img src="img/plus.png"></a>   
+
         </div>
     </div>
 
@@ -114,7 +120,8 @@
                     echo "<tr>";
                     echo "<td>" . htmlspecialchars($row['community']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['req_resources']) . 
-                    " <a href='corporate_support.php?community=" . urlencode($row['community']) . "' class='btn btn-sm btn-outline-primary ml-3'>Offer Help</a></td>";
+                    " <a href='corporate_support.php?community=" . urlencode($row['community']) . "'</td>";
+                    //  class='btn btn-sm btn-outline-primary ml-3'>Offer Help</a>
                     echo "</tr>";
                 }
                 echo "</tbody></table></div>";
@@ -127,10 +134,52 @@
         ?>
     </div>
 
+    <div id="editModal" class="edit-modal">
+        <div class="edit-modal-content">
+            <span class="close">&times;</span>
+            <form id="editForm" method="POST" action="update_proj.php">
+            <input type="hidden" name="project_id" id="editProjectId">
+            <label for="editTitle">Title:</label>
+            <input type="text" name="title" id="editTitle" required>
+            
+            <label for="editDescription">Description:</label>
+            <textarea name="proj_description" id="editDescription" required></textarea>
+            <br>
+            <label for="editImage">Image URL:</label>
+            <input type="text" name="proj_image" id="editImage">
+            
+            <button type="submit" class="button">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
     <!--- Footer --->
     <?php
     include 'includes/footer.php';
     ?>
     <script src="js/nav.js"></script>
+    <script>
+        document.querySelectorAll('.edit-btn').forEach(button => {
+            button.addEventListener('click', function() {
+            document.getElementById('editProjectId').value = this.dataset.id;
+            document.getElementById('editTitle').value = this.dataset.title;
+            document.getElementById('editDescription').value = this.dataset.description;
+            document.getElementById('editImage').value = this.dataset.image;
+
+            document.getElementById('editModal').style.display = 'block';
+            });
+        });
+
+        document.querySelector('.close').addEventListener('click', function() {
+            document.getElementById('editModal').style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target == document.getElementById('editModal')) {
+            document.getElementById('editModal').style.display = 'none';
+            }
+        });
+    </script>
+
 </body>
 </html>

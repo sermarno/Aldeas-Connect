@@ -1,5 +1,5 @@
 <footer>
-    <h5><a href="index.php">Aldeas Inteligentes IU</a></h5>
+    <h5><a href="index.php">Aldeas Connect</a></h5>
     <ul>
         <li><a href="team.php">Meet the Team</a></li>
         <li><a href="project.php">Our Purpose</a></li>
