@@ -420,10 +420,22 @@ input[type="date"] {
   margin: 2rem auto;
 }
 
-.stage1 { grid-column: 1; grid-row: 1; }
-.stage2 { grid-column: 2; grid-row: 1; }
-.stage3 { grid-column: 1; grid-row: 2; }
-.stage4 { grid-column: 2; grid-row: 2; }
+.stage1 {
+  grid-column: 1;
+  grid-row: 1;
+}
+.stage2 {
+  grid-column: 2;
+  grid-row: 1;
+}
+.stage3 {
+  grid-column: 1;
+  grid-row: 2;
+}
+.stage4 {
+  grid-column: 2;
+  grid-row: 2;
+}
 
 .legend-item {
   display: flex;
