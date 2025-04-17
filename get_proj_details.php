@@ -1,6 +1,6 @@
 <?php
 // Include database connection
-include('db_connection.php');
+include('db.php');
 
 // Get the project ID from the query string
 $project_id = $_GET['project_id'];
