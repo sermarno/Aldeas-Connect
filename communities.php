@@ -29,46 +29,40 @@ $result = $conn->query($sql);
     <?php include 'includes/side_nav.php' ?>
 
     <header>
-        <h1>Communities</h1>
+        <h1>Communities with Smart Village Resources</h1>
     </header>
+    <section class="communities-container">
+    <?php if ($result->num_rows > 0): ?>
+        <?php while ($row = $result->fetch_assoc()): ?>
+            <div class="community-card">
+                <div class="image-carousel" data-images='[
+                    "<?php echo $row["comm_img1"]; ?>", 
+                    "<?php echo $row["comm_img2"]; ?>", 
+                    "<?php echo $row["comm_img3"]; ?>"
+                    ]'>
+                    <img src="<?php echo $row["comm_img1"]; ?>" alt="Community Image" class="carousel-img">
+                    <button class="prev-img">⟨</button>
+                    <button class="next-img">⟩</button>
+                </div>
+                <h2 class="community-name"><?php echo htmlspecialchars($row['comm_name']); ?></h2>
+                <p class="community-location"><?php echo htmlspecialchars($row['comm_location']); ?></p>
+                <p class="community-description">Known For: <?php echo htmlspecialchars($row['comm_description']); ?></p>
+                <p class="community-connection-date">Connected on: <?php echo htmlspecialchars($row['comm_connection_date']); ?></p>
+                <button class="comm_button" onclick="showProjects(<?php echo $row['community_id']; ?>)">See Projects</button>
+            </div>
+        <?php endwhile; ?>
+    <?php else: ?>
+        <p>No communities to display.</p>
+    <?php endif; ?>
+</section>
 
-    <section class="communities-table">
-        <table>
-            <thead>
-                <tr>
-                    <th>Community Name</th>
-                    <th>Description</th>
-                    <th>Location</th>
-                    <th>See Projects</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if ($result->num_rows > 0): ?>
-                    <?php while ($row = $result->fetch_assoc()): ?>
-                        <tr>
-                            <td><?php echo htmlspecialchars($row['comm_name']); ?></td>
-                            <td><?php echo htmlspecialchars($row['comm_description']); ?></td>
-                            <td><?php echo htmlspecialchars($row['comm_location']); ?></td>
-                            <td>
-                                <button class="button" onclick="showProjects(<?php echo $row['community_id']; ?>)">See Projects</button>
-                            </td>
-                        </tr>
-                    <?php endwhile; ?>
-                <?php else: ?>
-                    <tr>
-                        <td colspan="4">No communities to display.</td>
-                    </tr>
-                <?php endif; ?>
-            </tbody>
-        </table>
-    </section>
 
     <!-- Modal for displaying projects -->
     <div id="projectsModal" class="modal2">
         <div class="modal-content2">
             <span class="close2" onclick="closeModal()">&times;</span>
-            <h2>Projects for Community</h2>
-            <div id="projectsList"></div> <!-- List of projects will be loaded here -->
+            <h2>Projects for Community Development</h2>
+            <div id="projectsList"></div>
         </div>
     </div>
 
@@ -100,6 +94,27 @@ $result = $conn->query($sql);
             document.getElementById("projectsModal").style.display = "none";
         }
     </script>
+    <script>
+    document.querySelectorAll('.image-carousel').forEach(carousel => {
+        const images = JSON.parse(carousel.dataset.images);
+        let index = 0;
+
+        const imgTag = carousel.querySelector('.carousel-img');
+        const prevBtn = carousel.querySelector('.prev-img');
+        const nextBtn = carousel.querySelector('.next-img');
+
+        prevBtn.addEventListener('click', () => {
+            index = (index - 1 + images.length) % images.length;
+            imgTag.src = images[index];
+        });
+
+        nextBtn.addEventListener('click', () => {
+            index = (index + 1) % images.length;
+            imgTag.src = images[index];
+        });
+    });
+</script>
+
 </body>
 </html>
 
