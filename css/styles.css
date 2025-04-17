@@ -129,6 +129,31 @@ article {
   padding: 50px;
 }
 
+#project-page h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  color: black;
+  margin-bottom: 1rem;
+}
+
+#project-page article {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-left: 5px solid rgb(255, 189, 91);
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+#project-page ul {
+  padding-left: 2rem;
+}
+
+#project-page li span {
+  font-weight: bold;
+  color: rgb(128, 79, 6);
+}
+
 .register_form {
   background-color: rgb(255, 247, 234);
 }
