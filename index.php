@@ -129,21 +129,18 @@ $villages = [
         <div class="map-container">
 
             <div class="map-text top-text">
-                <h3>83 Communtities with Smart Village Resources</h3>
-                <div class="legend">
-                    <p><img src="http://maps.google.com/mapfiles/ms/icons/red-dot.png"> Stage 1: Connection - This is the first step, where internet and digital tools are introduced to connect the community in key sectors like health, education, tourism, and the economy.</p>
-                    <p><img src="http://maps.google.com/mapfiles/ms/icons/orange-dot.png"> Stage 2: Use - Once connected, the community begins to use technology in practical ways, such as accessing telemedicine, learning digital skills, and participating in e-commerce.</p>
-                    <p><img src="http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"> Stage 3: Deployment - People start to make the technology their own by creating solutions, services, and innovations that address local needs through connectivity.</p>
-                    <p><img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png"> Stage 4: Sustained - As a result, communities experience greater social inclusion, knowledge sharing, and measurable contributions to sustainable development goals (SDGs).</p>
-                </div>
-            </div>
-            <div>    
+                <h3>83 Communtities with Smart Village Resources</h3> 
             <p>Explore the many communities benefiting from Smart Village inititaves.<br></p>
             <p class="italic">Click on a map marker to learn more</p>
             <a class="button" href="communitites.php">See Communities</a>
         </div>
             <div id="map"></div>
-    
+            <div class="legend">
+                    <p><img src="http://maps.google.com/mapfiles/ms/icons/red-dot.png"> Stage 1: Connection - This is the first step, where internet and digital tools are introduced to connect the community in key sectors like health, education, tourism, and the economy.</p>
+                    <p><img src="http://maps.google.com/mapfiles/ms/icons/orange-dot.png"> Stage 2: Use - Once connected, the community begins to use technology in practical ways, such as accessing telemedicine, learning digital skills, and participating in e-commerce.</p>
+                    <p><img src="http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"> Stage 3: Deployment - People start to make the technology their own by creating solutions, services, and innovations that address local needs through connectivity.</p>
+                    <p><img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png"> Stage 4: Sustained - As a result, communities experience greater social inclusion, knowledge sharing, and measurable contributions to sustainable development goals (SDGs).</p>
+                </div>
             <!-- Legend for the colors ^-->
             
                 <script>
