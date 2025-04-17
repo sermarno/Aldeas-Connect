@@ -206,20 +206,22 @@ $villages = [
         </div>
         <div class="projects-container">
             <h3>Community Project Highlights</h3>
-            <div class="proj-grid">
-                <?php
-                if (count($projects) > 0 ) {
-                    foreach ($projects as $project) {
-                        echo "<div class='proj-card' data-project-id='" . $project['project_id'] . "' data-community-id='" . $project['community_id'] . "'>";
-                        if (!empty($project['proj_image'])) {
-                            echo "<img src='" . htmlspecialchars($project['proj_image']) . "' alt='project image' class='proj-image'><br>";
-                        }
-                        echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
-                        echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
-                        echo "</div>";
-                    }
-                }
-                ?>
+            <div class="proj-grid" id="projectGrid">
+                <?php if (count($projects) > 0): ?>
+                    <?php foreach ($projects as $project): ?>
+                        <div class="proj-card"
+                            data-project-id="<?= htmlspecialchars($project['project_id']) ?>"
+                            data-community-id="<?= htmlspecialchars($project['community_id']) ?>">
+                            <?php if (!empty($project['proj_image'])): ?>
+                                <img src="<?= htmlspecialchars($project['proj_image']) ?>"
+                                    alt="project image"
+                                    class="proj-image"><br>
+                            <?php endif; ?>
+                            <h3><?= htmlspecialchars($project['title']) ?></h3>
+                            <p><?= htmlspecialchars($project['proj_description']) ?></p>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
             <a class="button" href="gallery.php">See Project Gallery</a>
             <a class="button" href="investor.php">See All Projects</a>
@@ -233,7 +235,7 @@ $villages = [
                 <p id="modalDescription"></p>
                 <p id="modalCommunity"></p>
                 <p id="modalStartDate"></p>
-                <a id="communityDetailsLink" class="button" href="communitites.php">See Communities</a>
+                <a id="communityDetailsLink" class="button" href="communities.php">See Communities</a>
             </div>
         </div>
         <!-- Messenger Tool -->

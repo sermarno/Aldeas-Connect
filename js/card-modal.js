@@ -20,8 +20,7 @@ function fetchProjectData(projectId, communityId) {
 
   var communityName = communityId;
   var startDate = "Start Date: 2022-06-05";
-  var communityDetailsLink =
-    "community_details.php?community_id=" + communityId;
+  var communityDetailsLink = "communities.php";
 
   // Set the modal content
   document.getElementById("modalTitle").innerText = projectTitle;

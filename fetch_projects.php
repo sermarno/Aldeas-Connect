@@ -11,23 +11,29 @@ if (isset($_GET['community_id'])) {
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
-        // Loop through the result set and display each project
-        echo "<ul>";
+        // Output the projects in a structured format
+        echo "<div class='projects-list'>";
         while ($row = $result->fetch_assoc()) {
-            echo "<li><strong>" . htmlspecialchars($row['title']) . "</strong><br>";
-            echo "<em>" . htmlspecialchars($row['proj_description']) . "</em><br>";
+            echo "<div class='project-card'>";
+            echo "<h3 class='project-title'>" . htmlspecialchars($row['title']) . "</h3>";
+            echo "<p class='project-description'><em>" . htmlspecialchars($row['proj_description']) . "</em></p>";
+
             if (!empty($row['proj_image'])) {
-                echo "<img src='" . htmlspecialchars($row['proj_image']) . "' alt='" . htmlspecialchars($row['title']) . "' style='width: 100px;'><br>";
+                echo "<div class='project-image'>";
+                echo "<img src='" . htmlspecialchars($row['proj_image']) . "' alt='" . htmlspecialchars($row['title']) . "'>";
+                echo "</div>";
             }
-            echo "<strong>Start Date: </strong>" . htmlspecialchars($row['proj_start']) . "<br>";
-            echo "<strong>End Date: </strong>" . htmlspecialchars($row['proj_end']) . "</li><br>";
+
+            echo "<p class='project-dates'><strong>Start Date:</strong> " . htmlspecialchars($row['proj_start']) . "<br>";
+            echo "<strong>End Date:</strong> " . htmlspecialchars($row['proj_end']) . "</p>";
+            echo "</div>";
         }
-        echo "</ul>";
+        echo "</div>";
     } else {
-        echo "No projects found for this community.";
+        echo "<p class='no-projects'>No projects found for this community.</p>";
     }
 } else {
-    echo "Community ID is missing.";
+    echo "<p class='error'>Community ID is missing.</p>";
 }
 
 $conn->close();
