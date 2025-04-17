@@ -147,7 +147,7 @@ $villages = [
             </div>
             <div class="legend-item stage3">
                 <img src="http://maps.google.com/mapfiles/ms/icons/yellow-dot.png" alt="Stage 3">
-                <p><strong>Stage 3:</strong> Deployment – People start to make the technology their own by creating solutions, services, and innovations that address local needs through connectivity.</p>
+                <p><strong>Stage 3:</strong> Deployment – Residents start to make the technology their own by creating solutions, services, and innovations that address local needs through connectivity.</p>
             </div>
             <div class="legend-item stage4">
                 <img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png" alt="Stage 4">
