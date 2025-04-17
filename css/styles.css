@@ -410,6 +410,35 @@ input[type="date"] {
   margin-right: 6px;
 }
 
+.legend-grid-custom {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 20px;
+  max-width: 900px;
+  margin: 2rem auto;
+}
+
+.stage1 { grid-column: 1; grid-row: 1; }
+.stage2 { grid-column: 2; grid-row: 1; }
+.stage3 { grid-column: 1; grid-row: 2; }
+.stage4 { grid-column: 2; grid-row: 2; }
+
+.legend-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.legend-item img {
+  width: 24px;
+  height: 24px;
+  margin-top: 5px;
+}
+
 .project_details {
   border: 2px solid grey;
   border-radius: 3px;
