@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    // Fix the SQL query to correctly match bind_param()
+    //
     $stmt = $conn->prepare("INSERT INTO testimonials (user_id, community_id, story_text, video_url, category, status) 
                             VALUES (?, ?, ?, ?, ?, 'pending')");
     
