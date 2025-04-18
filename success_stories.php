@@ -170,7 +170,7 @@
     <header><h2>Add Your Story</h2></header>
 
     <div class="form">
-        <form action="/story_sent.php" method="POST" enctype="multipart/form-data">
+        <form action="story_sent.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="request_id">
           
 

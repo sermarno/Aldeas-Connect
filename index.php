@@ -127,22 +127,44 @@ $villages = [
         </div>
 
         <div class="map-container">
+
             <div class="map-text top-text">
-                <h3>83 Communtities with Smart Village Resources</h3>
-                <p>Explore the many communities benefiting from Smart Village inititaves.<br></p>
-                <p class="italic">Click on a map marker to learn more</p>
-                <a class="button" href="communitites.php">See Communities</a>
-            </div>
+                <h3>83 Communtities with Smart Village Resources</h3> 
+            <p>Explore the many communities benefiting from Smart Village inititaves.<br></p>
+            <p class="italic">Click on a map marker to learn more</p>
+            <a class="button" href="communitites.php">See Communities</a>
+        </div>
             <div id="map"></div>
-    
-            
-            <div class="legend">
-                <p><img src="http://maps.google.com/mapfiles/ms/icons/red-dot.png"> Stage 1: Connection</p>
-                <p><img src="http://maps.google.com/mapfiles/ms/icons/orange-dot.png"> Stage 2: Use</p>
-                <p><img src="http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"> Stage 3: Deployment</p>
-                <p><img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png"> Stage 4: Sustained</p>
+
+        <div class="legend-grid-custom">
+            <div class="legend-item stage1">
+                <img src="http://maps.google.com/mapfiles/ms/icons/red-dot.png" alt="Stage 1">
+                <p><strong>Stage 1:</strong> Connection – This is the first step, where internet and digital tools are introduced to connect the community in key sectors like health, education, tourism, and the economy.</p>
+            </div>
+            <div class="legend-item stage2">
+                <img src="http://maps.google.com/mapfiles/ms/icons/orange-dot.png" alt="Stage 2">
+                <p><strong>Stage 2:</strong> Use – Once connected, the community begins to use technology in practical ways, such as accessing telemedicine, learning digital skills, and participating in e-commerce.</p>
+            </div>
+            <div class="legend-item stage3">
+                <img src="http://maps.google.com/mapfiles/ms/icons/yellow-dot.png" alt="Stage 3">
+                <p><strong>Stage 3:</strong> Deployment – Residents start to make the technology their own by creating solutions, services, and innovations that address local needs through connectivity.</p>
+            </div>
+            <div class="legend-item stage4">
+                <img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png" alt="Stage 4">
+                <p><strong>Stage 4:</strong> Sustained – As a result, communities experience greater social inclusion, knowledge sharing, and measurable contributions to sustainable development goals (SDGs).</p>
             </div>
         </div>
+
+
+
+            <!-- <div class="legend">
+                    <p><img src="http://maps.google.com/mapfiles/ms/icons/red-dot.png"> Stage 1: Connection - This is the first step, where internet and digital tools are introduced to connect the community in key sectors like health, education, tourism, and the economy.</p>
+                    <p><img src="http://maps.google.com/mapfiles/ms/icons/orange-dot.png"> Stage 2: Use - Once connected, the community begins to use technology in practical ways, such as accessing telemedicine, learning digital skills, and participating in e-commerce.</p>
+                    <p><img src="http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"> Stage 3: Deployment - People start to make the technology their own by creating solutions, services, and innovations that address local needs through connectivity.</p>
+                    <p><img src="http://maps.google.com/mapfiles/ms/icons/green-dot.png"> Stage 4: Sustained - As a result, communities experience greater social inclusion, knowledge sharing, and measurable contributions to sustainable development goals (SDGs).</p>
+                </div> -->
+            <!-- Legend for the colors ^-->
+            
                 <script>
                     const villages = <?php echo json_encode($villages); ?>;
                     
@@ -184,20 +206,22 @@ $villages = [
         </div>
         <div class="projects-container">
             <h3>Community Project Highlights</h3>
-            <div class="proj-grid">
-                <?php
-                if (count($projects) > 0 ) {
-                    foreach ($projects as $project) {
-                        echo "<div class='proj-card' data-project-id='" . $project['project_id'] . "' data-community-id='" . $project['community_id'] . "'>";
-                        if (!empty($project['proj_image'])) {
-                            echo "<img src='" . htmlspecialchars($project['proj_image']) . "' alt='project image' class='proj-image'><br>";
-                        }
-                        echo "<h3>" . htmlspecialchars($project['title']) . "</h3>";
-                        echo "<p>" . htmlspecialchars($project['proj_description']) . "</p>";
-                        echo "</div>";
-                    }
-                }
-                ?>
+            <div class="proj-grid" id="projectGrid">
+                <?php if (count($projects) > 0): ?>
+                    <?php foreach ($projects as $project): ?>
+                        <div class="proj-card"
+                            data-project-id="<?= htmlspecialchars($project['project_id']) ?>"
+                            data-community-id="<?= htmlspecialchars($project['community_id']) ?>">
+                            <?php if (!empty($project['proj_image'])): ?>
+                                <img src="<?= htmlspecialchars($project['proj_image']) ?>"
+                                    alt="project image"
+                                    class="proj-image"><br>
+                            <?php endif; ?>
+                            <h3><?= htmlspecialchars($project['title']) ?></h3>
+                            <p><?= htmlspecialchars($project['proj_description']) ?></p>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
             <a class="button" href="gallery.php">See Project Gallery</a>
             <a class="button" href="investor.php">See All Projects</a>
@@ -211,7 +235,7 @@ $villages = [
                 <p id="modalDescription"></p>
                 <p id="modalCommunity"></p>
                 <p id="modalStartDate"></p>
-                <a id="communityDetailsLink" class="button" href="communitites.php">See Communities</a>
+                <a id="communityDetailsLink" class="button" href="communities.php">See Communities</a>
             </div>
         </div>
         <!-- Messenger Tool -->
