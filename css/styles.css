@@ -565,6 +565,10 @@ input[type="submit"]:hover {
   border-radius: 15px;
 }
 
+.all_projects {
+  max-width: 1100px;
+}
+
 p.italic {
   font-style: italic;
   margin-top: 4px;
@@ -589,7 +593,7 @@ p.underline {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
-  width: 900px;
+  width: 1100px;
   margin: 0 auto;
   position: relative;
 }
@@ -1014,36 +1018,6 @@ table tr:nth-child(even) {
 }
 
 /* ---------------------------------------------
-      MEDIA QUERIES
------------------------------------------------- */
-@media (min-width: 768px) {
-  .proj-grid {
-    flex-direction: row;
-  }
-
-  .proj-card {
-    margin: 10px;
-  }
-
-  .select_date {
-    flex-direction: row;
-  }
-
-  input[type="date"] {
-    width: 400px;
-    margin: 0 1em 0 0;
-  }
-
-  .proj-image {
-    display: block;
-    width: 200px;
-    height: 100px;
-    margin: 0;
-    padding: 0;
-  }
-}
-
-/* ---------------------------------------------
       PROGRESS BAR
 ------------------------------------------------ */
 .progress-container {
@@ -1306,4 +1280,104 @@ form textarea {
 form textarea {
   resize: vertical;
   min-height: 80px;
+}
+
+#investor {
+  margin-top: -20px;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  text-align: left;
+}
+
+#investor img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+#investor h1 {
+  font-size: 40px;
+  font-weight: 600;
+  bottom: 3em;
+}
+
+#investor h1,
+#investor p {
+  position: absolute;
+  bottom: 2rem;
+  left: 1rem;
+  color: white;
+  margin: 0;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+#investor p {
+  bottom: 5px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* ---------------------------------------------
+      MEDIA QUERIES
+------------------------------------------------ */
+@media (min-width: 658px) {
+  .proj-grid,
+  .proj-grid2 {
+    flex-direction: row;
+  }
+
+  .proj-card {
+    margin: 10px;
+  }
+
+  .select_date {
+    flex-direction: row;
+  }
+
+  input[type="date"] {
+    width: 400px;
+    margin: 0 1em 0 0;
+  }
+
+  .proj-image {
+    display: block;
+    width: 200px;
+    height: 100px;
+    margin: 0;
+    padding: 0;
+  }
+
+  #investor h1 {
+    font-size: 55px;
+    bottom: 0.7em;
+  }
+
+  #investor p {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 978px) {
+  #investor h1 {
+    font-size: 78px;
+    bottom: 0.6em;
+  }
+
+  #investor p {
+    font-size: 24px;
+    bottom: 0.2em;
+  }
+}
+
+@media (min-width: 990px) {
+  #investor p {
+    bottom: 0.4em;
+  }
+}
+
+@media (min-width: 1050px) {
+  #investor p {
+    bottom: 1em;
+  }
 }

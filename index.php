@@ -129,10 +129,10 @@ $villages = [
         <div class="map-container">
 
             <div class="map-text top-text">
-                <h3>83 Communtities with Smart Village Resources</h3> 
+                <h3>83 Communities with Smart Village Resources</h3> 
             <p>Explore the many communities benefiting from Smart Village inititaves.<br></p>
             <p class="italic">Click on a map marker to learn more</p>
-            <a class="button" href="communitites.php">See Communities</a>
+            <a class="button" href="communities.php">See Communities</a>
         </div>
             <div id="map"></div>
 
