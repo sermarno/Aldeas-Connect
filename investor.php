@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- GOOGLE FONTS: Menu Icon -->
+
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
@@ -33,10 +34,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/normalize.css">
+
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    /> 
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -77,11 +83,15 @@
                         echo "<div class='progress-container'>";
                         echo "<div class='progress-bar' style='width: {$progress}%;'></div>";
                         echo "<p class='progress-text'>Raised: \${$raised} / Goal: \${$goal} ({$progress}%)</p>";
+
+                        echo "<a href='investor.php?project_id=" . $project['project_id'] . "' class='button'>Donate</a>";
+
                         echo "</div>";
                         echo "</div>";
                         echo "</div>";
                     }
                 }
+                //class='donate-btn'
             ?> 
             <a class='button' href='new_proj.php'><img src="img/plus.png"></a>   
 
@@ -108,8 +118,8 @@
             $result_set = mysqli_query($conn, $query);
             if ($result_set) {
                 echo "<h3>Communities That Need Support</h3>";
-                echo "<div class='table-responsive'>";
-                echo "<table class='table table-hover'>";
+                echo "<div class='table'>";
+                echo "<table class='table'>";
                 echo "<thead>";
                 echo "<tr>
                     <th scope='col'>Community</th>
@@ -121,15 +131,18 @@
                     echo "<tr>";
                     echo "<td>" . htmlspecialchars($row['community']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['req_resources']) . 
+
                     " <a href='corporate_support.php?community=" . urlencode($row['community']) . "'</td>";
                     //  class='btn btn-sm btn-outline-primary ml-3'>Offer Help</a>
+
+                    " <a href='community_support.php?community=" . urlencode($row['community']) . "' class='button'>Offer Help</a></td>";
                     echo "</tr>";
                 }
                 echo "</tbody></table></div>";
             } else {
                 echo "No records found.<br>";
             }
-
+            //class='btn btn-sm btn-outline-primary ml-3'
             // Close database connection
             mysqli_close($conn);
         ?>

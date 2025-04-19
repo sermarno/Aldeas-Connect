@@ -1006,6 +1006,7 @@ table {
 table th,
 td {
   padding: 12px;
+  text-align: left;
   border: 1px solid #ddd;
 }
 
@@ -1013,9 +1014,6 @@ table th {
   color: black;
 }
 
-table tr:nth-child(even) {
-  background: #f2f2f2;
-}
 
 /* ---------------------------------------------
       PROGRESS BAR
