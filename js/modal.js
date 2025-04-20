@@ -30,8 +30,6 @@ $(document).ready(function () {
     $("#review-modal").show();
   });
 
-
-
   //Testimonial Modal
   $(".review-testimonial-btn").click(function () {
     var testimonialId = $(this).data("id");
@@ -40,32 +38,31 @@ $(document).ready(function () {
     var story = $(this).data("story");
     var videoUrl = $(this).data("video");
 
-
     //Populate
     $("#testimonial-id").val(testimonialId);
     $("#testimonial-community").text(community);
     $("#testimonial-category").text(category);
     $("#testimonial-story").text(story);
 
-//For videos
-let videoContainer = $("#testimonial-video-container");
-videoContainer.empty(); // Clear any previous video
-if (videoUrl) {
-  let videoElement = $("<video>", {
-    width: "100%",
-    controls: true,
-  });
-  let source = $("<source>", {
-    src: videoUrl,
-    type: "video/mp4",
-  });
-  videoElement.append(source);
-  videoContainer.append(videoElement);
-}
+    //For videos
+    let videoContainer = $("#testimonial-video-container");
+    videoContainer.empty(); // Clear any previous video
+    if (videoUrl) {
+      let videoElement = $("<video>", {
+        width: "100%",
+        controls: true,
+      });
+      let source = $("<source>", {
+        src: videoUrl,
+        type: "video/mp4",
+      });
+      videoElement.append(source);
+      videoContainer.append(videoElement);
+    }
 
-//Show testimonial one
-$("#testimonial-modal").show();
-});
+    //Show testimonial one
+    $("#testimonial-modal").show();
+  });
 
   // Close modal when 'X' button is clicked
   $(".close").click(function () {

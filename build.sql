@@ -26,7 +26,10 @@ CREATE TABLE communities (
     comm_name VARCHAR(255),
     comm_description TEXT,
     comm_location TEXT,
-    comm_connection_date TEXT
+    comm_connection_date TEXT,
+    comm_img1 VARCHAR(255),
+    comm_img2 VARCHAR(255),
+    comm_img3 VARCHAR(255)
 ) ENGINE=INNODB;
 
 -- project
@@ -133,10 +136,10 @@ INSERT INTO messages (sender_id, recipient_id, message, sent_at) VALUES
 (2, 1, "We have a question about the Community Center.", '2025-03-31 17:52:18'),
 (4, 1, "Did we get any donations for our project?", '2025-03-31 14:52:18');
 
-INSERT INTO communities (comm_name, comm_description, comm_location, comm_connection_date) VALUES
-('Telebachillerato Agua Azul', 'Educational center supporting online learning in Quintana Roo.', 'Leona Vicario, Yucatan', '2022-09-07'), 
-('Secundaria Comunitaria Niños Héroes', 'School offering remote education access.', 'Slferino, Yucatan', '2019-03-02'),
-('Comisaría Municipal Yokdzonot Hu', 'Economic and social support for Maya women in agriculture.', 'Yokdzonot-Hú', '2022-07-13');
+INSERT INTO communities (comm_name, comm_description, comm_location, comm_connection_date, comm_img1, comm_img2, comm_img3) VALUES
+('Telebachillerato Agua Azul', 'Educational center supporting online learning in Quintana Roo.', 'Leona Vicario, Yucatan', '2022-09-07', 'img/comm1_1.jpeg', 'img/comm1_2.jpeg', 'img/comm1_3.jpeg'), 
+('Secundaria Comunitaria Niños Héroes', 'School offering remote education access.', 'Slferino, Yucatan', '2019-03-02', 'img/comm1_1.jpeg', 'img/comm1_2.jpeg', 'img/comm1_3.jpeg'),
+('Comisaría Municipal Yokdzonot Hu', 'Economic and social support for Maya women in agriculture.', 'Yokdzonot-Hú', '2022-07-13', 'img/comm1_1.jpeg', 'img/comm1_2.jpeg', 'img/comm1_3.jpeg');
 
 INSERT INTO projects (title, proj_description, proj_image, proj_start, proj_end, user_id, community_id) VALUES
 ('Health Center', 'Supporting the processing and sharing of information reports with jurisdictions, hospitals, and the central health sector office.', 'uploads/health_center.jpeg', '2020-04-23', '2025-01-11', 1, 3),
