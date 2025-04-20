@@ -42,21 +42,6 @@
         <p>Join us in making a difference. Fill out the form below and we'll connect with you.</p>
     </header>
     <?php
-    // if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // $company_name = ($conn, $_POST['company_name']);
-        // $contact_person = ($conn, $_POST['contact_person']);
-        // $email = ($conn, $_POST['email']);
-        // $phone = ($conn, $_POST['phone']);
-        // $support_type = ($conn, $_POST['support_type']);
-        // $message = ($conn, $_POST['message']);
-
-        // if (mysqli_query($conn, $sql)) {
-        //     $successMessage = "Thank you for your support! We will reach out to you soon.";
-        // } else {
-        //     $successMessage = "Error: " . mysqli_error($conn);
-        // }
-    // }
-    
     mysqli_close($conn);
     ?>
 

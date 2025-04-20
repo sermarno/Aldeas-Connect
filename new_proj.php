@@ -10,26 +10,12 @@
         $proj_start = $conn->real_escape_string($_POST['proj_start']);
         $proj_end = $conn->real_escape_string($_POST['proj_end']);
         $community_id = $conn->real_escape_string($_POST['community_id']);
-        
-        // Handle image upload
-        $proj_image = null;
-        if (isset($_FILES['proj_image']) && $_FILES['proj_image']['error'] == 0) {
-            echo "File uploaded: " . $_FILES['proj_image']['name'];
-            $proj_image = $_FILES['proj_image']['name'];
-            $target_dir = "uploads/";
-            $target_file = $target_dir . basename($proj_image);
-            if (move_uploaded_file($_FILES['proj_image']['tmp_name'], $target_file)) {
-                echo "Image uploaded successfully.";
-            } else {
-                echo "image upload failed.";
-            }
-        }
     
         // Insert project into database
-        $sql = "INSERT INTO projects (title, proj_description, proj_start, proj_end, community_id, proj_image) 
-                VALUES (?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO projects (title, proj_description, proj_start, proj_end, community_id) 
+                VALUES (?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssssss", $title, $proj_description, $proj_start, $proj_end, $community_id, $proj_image);
+        $stmt->bind_param("sssss", $title, $proj_description, $proj_start, $proj_end, $community_id);
     
         if ($stmt->execute()) {
             header("Location: investor.php");
@@ -110,12 +96,6 @@
                             }
                             ?>
                         </select> <br><br>
-                    </div>
-                    <div class="details_container">
-                        <p class="underline">PROJECT IMAGE</p>
-                        <p class="italic">Upload an image representing the project (optional).</p>
-                        <label for="proj_image">Select Image:</label><br>
-                        <input type="file" id="proj_image" name="proj_image" accept="image/*"><br><br>
                     </div>
                     <input type="submit" value="Add Project">
                 </div>

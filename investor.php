@@ -64,13 +64,13 @@
                 if (count($projects) > 0) {
                     foreach ($projects as $project) {
                         // Project Card
-                        // Ensure these variables exist before use
                         $raised = $project['raised_amount'] ?? 0;
-                        $goal = $project['goal_amount'] ?? 1; // Avoid division by zero
+                        $goal = $project['goal_amount'] ?? 1;
                         $progress = ($goal > 0) ? round(($raised / $goal) * 100) : 0;
                         echo "<div class='proj-card'>";
-                        echo "<div class='card-body'>"; // Adding card body
+                        echo "<div class='card-body'>";
                         echo "<img src='" . htmlspecialchars($project['proj_image'], ENT_QUOTES, 'UTF-8') . "' />";
+                        // editing functionality
                         echo "<button class='edit-btn' 
                         data-id='" . $project['project_id'] . "'
                         data-title='" . htmlspecialchars($project['title'], ENT_QUOTES) . "'
@@ -83,15 +83,11 @@
                         echo "<div class='progress-container'>";
                         echo "<div class='progress-bar' style='width: {$progress}%;'></div>";
                         echo "<p class='progress-text'>Raised: \${$raised} / Goal: \${$goal} ({$progress}%)</p>";
-
-                        echo "<a href='investor.php?project_id=" . $project['project_id'] . "' class='button'>Donate</a>";
-
                         echo "</div>";
                         echo "</div>";
                         echo "</div>";
                     }
                 }
-                //class='donate-btn'
             ?> 
             <a class='button' href='new_proj.php'><img src="img/plus.png"></a>   
 
@@ -113,7 +109,6 @@
     <!-- Requred Help Section -->
     <div class="projects-container">
         <?php
-            // Database Querygit
             $query = "SELECT * FROM required_help";
             $result_set = mysqli_query($conn, $query);
             if ($result_set) {
@@ -131,10 +126,7 @@
                     echo "<tr>";
                     echo "<td>" . htmlspecialchars($row['community']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['req_resources']) . 
-
                     " <a href='corporate_support.php?community=" . urlencode($row['community']) . "'</td>";
-                    //  class='btn btn-sm btn-outline-primary ml-3'>Offer Help</a>
-
                     " <a href='community_support.php?community=" . urlencode($row['community']) . "' class='button'>Offer Help</a></td>";
                     echo "</tr>";
                 }
@@ -142,8 +134,6 @@
             } else {
                 echo "No records found.<br>";
             }
-            //class='btn btn-sm btn-outline-primary ml-3'
-            // Close database connection
             mysqli_close($conn);
         ?>
     </div>
@@ -166,12 +156,8 @@
             </form>
         </div>
     </div>
-
-    <!--- Footer --->
-    <?php
-    include 'includes/footer.php';
-    ?>
     <script src="js/nav.js"></script>
+    <!-- editing project cards modal -->
     <script>
         document.querySelectorAll('.edit-btn').forEach(button => {
             button.addEventListener('click', function() {
@@ -194,21 +180,9 @@
             }
         });
     </script>
-
-
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        document.querySelectorAll(".proj-card").forEach(card => {
-            card.addEventListener("click", function(e) {
-                if (e.target.closest(".edit-btn")) return;
-
-                const popup = card.querySelector(".proj-popup");
-                popup.classList.toggle("active");
-            });
-        });
-    });
-    </script>
-
-
+    <!--- Footer --->
+    <?php
+    include 'includes/footer.php';
+    ?>
 </body>
 </html>

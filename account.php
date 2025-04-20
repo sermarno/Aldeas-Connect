@@ -43,7 +43,7 @@ if (!$user) {
         <h2>Welcome back <?php echo htmlspecialchars($user['fname']); ?>!</h2>
         <p><strong>Email:</strong> <?php echo htmlspecialchars($user['email']); ?></p>
         <p><strong>Role:</strong> <?php echo htmlspecialchars($user['user_role']); ?></p>
-        <a href="logout.php">Logout</a>
+        <a class="button" href="logout.php">Logout</a>
     </div>
 
 

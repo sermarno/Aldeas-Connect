@@ -71,12 +71,10 @@ $result = $conn->query($sql);
     <script src="js/google-login.js"></script>
 
     <script>
-        // Function to show the modal and fetch projects for the community
+        // function to show the modal and fetch projects for the community
         function showProjects(community_id) {
-            // Open the modal
             document.getElementById("projectsModal").style.display = "block";
             document.getElementById("projectsList").innerHTML = ""; 
-            // Fetch projects via AJAX
             var xhr = new XMLHttpRequest();
             xhr.open("GET", "fetch_projects.php?community_id=" + community_id, true);
             xhr.onload = function() {
@@ -88,12 +86,11 @@ $result = $conn->query($sql);
             };
             xhr.send();
         }
-
-        // Function to close the modal
         function closeModal() {
             document.getElementById("projectsModal").style.display = "none";
         }
     </script>
+    <!-- image shuffle -->
     <script>
     document.querySelectorAll('.image-carousel').forEach(carousel => {
         const images = JSON.parse(carousel.dataset.images);

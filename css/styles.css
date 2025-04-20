@@ -116,7 +116,6 @@ article {
   margin: 3em auto;
 }
 
-.proj_container,
 .form,
 .register_form {
   text-align: center;
@@ -152,10 +151,6 @@ article {
 #project-page li span {
   font-weight: bold;
   color: rgb(128, 79, 6);
-}
-
-.register_form {
-  background-color: rgb(255, 247, 234);
 }
 
 .google_login,
@@ -237,10 +232,10 @@ article {
 /* ---------------------------------------------
         FORM/INPUT
 ------------------------------------------------ */
-.request_type {
+/* .request_type {
   margin: 1em;
   padding: 20px;
-}
+} */
 
 input[type="text"] {
   width: 100%;
@@ -985,24 +980,6 @@ table {
   text-align: left;
 }
 
-.communitites-table table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 20px 0;
-  font-size: 1.1em;
-}
-
-.communities-table th,
-.communities-table td {
-  padding: 10px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-.communities-table th {
-  background-color: #f4f4f4;
-}
-
 table th,
 td {
   padding: 12px;
@@ -1013,7 +990,6 @@ td {
 table th {
   color: black;
 }
-
 
 /* ---------------------------------------------
       PROGRESS BAR
