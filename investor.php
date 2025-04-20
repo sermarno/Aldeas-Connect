@@ -63,7 +63,7 @@
                         echo "<div class='progress-container'>";
                         echo "<div class='progress-bar' style='width: {$progress}%;'></div>";
                         echo "<p class='progress-text'>Raised: \${$raised} / Goal: \${$goal} ({$progress}%)</p>";
-                        echo "<a href='investor.php?project_id=" . $project['project_id'] . "' class='button'>Donate</a>";
+                        echo "<a href='community_support.php?project_id=" . $project['project_id'] . "' class='button'>Donate</a>";
                         echo "</div>";
                         echo "</div>";
                         echo "</div>";
