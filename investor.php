@@ -67,9 +67,10 @@
     <?php include 'includes/nav.php'; 
         include 'includes/side_nav.php';?>
     <!-- Header -->
-    <header>
+    <header id="investor">
+        <img src="img/projects.png" alt="projects">
         <h1>Community Projects</h1>
-        <p>See How You Can Help: Support projects that create lasting impact in local communities.</p>
+        <p>See How You Can Help: Support projects that create lasting impact in local communities.</p>  
     </header>
 
     <!-- Community Projects Section -->
@@ -212,5 +213,21 @@
         <div id="google_translate_element" class="translate-box"></div>
         <img src="img/translate_icon.png" alt="Translate" class="translate-icon">
     </div>
+
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll(".proj-card").forEach(card => {
+            card.addEventListener("click", function(e) {
+                if (e.target.closest(".edit-btn")) return;
+
+                const popup = card.querySelector(".proj-popup");
+                popup.classList.toggle("active");
+            });
+        });
+    });
+    </script>
+
+
 </body>
 </html>
