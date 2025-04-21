@@ -16,14 +16,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Projects</title>
+    <title>Community Support</title>
+    <!-- Linking CSS Stylesheet -->
     <!-- Linking CSS Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- GOOGLE FONTS: Menu Icon -->
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    /> 
+    />
+    <!-- GOOGLE FONTS: Typeface -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <!-- Translate API -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+        }       
+    </script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>
+        function translatePage() {
+            var translateElement = document.getElementById('google_translate_element');
+            translateElement.style.display = 'block';
+            var select = translateElement.querySelector('select');
+            select.value = 'es';
+            select.dispatchEvent(new Event('change'));
+        }
+    </script>
 </head>
 
 <body>
@@ -78,6 +103,9 @@ $resources = $_GET['resources'] ?? 'N/A';
         <button type="submit" class="btn btn-success">Submit Offer</button>
     </form>
 </div>
-
+<div class="translate-container">
+    <div id="google_translate_element" class="translate-box"></div>
+    <img src="img/translate_icon.png" alt="Translate" class="translate-icon">
+</div>
 </body>
 </html>

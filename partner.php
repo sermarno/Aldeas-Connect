@@ -20,18 +20,34 @@
     <!-- Linking CSS Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- GOOGLE FONTS: Menu Icon -->
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
-<<<<<<< HEAD
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-=======
     <!-- GOOGLE FONTS: Typeface -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap" rel="stylesheet">
->>>>>>> origin
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <!-- Translate API -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+        }       
+    </script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>
+        function translatePage() {
+            var translateElement = document.getElementById('google_translate_element');
+            translateElement.style.display = 'block';
+            var select = translateElement.querySelector('select');
+            select.value = 'es';
+            select.dispatchEvent(new Event('change'));
+        }
+    </script>
 </head>
 <body>
     <!-- Nav Bar -->
@@ -43,21 +59,6 @@
         <p>Join us in making a difference. Fill out the form below and we'll connect with you.</p>
     </header>
     <?php
-    // if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // $company_name = ($conn, $_POST['company_name']);
-        // $contact_person = ($conn, $_POST['contact_person']);
-        // $email = ($conn, $_POST['email']);
-        // $phone = ($conn, $_POST['phone']);
-        // $support_type = ($conn, $_POST['support_type']);
-        // $message = ($conn, $_POST['message']);
-
-        // if (mysqli_query($conn, $sql)) {
-        //     $successMessage = "Thank you for your support! We will reach out to you soon.";
-        // } else {
-        //     $successMessage = "Error: " . mysqli_error($conn);
-        // }
-    // }
-    
     mysqli_close($conn);
     ?>
 
@@ -92,8 +93,10 @@
             <button type="submit">Submit</button>
         </form>
     </div>
-
-
+    <div class="translate-container">
+        <div id="google_translate_element" class="translate-box"></div>
+        <img src="img/translate_icon.png" alt="Translate" class="translate-icon">
+    </div>
     <?php
     include 'includes/footer.php';
     ?>

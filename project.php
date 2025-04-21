@@ -16,17 +16,36 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap" rel="stylesheet">
+    <!-- Translate API -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+        }       
+    </script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>
+        function translatePage() {
+            var translateElement = document.getElementById('google_translate_element');
+            translateElement.style.display = 'block';
+            var select = translateElement.querySelector('select');
+            select.value = 'es';
+            select.dispatchEvent(new Event('change'));
+        }
+    </script>
 </head>
 <body>
     <!-- Nav Bar -->
     <?php include 'includes/nav.php' ?>
     <?php include 'includes/side_nav.php' ?>
 
-    <header>
-        <h1>The Problem & Our Purpose</h1>
-    </header>
+    <div id="project-page">
+        <header>
+            <h1>The Problem & Our Purpose</h1>
+        </header>
 
         <article id="problem">
+            <img src="img/questionaire.jpeg" alt="questionaire">
             <h3>The Problem</h3>
             <p>
                 Aldeas Inteligentes, Bienestar Sostenible is a Mexican Federal 
@@ -79,11 +98,10 @@
         <article id="features">
             <h3>Features and Benefits</h3>
             <ul>
-                <li><span>Project Requests:</span> This website is aimed to provide residents, administrators,
+                <li><span>Clear Project Updates:</span> This website is aimed to provide residents, administrators,
                     and other users with clear and regular updates on ongoing projects. Our client
-                    highlighted his concern with our initial idea of having admin enter project details 
-                    and maintain updates. We have adjusted accordingly, now allowing residents to submit
-                    a request for managing project information that will be displayed on the website. 
+                    expressed that he would like to be able to update project and community details as they change, as well
+                    as be able to add new projects and communities to the website.
                 </li>
                 <li><span>Messaging System:</span> Administrators shared their main challenges with communicating with 
                     residents of rural and isolated areas who utilize Smart Villages. One specifically 
@@ -98,9 +116,19 @@
                 <li><span>Map of Mexico:</span> This feature provides users with a clear visualization of where the 
                     communities who are utilizing Smart Villages are in Mexico. Clicking on each map marker will 
                     direct the users to a page that examines the community further. </li>
+                <li><span>Dynamic About Page</span> As aspects of the Smart Village project changes, our client shared his
+                    concern for not being able to change content himself. Our about page, as well as several other pages
+                    have been constructed so that administrators who are logged in can change a great amount of content. </li>
+                <li><span>Translation</span> Because our project's target audience focuses on individuals who's primary language
+                    is Spanish, we wanted to ensure that users can quickly translate any of the text on our website.</li>
             </ul>
         </article>
-    <?php include 'includes/footer.php' ?>
     <script src="js/nav.js"></script>
+    </div>
+    <div class="translate-container">
+        <div id="google_translate_element" class="translate-box"></div>
+        <img src="img/translate_icon.png" alt="Translate" class="translate-icon">
+        </div>
+    <?php include 'includes/footer.php'; ?>
 </body>
 </html>

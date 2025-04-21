@@ -63,6 +63,7 @@ main {
 header {
   text-align: center;
   padding-top: 100px;
+  font-size: 28px;
   font-family: "Alumni Sans Pinstripe", sans-serif;
 }
 
@@ -115,7 +116,6 @@ article {
   margin: 3em auto;
 }
 
-.proj_container,
 .form,
 .register_form {
   text-align: center;
@@ -128,8 +128,29 @@ article {
   padding: 50px;
 }
 
-.register_form {
-  background-color: rgb(255, 247, 234);
+#project-page h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  color: black;
+  margin-bottom: 1rem;
+}
+
+#project-page article {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-left: 5px solid rgb(255, 189, 91);
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+#project-page ul {
+  padding-left: 2rem;
+}
+
+#project-page li span {
+  font-weight: bold;
+  color: rgb(128, 79, 6);
 }
 
 .google_login,
@@ -211,10 +232,10 @@ article {
 /* ---------------------------------------------
         FORM/INPUT
 ------------------------------------------------ */
-.request_type {
+/* .request_type {
   margin: 1em;
   padding: 20px;
-}
+} */
 
 input[type="text"] {
   width: 100%;
@@ -419,10 +440,22 @@ input[type="date"] {
   margin: 2rem auto;
 }
 
-.stage1 { grid-column: 1; grid-row: 1; }
-.stage2 { grid-column: 2; grid-row: 1; }
-.stage3 { grid-column: 1; grid-row: 2; }
-.stage4 { grid-column: 2; grid-row: 2; }
+.stage1 {
+  grid-column: 1;
+  grid-row: 1;
+}
+.stage2 {
+  grid-column: 2;
+  grid-row: 1;
+}
+.stage3 {
+  grid-column: 1;
+  grid-row: 2;
+}
+.stage4 {
+  grid-column: 2;
+  grid-row: 2;
+}
 
 .legend-item {
   display: flex;
@@ -527,6 +560,10 @@ input[type="submit"]:hover {
   border-radius: 15px;
 }
 
+.all_projects {
+  max-width: 1100px;
+}
+
 p.italic {
   font-style: italic;
   margin-top: 4px;
@@ -551,13 +588,14 @@ p.underline {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
-  width: 900px;
+  width: 1100px;
   margin: 0 auto;
   position: relative;
 }
 
 .proj-card {
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
   text-align: center;
@@ -601,7 +639,7 @@ p.underline {
 .modal2 {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 1000;
   left: 0;
   top: 0;
   width: 100%;
@@ -942,66 +980,15 @@ table {
   text-align: left;
 }
 
-.communitites-table table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 20px 0;
-  font-size: 1.1em;
-}
-
-.communities-table th,
-.communities-table td {
-  padding: 10px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-.communities-table th {
-  background-color: #f4f4f4;
-}
-
 table th,
 td {
   padding: 12px;
+  text-align: left;
   border: 1px solid #ddd;
 }
 
 table th {
   color: black;
-}
-
-table tr:nth-child(even) {
-  background: #f2f2f2;
-}
-
-/* ---------------------------------------------
-      MEDIA QUERIES
------------------------------------------------- */
-@media (min-width: 768px) {
-  .proj-grid {
-    flex-direction: row;
-  }
-
-  .proj-card {
-    margin: 10px;
-  }
-
-  .select_date {
-    flex-direction: row;
-  }
-
-  input[type="date"] {
-    width: 400px;
-    margin: 0 1em 0 0;
-  }
-
-  .proj-image {
-    display: block;
-    width: 200px;
-    height: 100px;
-    margin: 0;
-    padding: 0;
-  }
 }
 
 /* ---------------------------------------------
@@ -1049,4 +1036,322 @@ table tr:nth-child(even) {
   padding: 10px;
   border-radius: 10px;
   margin: 5px 0;
+}
+
+/* ---------------------------------------------
+      Communities Page
+------------------------------------------------ */
+.communities-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(900px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.community-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.community-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.community-name {
+  font-size: 2.5em;
+  color: #333;
+  margin-bottom: 10px;
+  font-family: "Alumni Sans Pinstripe", sans-serif;
+}
+
+.community-location {
+  font-size: 1.1em;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.community-description {
+  font-size: 1em;
+  color: #777;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.community-connection-date {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.comm_button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.comm_button:hover {
+  background-color: #45a049;
+}
+
+/* Community Image's Shuffle */
+.image-carousel {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 1em;
+}
+
+.carousel-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+.prev-img,
+.next-img {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.25em 0.5em;
+  z-index: 2;
+}
+
+.prev-img {
+  left: 5px;
+}
+.next-img {
+  right: 5px;
+}
+
+.projects-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.project-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: scale(1.05);
+}
+
+.project-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.project-description {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.project-image img {
+  width: 100%;
+  max-width: 100px;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.project-dates {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Edit Modal */
+.edit-btn {
+  border: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+}
+
+.edit-btn:hover {
+  background-color: rgba(128, 128, 128, 0.217);
+  cursor: pointer;
+}
+
+.edit-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 150px;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.edit-modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Form Styles */
+form label {
+  display: block;
+  margin-top: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+form input[type="text"],
+form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+#investor {
+  margin-top: -20px;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  text-align: left;
+}
+
+#investor img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+#investor h1 {
+  font-size: 40px;
+  font-weight: 600;
+  bottom: 3em;
+}
+
+#investor h1,
+#investor p {
+  position: absolute;
+  bottom: 2rem;
+  left: 1rem;
+  color: white;
+  margin: 0;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+#investor p {
+  bottom: 5px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* ---------------------------------------------
+      MEDIA QUERIES
+------------------------------------------------ */
+@media (min-width: 658px) {
+  .proj-grid,
+  .proj-grid2 {
+    flex-direction: row;
+  }
+
+  .proj-card {
+    margin: 10px;
+  }
+
+  .select_date {
+    flex-direction: row;
+  }
+
+  input[type="date"] {
+    width: 400px;
+    margin: 0 1em 0 0;
+  }
+
+  .proj-image {
+    display: block;
+    width: 200px;
+    height: 100px;
+    margin: 0;
+    padding: 0;
+  }
+
+  #investor h1 {
+    font-size: 55px;
+    bottom: 0.7em;
+  }
+
+  #investor p {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 978px) {
+  #investor h1 {
+    font-size: 78px;
+    bottom: 0.6em;
+  }
+
+  #investor p {
+    font-size: 24px;
+    bottom: 0.2em;
+  }
+}
+
+@media (min-width: 990px) {
+  #investor p {
+    bottom: 0.4em;
+  }
+}
+
+@media (min-width: 1050px) {
+  #investor p {
+    bottom: 1em;
+  }
 }
