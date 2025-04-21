@@ -43,6 +43,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <!-- Translate API -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+        }       
+    </script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>
+        function translatePage() {
+            var translateElement = document.getElementById('google_translate_element');
+            translateElement.style.display = 'block';
+            var select = translateElement.querySelector('select');
+            select.value = 'es';
+            select.dispatchEvent(new Event('change'));
+        }
+    </script>
 </head>
 
 <body>
@@ -83,6 +100,9 @@
                         echo "<div class='progress-container'>";
                         echo "<div class='progress-bar' style='width: {$progress}%;'></div>";
                         echo "<p class='progress-text'>Raised: \${$raised} / Goal: \${$goal} ({$progress}%)</p>";
+
+                        echo "<a href='community_support.php?project_id=" . $project['project_id'] . "' class='button'>Donate</a>";
+
                         echo "</div>";
                         echo "</div>";
                         echo "</div>";
@@ -107,7 +127,7 @@
     </div>
 
     <!-- Requred Help Section -->
-    <div class="projects-container">
+    <div class="table">
         <?php
             $query = "SELECT * FROM required_help";
             $result_set = mysqli_query($conn, $query);
@@ -126,7 +146,12 @@
                     echo "<tr>";
                     echo "<td>" . htmlspecialchars($row['community']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['req_resources']) . 
+<<<<<<< HEAD
                     " <a href='corporate_support.php?community=" . urlencode($row['community']) . "'</td>";
+=======
+
+                    //  class='btn btn-sm btn-outline-primary ml-3'>Offer Help</a>
+>>>>>>> origin/main
                     " <a href='community_support.php?community=" . urlencode($row['community']) . "' class='button'>Offer Help</a></td>";
                     echo "</tr>";
                 }
@@ -180,9 +205,32 @@
             }
         });
     </script>
+<<<<<<< HEAD
     <!--- Footer --->
     <?php
     include 'includes/footer.php';
     ?>
+=======
+    <div class="translate-container">
+        <div id="google_translate_element" class="translate-box"></div>
+        <img src="img/translate_icon.png" alt="Translate" class="translate-icon">
+    </div>
+
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll(".proj-card").forEach(card => {
+            card.addEventListener("click", function(e) {
+                if (e.target.closest(".edit-btn")) return;
+
+                const popup = card.querySelector(".proj-popup");
+                popup.classList.toggle("active");
+            });
+        });
+    });
+    </script>
+
+
+>>>>>>> origin/main
 </body>
 </html>
