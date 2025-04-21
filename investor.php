@@ -158,6 +158,7 @@
             mysqli_close($conn);
         ?>
     </div>
+    <a class="button_communities" href="communities.php">See Communities</a>
 
     <div id="editModal" class="edit-modal">
         <div class="edit-modal-content">
@@ -219,7 +220,9 @@
         });
     });
     </script>
-
+    <?php
+    include 'includes/footer.php';
+    ?>
 
 </body>
 </html>

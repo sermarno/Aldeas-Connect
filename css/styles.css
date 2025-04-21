@@ -503,6 +503,7 @@ input[type="date"] {
 
 .button,
 .button_home,
+.button_communities,
 input[type="submit"] {
   border: 1px solid grey;
   background-color: rgba(128, 128, 128, 0.156);
@@ -513,6 +514,9 @@ input[type="submit"] {
   transition: transform 0.3s ease-in-out;
 }
 
+.button_communities {
+  background-color: #28a74666;
+}
 .button:hover,
 .button_home,
 input[type="submit"]:hover {

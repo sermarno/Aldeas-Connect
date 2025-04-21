@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("iisss", $user_id, $community_id, $story_text, $video_url, $category);
 
     if ($stmt->execute()) {
-        echo "<script>alert('Story submitted! Awaiting admin approval.'); window.location.href='success_stories.php';</script>";
+        echo "<script>alert('Story submitted!'); window.location.href='success_stories.php';</script>";
     } else {
         echo "<script>alert('Submission failed. Try again.'); window.history.back();</script>";
     }
