@@ -71,6 +71,10 @@ CREATE TABLE testimonials (
     FOREIGN KEY (community_id) REFERENCES communities(community_id) ON DELETE CASCADE
 ) ENGINE=INNODB;
 
+ALTER TABLE testimonials
+ADD COLUMN status ENUM('pending', 'approved', 'rejected') DEFAULT 'pending',
+ADD COLUMN admin_comments TEXT;
+
 -- messages 
 CREATE TABLE messages (
     message_id INT AUTO_INCREMENT PRIMARY KEY,
