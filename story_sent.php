@@ -45,7 +45,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             VALUES (?, ?, ?, ?, ?, 'pending')");
     
     $stmt->bind_param("iisss", $user_id, $community_id, $story_text, $video_url, $category);
-    $stmt->bind_param("iisss", $user_id, $community_id, $story_text, $video_url, $category);
 
     if ($stmt->execute()) {
         echo "<script>alert('Story submitted! Awaiting admin approval.'); window.location.href='success_stories.php';</script>";
