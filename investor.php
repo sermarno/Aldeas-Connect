@@ -201,13 +201,7 @@
             }
         });
     </script>
-<<<<<<< HEAD
-    <!--- Footer --->
-    <?php
-    include 'includes/footer.php';
-    ?>
-=======
-    <div class="translate-container">
+    <div class="translate-constainer">
         <div id="google_translate_element" class="translate-box"></div>
         <img src="img/translate_icon.png" alt="Translate" class="translate-icon">
     </div>
@@ -227,6 +221,5 @@
     </script>
 
 
->>>>>>> origin/main
 </body>
 </html>

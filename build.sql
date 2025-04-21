@@ -138,8 +138,8 @@ INSERT INTO messages (sender_id, recipient_id, message, sent_at) VALUES
 
 INSERT INTO communities (comm_name, comm_description, comm_location, comm_connection_date, comm_img1, comm_img2, comm_img3) VALUES
 ('Telebachillerato Agua Azul', 'Educational center supporting online learning in Quintana Roo.', 'Leona Vicario, Yucatan', '2022-09-07', 'img/comm1_1.jpeg', 'img/comm1_2.jpeg', 'img/comm1_3.jpeg'), 
-('Secundaria Comunitaria Niños Héroes', 'School offering remote education access.', 'Slferino, Yucatan', '2019-03-02', 'img/comm1_1.jpeg', 'img/comm1_2.jpeg', 'img/comm1_3.jpeg'),
-('Comisaría Municipal Yokdzonot Hu', 'Economic and social support for Maya women in agriculture.', 'Yokdzonot-Hú', '2022-07-13', 'img/comm1_1.jpeg', 'img/comm1_2.jpeg', 'img/comm1_3.jpeg');
+('Secundaria Comunitaria Niños Héroes', 'School offering remote education access.', 'Slferino, Yucatan', '2019-03-02', 'img/comm2_1.jpeg', 'img/comm2_2.jpeg', 'img/comm2_3.jpeg'),
+('Comisaría Municipal Yokdzonot Hu', 'Economic and social support for Maya women in agriculture.', 'Yokdzonot-Hú', '2022-07-13', 'img/comm3_1.jpeg', 'img/comm3_2.jpeg', 'img/comm3_3.jpeg');
 
 INSERT INTO projects (title, proj_description, proj_image, proj_start, proj_end, user_id, community_id) VALUES
 ('Health Center', 'Supporting the processing and sharing of information reports with jurisdictions, hospitals, and the central health sector office.', 'uploads/health_center.jpeg', '2020-04-23', '2025-01-11', 1, 3),
