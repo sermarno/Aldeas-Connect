@@ -1045,8 +1045,9 @@ table th {
       Communities Page
 ------------------------------------------------ */
 .communities-container {
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(900px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
   gap: 20px;
   padding: 20px;
 }
@@ -1305,8 +1306,9 @@ form textarea {
   }
 
   .header_text {
-    font-size: 50px;
+    font-size: 40px;
   }
+
   .intro_content {
     display: flex;
     flex-direction: row;
@@ -1348,6 +1350,10 @@ form textarea {
 }
 
 @media (min-width: 978px) {
+  .header_text {
+    font-size: 50px;
+  }
+
   #investor h1 {
     font-size: 78px;
     bottom: 0.6em;
