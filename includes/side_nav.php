@@ -10,14 +10,5 @@ session_start();
         <li><a href="team.php">Meet the Team</a></li>
         <li><a href="project.php">Our Goal</a></li>
         <li><a href="about.php">About</a></li>
-
-        <?php 
-        // Only show request icon if user is logged in AND role is 'resident' or 'admin'
-        if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] === 'resident' || $_SESSION['user_role'] === 'admin')) {
-            echo '<li>
-                    <a href="requests.php">Requests</a>
-                  </li>';
-        }
-        ?>
     </ul>
 </nav>

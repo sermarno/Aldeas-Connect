@@ -66,7 +66,6 @@ $result = $conn->query($sql);
                 </div>
             </div>
 
-            <?php include 'includes/footer.php' ?>
             <script src="js/nav.js"></script>
             <script src="js/google-login.js"></script>
 
@@ -112,6 +111,7 @@ $result = $conn->query($sql);
             });
         </script>
     </main>
+    <?php include 'includes/footer.php' ?>
 
 </body>
 </html>
