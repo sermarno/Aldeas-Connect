@@ -146,12 +146,8 @@
                     echo "<tr>";
                     echo "<td>" . htmlspecialchars($row['community']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['req_resources']) . 
-<<<<<<< HEAD
-                    " <a href='corporate_support.php?community=" . urlencode($row['community']) . "'</td>";
-=======
 
                     //  class='btn btn-sm btn-outline-primary ml-3'>Offer Help</a>
->>>>>>> origin/main
                     " <a href='community_support.php?community=" . urlencode($row['community']) . "' class='button'>Offer Help</a></td>";
                     echo "</tr>";
                 }
