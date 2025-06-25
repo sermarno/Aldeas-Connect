@@ -41,8 +41,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     //
-    $stmt = $conn->prepare("INSERT INTO testimonials (user_id, community_id, story_text, video_url, category, status) 
-                            VALUES (?, ?, ?, ?, ?, 'pending')");
+    $stmt = $conn->prepare("INSERT INTO testimonials (user_id, community_id, story_text, video_url, category) 
+                            VALUES (?, ?, ?, ?, ?)");
     
     $stmt->bind_param("iisss", $user_id, $community_id, $story_text, $video_url, $category);
     $stmt->bind_param("iisss", $user_id, $community_id, $story_text, $video_url, $category);
